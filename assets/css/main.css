@@ -8,6 +8,7 @@
     background-color: rgba(251,251,253,0.8);
     border-bottom: 0.1px solid #3b3b3b80;
     backdrop-filter: saturate(200%) blur(18px);
+    -webkit-backdrop-filter: saturate(200%) blur(18px);
     --bs-navbar-padding-y: 0.6rem;
 }
 
@@ -38,7 +39,7 @@
   }
 
   @keyframes unBlur {
-    from{backdrop-filter: blur(12px);}
+    from{backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);}
   }
 
 #heroImage {
@@ -205,6 +206,7 @@
     background-color: #e7e7e9cc;
     border: 1px solid #cdcdcd50;
     backdrop-filter: saturate(200%) blur(18px)!important;
+    -webkit-backdrop-filter: saturate(200%) blur(18px);
     border-radius: 20rem;
     width: fit-content;
     margin: 1rem auto;
@@ -261,6 +263,7 @@
     margin-top: 1.8rem;
     background-color: #e7e7e9cc;
     backdrop-filter: saturate(200%) blur(18px)!important;
+    -webkit-backdrop-filter: saturate(200%) blur(18px);
     border: 1px solid #cdcdcd50;
 }
 
@@ -290,6 +293,7 @@
         margin: 1rem;
         flex-direction: row;
         backdrop-filter: saturate(200%) blur(18px);
+        -webkit-backdrop-filter: saturate(200%) blur(18px);
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -456,6 +460,7 @@ iframe {
     background-color: rgba(50, 50, 50, 0.3);
     border: 0.5px solid #33333320;
     backdrop-filter: saturate(200%) blur(18px);
+    -webkit-backdrop-filter: saturate(200%) blur(18px);
     position: fixed;
     bottom: 30px;
     right: 30px;
