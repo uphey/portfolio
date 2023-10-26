@@ -9,7 +9,7 @@
     border-bottom: 0.1px solid #3b3b3b80;
     backdrop-filter: saturate(200%) blur(18px);
     -webkit-backdrop-filter: saturate(200%) blur(18px);
-    --bs-navbar-padding-y: 0.6rem;
+    --bs-navbar-padding-y: 0.7rem;
 }
 
 .navbar-wrapper {
@@ -48,7 +48,6 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: center 20%;
-    transition: background-size 0.3s;
     padding-top: 3rem;
     padding-bottom: 48rem;
 }
@@ -474,4 +473,9 @@ iframe {
 .btn:hover {
     transform: scale(1.08);
     transition: 0.5s;
+}
+
+.btn-circle {
+    width: 60px;
+    height: 60px;
 }
