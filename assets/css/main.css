@@ -12,10 +12,16 @@
     --bs-navbar-padding-y: 0.7rem;
 }
 
+.navbar-nav {
+    align-items: center;
+}
+
 .navbar-wrapper {
     padding-left: 3rem;
     padding-right: 3rem;
 }
+
+
 
 .nav-link {
     font-size: .85rem;
@@ -254,6 +260,12 @@
     margin-top: 30rem;
 }
 
+
+#elementToHide {
+    opacity: 0;
+    transition: max-height 1s,opacity .5s;
+}
+
 .control-wrapper {
     display: flex;
     justify-content: center;
@@ -264,11 +276,6 @@
     backdrop-filter: saturate(200%) blur(18px)!important;
     -webkit-backdrop-filter: saturate(200%) blur(18px);
     border: 1px solid #cdcdcd50;
-}
-
-#elementToHide {
-    opacity: 0;
-    transition: max-height 1s,opacity .5s;
 }
 
 .carousel-control-next, .carousel-control-prev {
@@ -413,6 +420,10 @@ iframe {
     font-size: 7em;
 }
 
+.fs-7 {
+    font-size: .8rem;
+}
+
 @media (max-width: 768px) {
     .navbar-wrapper {
         padding-left: 1.5rem;
@@ -490,4 +501,9 @@ iframe {
 .btn-circle {
     width: 60px;
     height: 60px;
+}
+
+.btn-resume {
+    padding-left: .8rem;
+    padding-right: .8rem;
 }
