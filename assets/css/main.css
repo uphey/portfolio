@@ -427,6 +427,9 @@ iframe {
     .name {
         white-space: initial;
     }
+    .hi {
+        padding-top: 2rem;
+    }
 }
 
 @media (max-width: 575px) {
@@ -450,6 +453,8 @@ iframe {
 }
 
 }
+
+
 
 
 
