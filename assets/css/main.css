@@ -475,6 +475,13 @@ iframe {
     transition: 0.5s;
 }
 
+.btn-group-lg>.btn, .btn-lg {
+    --bs-btn-padding-y: none;
+    --bs-btn-padding-x: none;
+    --bs-btn-font-size: 1.25rem;
+    --bs-btn-border-radius: none;
+}
+
 .btn-circle {
     width: 60px;
     height: 60px;
