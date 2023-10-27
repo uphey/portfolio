@@ -9,9 +9,43 @@
 // // Add a scroll event listener to detect scroll and update background size
 // window.addEventListener("scroll", changeBackgroundSize);
 
+//========FilterButton
+const filterButtons = document.querySelectorAll(".filter-button");
+const items = document.querySelectorAll(".item");
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const filterValue = button.getAttribute("data-filter");
+
+        // Remove "active" class from all filter buttons
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        // Add "active" class to the clicked button
+        button.classList.add("active");
+
+        // Apply transition effect to items
+        items.forEach(item => {
+            item.style.transition = "all 0.3s";
+
+            if (filterValue === "all" || item.classList.contains(filterValue)) {
+                item.classList.remove("hide");
+            } else {
+                item.classList.add("hide");
+            }
+        });
+    });
+});
 
 
-//Show and Hide the Carousel Button
+
+
+
+
+
+
+
+
+
+//=============Show and Hide the Carousel Button
 const elementToHide = document.getElementById("elementToHide");
 const triggerElement = document.getElementById("triggerElement");
 let isHidden = true;
@@ -139,42 +173,7 @@ window.addEventListener("scroll", () => {
 
 
 
-// ////////////////
-// const scrollElement = document.getElementById("scrollElement");
-// let lastScrollY = window.scrollY;
-// let scrollingTimeoutId = null;
 
-// // Function to show the element
-// function showScrollElement() {
-//   scrollElement.style.opacity = 1;
-//   scrollElement.style.bottom = "30px"; // Move the element to 30px from the bottom
-//   clearTimeout(scrollingTimeoutId);
-// }
-
-// // Function to hide the element after a delay when there's no scrolling
-// function hideScrollElement() {
-//   scrollingTimeoutId = setTimeout(() => {
-//     scrollElement.style.opacity = 0;
-//     scrollElement.style.bottom = "-50px"; // Move the element off-screen
-//   }, 1000); // Delay for 1 seconds (1000 milliseconds)
-// }
-
-// // Check scroll direction and toggle opacity
-// function checkScrollDirection() {
-//   const currentScrollY = window.scrollY;
-//   if (currentScrollY < lastScrollY) {
-//     // Scrolling up
-//     showScrollElement();
-//     clearTimeout(scrollingTimeoutId);
-//   } else {
-//     // Scrolling down
-//     hideScrollElement();
-//   }
-//   lastScrollY = currentScrollY;
-// }
-
-// // Add a scroll event listener to detect scroll direction
-// window.addEventListener("scroll", checkScrollDirection);
 
 
 
