@@ -55,7 +55,7 @@
     <section id="home">
         <div id="heroImage" class="overflow-hidden background-image text-center wave-container">
             <div class="overlay"></div>
-            <div class="pt-7 hero-text">
+            <div class="hero-text">
                 <div class="px-5">
             <p class="display-6 hi">Hi, I am </p>
             <h1 class="display-0 text-body-emphasis name">Tommy Chiu</h1>
@@ -90,7 +90,7 @@
 
 
                 <div class="carousel-inner">
-                    <div id="triggerElement"></div>
+                    <div class="trigger-element"></div>
                   <div class="carousel-item active">
                     <img src="assets/img/highlights/podcast.png" class="img1" alt="...">
                     <div class="carousel-caption">
@@ -127,7 +127,7 @@
                 
               </div>
 
-              <div id="elementToHide" class="justify-content-center position-sticky control-container">
+              <div class="justify-content-center position-sticky control-container element-to-hide">
                 <div id="hoveredElement" class="hoveredElement control-wrapper">
                     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -148,11 +148,11 @@
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio">
     <div class="container pb-3">
-        <div class="h1 fw-bold text-center pt-7 pb-3">Porfolio</div>
+        <div class="portfolio-title h1 fw-bold text-center pt-7 pb-3">Porfolio</div>
 
-        <div class="row">
 
-             <div class="filist filters col-lg-12 " data-aos="fade-up"> 
+        <div class="portfolio-content">
+            <div class="filist filters"> 
                 <button class="btn btn-light filter-button" data-filter="all">All</button> 
                 <button class="btn btn-light filter-button" data-filter="video">Video</button> 
                 <button class="btn btn-light filter-button" data-filter="web">Web</button> 
@@ -160,10 +160,9 @@
                 <button class="btn btn-light filter-button" data-filter="photo">Photo</button> 
            
             </div>
-
-
+            
             <div class="items" data-aos="fade-up">
-
+                
             <div class="item col-md-4 video">
                 <a data-bs-toggle="modal" data-bs-target="#mod1"> 
                     <div class="d-flex select-box overflow-hidden">
@@ -216,7 +215,12 @@
                 </a>
              </div>
 
+             
             </div>
+
+
+
+
              <!-- MODAL -->
              <div id="mod1" class="modal fade" tabindex="-1">
                 <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
@@ -236,11 +240,7 @@
                 </div>
               </div>
 
-
-
-        </div>
-
-
+            </div>
 
     </div>
 </section>
@@ -249,7 +249,7 @@
 
 <!-- ======= Video & Audio Section ======= -->
 <section id="videoaudio" class="">
-    <div class="container pb-7">
+    <div class="container pt-7 pb-7">
         <div class="h1 fw-bold text-center pb-4">Video & Audio Editing</div>
         <div class="grid">
 
@@ -274,8 +274,10 @@
         </div> -->
 
 
-        <div class="text-container">
-            <p>Dynamic Island bubbles up alerts and Live Activities — so you don’t miss them while you’re doing something else. You can track your next ride, see who’s calling, check your flight status and so much more.</p>
+        <div class="text-container pb-7">
+            <p class="text-container pb-7">Dynamic Island bubbles up alerts and Live Activities — so you don’t miss them while you’re doing something else. You can track your next ride, see who’s calling, check your flight status and so much more.</p>
+            <p class="text-container pb-7">Dynamic Island bubbles up alerts and Live Activities — so you don’t miss them while you’re doing something else. You can track your next ride, see who’s calling, check your flight status and so much more.</p>
+            <p class="text-container pb-7">Dynamic Island bubbles up alerts and Live Activities — so you don’t miss them while you’re doing something else. You can track your next ride, see who’s calling, check your flight status and so much more.</p>
 
         </div>
         
@@ -285,7 +287,7 @@
 <!-- End Video & Audio Section -->
 
     
-        <a href="#page-top"><button id="scrollElement"  type="button" class="button-top btn btn-lg btn-dark rounded-pill btn-circle">↑</button></a>
+        <a href="#page-top"><button type="button" class="scroll-element button-top btn btn-lg btn-dark rounded-pill btn-circle">↑</button></a>
     
 
 

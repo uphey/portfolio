@@ -12,6 +12,7 @@
 //========FilterButton
 const filterButtons = document.querySelectorAll(".filter-button");
 const items = document.querySelectorAll(".item");
+const portfolioContent = document.querySelector(".portfolio-title"); // Assuming you have a single portfolio content element
 
 filterButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -24,51 +25,54 @@ filterButtons.forEach(button => {
 
         // Apply transition effect to items
         items.forEach(item => {
-
-
             if (filterValue === "all" || item.classList.contains(filterValue)) {
                 item.classList.remove("hide");
             } else {
                 item.classList.add("hide");
             }
         });
+
+        // Scroll to the top of the portfolio content
+        portfolioContent.scrollIntoView({ behavior: "smooth" });
     });
 });
 
 
+
 //=============Show and Hide the Carousel Button
-const elementToHide = document.getElementById("elementToHide");
-const triggerElement = document.getElementById("triggerElement");
-let isHidden = true;
+const elementsToHide = document.querySelectorAll(".element-to-hide");
+const triggerElements = document.querySelectorAll(".trigger-element");
+const isHiddenArray = Array(elementsToHide.length).fill(true);
 
 function isElementInView(el) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-  );
+    const rect = el.getBoundingClientRect();
+    return rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
 }
 
-function hideElement() {
-  elementToHide.style.opacity = "0";
-  elementToHide.style.maxHeight = "0px";
-  isHidden = true;
+function hideElement(index) {
+    const elementToHide = elementsToHide[index];
+    elementToHide.style.opacity = "0";
+    elementToHide.style.maxHeight = "0px";
+    isHiddenArray[index] = true;
 }
 
-function showElement() {
-  elementToHide.style.display = "flex";
-  elementToHide.style.opacity = "1";
-  elementToHide.style.maxHeight = "180px"; // Adjust the value to match your element's height
-  isHidden = false;
+function showElement(index) {
+    const elementToHide = elementsToHide[index];
+    elementToHide.style.display = "flex";
+    elementToHide.style.opacity = "1";
+    elementToHide.style.maxHeight = "180px"; // Adjust the value to match your element's height
+    isHiddenArray[index] = false;
 }
 
-window.addEventListener("scroll", function () {
-  if (isHidden && isElementInView(triggerElement)) {
-    showElement();
-  } else if (!isHidden && !isElementInView(triggerElement)) {
-    hideElement();
-  }
+triggerElements.forEach((triggerElement, index) => {
+    window.addEventListener("scroll", function () {
+        if (isHiddenArray[index] && isElementInView(triggerElement)) {
+            showElement(index);
+        } else if (!isHiddenArray[index] && !isElementInView(triggerElement)) {
+            hideElement(index);
+        }
+    });
 });
-
 
 //========Show on Hover
 
@@ -94,54 +98,51 @@ hoveredElements.forEach((element) => {
 
 
 // =========Show on Scroll
-const scrollElement = document.getElementById("scrollElement");
+const scrollElements = document.querySelectorAll(".scroll-element");
 let lastScrollY = window.scrollY;
 let isHovered = false;
 let hideTimer;
 
-// Function to show the element
-function showScrollElement() {
-  scrollElement.style.opacity = 1;
-  scrollElement.style.bottom = "30px";
+function showScrollElement(element) {
+  element.style.opacity = 1;
+  element.style.bottom = "30px";
 }
 
-// Function to hide the element
-function hideScrollElement() {
-  scrollElement.style.opacity = 0;
-  scrollElement.style.bottom = "-50px";
+function hideScrollElement(element) {
+  element.style.opacity = 0;
+  element.style.bottom = "-50px";
 }
 
-// Check scroll direction and toggle opacity
 function checkScrollDirection() {
   const currentScrollY = window.scrollY;
   if (currentScrollY < lastScrollY) {
     // Scrolling up
-    showScrollElement();
-    clearTimeout(hideTimer);
+    scrollElements.forEach((element) => {
+      showScrollElement(element);
+      clearTimeout(hideTimer);
+    });
   } else {
     // Scrolling down
-    hideScrollElement();
+    scrollElements.forEach((element) => hideScrollElement(element));
   }
   lastScrollY = currentScrollY;
 }
 
-// Add a scroll event listener to detect scroll direction
 window.addEventListener("scroll", checkScrollDirection);
 
-// Add a hover event listener to show the element on hover
-scrollElement.addEventListener("mouseenter", () => {
-  isHovered = true;
-  showScrollElement();
-  clearTimeout(hideTimer);
+scrollElements.forEach((element) => {
+  element.addEventListener("mouseenter", () => {
+    isHovered = true;
+    showScrollElement(element);
+    clearTimeout(hideTimer);
+  });
+
+  element.addEventListener("mouseleave", () => {
+    isHovered = false;
+    hideTimer = setTimeout(() => hideScrollElement(element), 1000);
+  });
 });
 
-// Add a mouseleave event listener to hide the element after no hover for 1s
-scrollElement.addEventListener("mouseleave", () => {
-  isHovered = false;
-  hideTimer = setTimeout(hideScrollElement, 1000);
-});
-
-// Check if the user has stopped scrolling up after 1.5s and hide the element
 let isScrolling = false;
 window.addEventListener("scroll", () => {
   if (isScrolling) {
@@ -149,18 +150,38 @@ window.addEventListener("scroll", () => {
     isScrolling = false;
   } else {
     isScrolling = true;
-    hideTimer = setTimeout(hideScrollElement, 1500);
+    scrollElements.forEach((element) => {
+      hideTimer = setTimeout(() => hideScrollElement(element), 1500);
+    });
   }
 });
 
-// Hide the element when it reaches the top of the webpage
 window.addEventListener("scroll", () => {
   if (window.scrollY === 0) {
-    hideScrollElement();
+    scrollElements.forEach((element) => hideScrollElement(element));
   }
 });
 
 
+//=======Scroll for Filist
+// let lastScrollPosition = window.scrollY;
+// const filist = document.querySelector('.filist');
+
+// function handleScroll() {
+//   const currentScrollPosition = window.scrollY;
+
+//   if (currentScrollPosition > lastScrollPosition) {
+//     // Scrolling down
+//     filist.style.transform = 'translateY(-200%)';
+//   } else {
+//     // Scrolling up
+//     filist.style.transform = 'translateY(0)';
+//   }
+
+//   lastScrollPosition = currentScrollPosition;
+// }
+
+// window.addEventListener('scroll', handleScroll);
 
 //============Nav Item add Animation
 
