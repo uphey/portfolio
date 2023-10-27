@@ -24,7 +24,7 @@ filterButtons.forEach(button => {
 
         // Apply transition effect to items
         items.forEach(item => {
-            item.style.transition = "all 0.3s";
+
 
             if (filterValue === "all" || item.classList.contains(filterValue)) {
                 item.classList.remove("hide");
