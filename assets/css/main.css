@@ -561,8 +561,7 @@ iframe {
         font-size: 5em;
     }
     #heroImage {
-        background-repeat: no-repeat;
-        background-size:auto;
+        background-attachment: initial;
         background-position: center;
     }
 }
