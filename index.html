@@ -4,46 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tommy Chiu</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
     
 </head>
-<body id="home">
+<body id="page-top">
 
     <!-- ======= Navbar ======= -->
     <nav class="navbar navbar-expand-md fixed-top" id="mainNav">
       <div class="container navbar-wrapper">
-        <a class="navbar-brand js-scroll fw-bold" href="index.html">TOMMY CHIU</a>
+        <a class="navbar-brand fw-bold" href="index.html">TOMMY CHIU</a>
+        <div class="d-flex align-items-center">
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <a class="nav-link" href="#contact"><button class="btn btn-dark btn-sm rounded-pill fs-7 btn-resume">Contact</button> </a>
+    </div>
         <div class="navbar-collapse collapse justify-content-end text-center" id="navbarDefault">
           <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link js-scroll active" href="#home">Home</a>
+                <a class="nav-link active" href="#home">Home</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll" href="#portfolio">Portfolio</a>
+              <a class="nav-link" href="#portfolio">Portfolio</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link js-scroll" href="#skills">Skills</a>
+                <a class="nav-link" href="#skills">Skills</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll" href="#about">About</a>
+              <a class="nav-link" href="#about">About</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll" href="#resume"><button class="btn btn-dark btn-sm rounded-pill fs-7 btn-resume">View Resume</button> </a>
+            <li class="nav-item nav-button">
+                <a class="nav-link" href="#contact"><button class="btn btn-dark btn-sm rounded-pill fs-7 btn-resume">Contact</button> </a>
+            </div>
             </li>
           </ul>
         </div>
+
       </div>
     </nav>
     <!-- End Navbar -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero">
+    <section id="home">
         <div id="heroImage" class="overflow-hidden background-image text-center wave-container">
             <div class="overlay"></div>
             <div class="pt-7 hero-text">
@@ -65,7 +74,7 @@
 
     <!-- ======= Highlight Section ======= -->
     <section id="highlight">
-        <div class="container pb-7">
+        <div class="container pb-3">
             <h1 class="display-5 text-center pt-7 fw-bold">Highlights</h1>
 
             <div class="pt-4">
@@ -138,12 +147,12 @@
 
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio">
-    <div class="container pb-7">
-        <div class="h1 fw-bold text-center pb-3">Porfolio</div>
+    <div class="container pb-3">
+        <div class="h1 fw-bold text-center pt-7 pb-3">Porfolio</div>
 
         <div class="row">
 
-             <div class="filist filters col-lg-12 "> 
+             <div class="filist filters col-lg-12 " data-aos="fade-up"> 
                 <button class="btn btn-light filter-button" data-filter="all">All</button> 
                 <button class="btn btn-light filter-button" data-filter="video">Video</button> 
                 <button class="btn btn-light filter-button" data-filter="web">Web</button> 
@@ -153,7 +162,7 @@
             </div>
 
 
-            <div class="items">
+            <div class="items" data-aos="fade-up">
 
             <div class="item col-md-4 video">
                 <a data-bs-toggle="modal" data-bs-target="#mod1"> 
@@ -276,13 +285,18 @@
 <!-- End Video & Audio Section -->
 
     
-        <a href="#home"><button id="scrollElement"  type="button" class="button-top btn btn-lg btn-dark rounded-pill btn-circle">↑</button></a>
+        <a href="#page-top"><button id="scrollElement"  type="button" class="button-top btn btn-lg btn-dark rounded-pill btn-circle">↑</button></a>
     
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
   
   <script src="assets/js/custom.js"></script>
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>

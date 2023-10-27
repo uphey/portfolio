@@ -36,15 +36,6 @@ filterButtons.forEach(button => {
 });
 
 
-
-
-
-
-
-
-
-
-
 //=============Show and Hide the Carousel Button
 const elementToHide = document.getElementById("elementToHide");
 const triggerElement = document.getElementById("triggerElement");
@@ -79,7 +70,7 @@ window.addEventListener("scroll", function () {
 });
 
 
-//Show on Hover
+//========Show on Hover
 
 const hoveredElements = document.querySelectorAll(".hoveredElement");
 const hiddenElement = document.getElementById("hiddenElement");
@@ -102,7 +93,7 @@ hoveredElements.forEach((element) => {
 
 
 
-// ======Show on Scroll
+// =========Show on Scroll
 const scrollElement = document.getElementById("scrollElement");
 let lastScrollY = window.scrollY;
 let isHovered = false;
@@ -171,11 +162,77 @@ window.addEventListener("scroll", () => {
 
 
 
+//============Nav Item add Animation
+
+// Function to add animation classes and delays
+function addAnimationClasses() {
+    const navItems = document.querySelectorAll(".nav-item");
+  
+    navItems.forEach((navItem, index) => {
+      const delay = index * 0.1;
+      navItem.classList.add("animate__animated", "animate__fadeInDown");
+      navItem.style.animationDelay = `${delay}s`;
+    });
+  }
+  
+  // Function to remove animation classes and delays
+  function removeAnimationClasses() {
+    const navItems = document.querySelectorAll(".nav-item");
+  
+    navItems.forEach(navItem => {
+      navItem.classList.remove("animate__animated", "animate__fadeInDown");
+      navItem.style.animationDelay = "";
+    });
+  }
+  
+  // Function to check screen width and add/remove animation classes
+  function checkScreenWidth() {
+    const screenWidth = window.innerWidth;
+  
+    if (screenWidth < 768) {
+      // Screen width is smaller than 768px, add animation classes and delays
+      addAnimationClasses();
+    } else {
+      // Screen width is 768px or larger, remove animation classes and delays
+      removeAnimationClasses();
+    }
+  }
+  
+  // Add an event listener to check the screen width when the window is resized
+  window.addEventListener("resize", checkScreenWidth);
+  
+  // Initial check when the page loads
+  checkScreenWidth();
+  
 
 
+//=============Change the active state of a navbar item
+    // Get all the nav-links
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navbarHeight = 150; // Adjust this value to match your navbar height
 
+    // Listen for scroll events
+    window.addEventListener('scroll', () => {
+        // Get the current scroll position with navbar offset
+        const scrollPosition = window.scrollY + navbarHeight;
 
+        // Loop through the sections
+        for (const section of document.querySelectorAll('section')) {
+            const sectionTop = section.offsetTop;
+            const sectionId = section.getAttribute('id');
 
+            // Check if the current scroll position is within the section
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + section.offsetHeight) {
+                // Remove the 'active' class from all nav-links
+                navLinks.forEach(link => link.classList.remove('active'));
+                
+                // Add the 'active' class to the nav-link corresponding to the section
+                document.querySelector(`.nav-link[href="#${sectionId}"]`).classList.add('active');
+            }
+        }
+    });
+
+  
 
 
 

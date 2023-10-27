@@ -22,9 +22,14 @@
 }
 
 
-
 .nav-link {
     font-size: .85rem;
+    transition: .5s ease;
+}
+
+.nav-link.active {
+    color: rgba(0, 0, 0, 0.4)!important;
+    transition: .5s ease;
 }
 
 .navbar-toggler {
@@ -33,6 +38,10 @@
 
 .navbar-toggler:focus {
     box-shadow: none;
+}
+
+.navbar-toggler+a {
+    display: none;
 }
 
 .overlay{
@@ -66,7 +75,7 @@
 
 .wave-container {  
     height: 40vh;
-    background-color: #000000;
+    background-color: #f3f8fe;
     position: relative;
   }
   
@@ -558,6 +567,20 @@ iframe {
         padding-left: 1.5rem;
         padding-right: .5rem;
     }
+    .nav-button {
+        display: none;
+    }
+    .navbar-toggler+a {
+        display: block;
+    }
+    .navbar-nav {
+        align-items: start;
+        padding: 1rem 0;
+        margin-left: 2rem;
+    }
+    .nav-item a{
+        font-size: 1rem;
+    }
     .display-0 {
         font-size: 5em;
     }
@@ -565,6 +588,7 @@ iframe {
         background-attachment: initial;
         background-position: center;
     }
+    
 }
 
 @media (max-width: 495px) {
