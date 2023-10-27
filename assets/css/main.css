@@ -364,6 +364,10 @@
     flex: 0;
 }
 
+.item:hover {
+    transform: scale(1.04);
+    transition: 0.5s;
+}
 
 
 .select-box {
@@ -373,12 +377,6 @@
     border-radius: 2rem;
     color:#fff;
     cursor: pointer;
-    transition: 0.5s ease;
-}
-
-.select-box:hover {
-    transform: scale(1.04);
-    transition: 0.5s ease;
 }
 
 .work-text p {
@@ -388,6 +386,11 @@
 .work-img img {
     max-height: 150%;
     max-width: 180%;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 .modal {
