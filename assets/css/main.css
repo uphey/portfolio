@@ -435,36 +435,45 @@
     margin: 0;
 }
 
-.modal-fullscreen {
-    display: flex;
-    align-items: flex-end;
+.modal-dialog {
+    max-width: 95vw;
+    margin-top: 4rem;
+    transition: all .2s;
 }
 
 
-
-.modal-fullscreen .modal-content  {
-    height: 94vh;
-    transition: all .2s;
-    border-radius: 2rem 2rem 0 0rem;
-    margin: 0 1.2rem;
+.modal-content  {
+    border-radius: 2rem;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 .modal-header {
     padding: 2rem 2rem 0 2rem;
     border-bottom: 0;
+    top: 0;
+    position: sticky;
+    z-index: 3;
 }
 
-.modal-header .btn-close {
+.modal .btn-close {
+    transform: scale(0.9);
+    opacity: 1;
     padding: 1rem;
-    background-color: rgba(200, 200, 200, 0.5);
+    background-color: rgba(231, 231, 233, 0.8);
+    backdrop-filter: saturate(200%) blur(18px);
+    -webkit-backdrop-filter: saturate(200%) blur(18px);
+    border: 1px solid #cdcdcd30;
     border-radius: 100%;
     transition: 0.5s ease;
 }
 
-.modal-header .btn-close:hover {
-    transform: scale(1.08);
+.modal .btn-close:hover {
+    transform: scale(1);
     transition: 0.5s;
+}
+
+.modal-body {
+    padding: 2rem 7rem;
 }
 
 .row {
@@ -589,6 +598,11 @@ iframe {
 .fs-7 {
     font-size: .8rem;
 }
+@media (max-width: 1199px) {
+    .modal-body {
+        padding: 2rem 3rem;
+    }
+}
 
 @media (max-width: 767px) {
     .navbar-wrapper {
@@ -615,6 +629,15 @@ iframe {
     #heroImage {
         background-attachment: initial;
         background-position: center;
+    }
+    .modal .px-5 {
+        padding: 0!important;
+    }
+    .modal-body {
+        padding: 2rem 3rem;
+    }
+    iframe {
+        border-radius: 0;
     }
     
 }
@@ -648,18 +671,17 @@ iframe {
     .text-container {
         grid-column: 2/span 10;
     }
-    .modal-fullscreen .modal-content  {
-        border-radius: 2rem 2rem 0 0rem;
-        margin: 0;
+    .modal-dialog {
+        margin-top: 6rem;
+        margin-left: 0;
+        margin-right: 0;
+        max-width: none;
     }
-    
+    .modal-body {
+        padding: 2rem 2rem;
+    }
     .items {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    }
-
-    .modal-fullscreen .modal-content {
-        height: 90vh;
-        transition: all .2s;
     }
     
     }

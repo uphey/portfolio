@@ -247,23 +247,23 @@ function addAnimationClasses() {
 
 
 //============Lazy Load Modal
-document.addEventListener('show.bs.modal', function (event) {
-    const modal = event.target.querySelector('.modal-content');
+// document.addEventListener('show.bs.modal', function (event) {
+//     const modal = event.target.querySelector('.modal-content');
     
-    // Check if the modal content is already loaded
-    if (!modal.hasChildNodes()) {
-        const contentURL = event.target.getAttribute('data-content-url');
-        // Fetch the content you want to load
-        fetch(contentURL)
-            .then(response => response.text())
-            .then(data => {
-                modal.innerHTML = data;
-            })
-            .catch(error => {
-                console.error('Error loading modal content:', error);
-            });
-    }
-});
+//     // Check if the modal content is already loaded
+//     if (!modal.hasChildNodes()) {
+//         const contentURL = event.target.getAttribute('data-content-url');
+//         // Fetch the content you want to load
+//         fetch(contentURL)
+//             .then(response => response.text())
+//             .then(data => {
+//                 modal.innerHTML = data;
+//             })
+//             .catch(error => {
+//                 console.error('Error loading modal content:', error);
+//             });
+//     }
+// });
 
 
 
