@@ -5413,7 +5413,7 @@ textarea.form-control-lg {
   overflow-x: hidden;
   overflow-y: auto;
   outline: 0;
-  transition: .2s ease-in-out;
+  transition: .3s ease-in-out;
 }
 
 .modal-dialog {

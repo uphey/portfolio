@@ -182,7 +182,7 @@ function addAnimationClasses() {
   
     navItems.forEach((navItem, index) => {
       const delay = index * 0.1;
-      navItem.classList.add("animate__animated", "animate__fadeInDown");
+      navItem.classList.add("animate__animated", "animate__fadeInDown", "animate__faster");
       navItem.style.animationDelay = `${delay}s`;
     });
   }
@@ -192,7 +192,7 @@ function addAnimationClasses() {
     const navItems = document.querySelectorAll(".nav-item");
   
     navItems.forEach(navItem => {
-      navItem.classList.remove("animate__animated", "animate__fadeInDown");
+      navItem.classList.remove("animate__animated", "animate__fadeInDown", "animate__faster");
       navItem.style.animationDelay = "";
     });
   }
