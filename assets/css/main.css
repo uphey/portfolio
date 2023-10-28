@@ -443,6 +443,7 @@
 
 .modal-fullscreen .modal-content  {
     height: 94vh;
+    transition: all .2s;
     border-radius: 2rem 2rem 0 0rem;
     margin: 0 1.2rem;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
@@ -653,6 +654,11 @@ iframe {
     
     .items {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .modal-fullscreen .modal-content {
+        height: 90vh;
+        transition: all .2s;
     }
     
     }
