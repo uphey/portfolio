@@ -185,7 +185,7 @@
  }
  
  .carousel-item {
-    height: 600px;
+    height: 550px;
     max-width: 100%;
     text-align: center;
     overflow: hidden;
@@ -267,7 +267,7 @@
 
 .trigger-element {
     position: absolute;
-    margin-top: 30rem;
+    margin-top: 25rem;
 }
 
 
@@ -286,7 +286,7 @@
     margin-top: 1.8rem;
     background-color: #e7e7e9cc;
     backdrop-filter: saturate(200%) blur(18px)!important;
-    -webkit-backdrop-filter: saturate(200%) blur(18px);
+    -webkit-backdrop-filter: saturate(200%) blur(18px)!important;
     border: 1px solid #cdcdcd30;
 }
 
@@ -421,6 +421,31 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     pointer-events: none;
+}
+
+.work-button {
+    right: 1rem;
+}
+
+.work-button button {
+    border-radius: 2rem;
+    width: 35px;
+    height: 35px;
+    display: grid;
+    text-align: center;
+    place-content: center;
+    background-color: rgba(231, 231, 233, 0.8);
+    backdrop-filter: saturate(200%) blur(18px);
+    -webkit-backdrop-filter: saturate(200%) blur(18px);
+    border: 1px solid #cdcdcd30;
+}
+
+.work-button svg {
+    transform: scale(1.5);
+}
+
+.work-tag {
+    bottom: 0rem;
 }
 
 .modal {
