@@ -1,6 +1,8 @@
 //========FilterButton
 const filterButtons = document.querySelectorAll(".filter-button");
 const items = document.querySelectorAll(".item");
+const tagWrapper = document.querySelectorAll(".tag-wrapper");
+const workImg = document.querySelectorAll(".inside-img");
 const portfolioContent = document.querySelector(".portfolio-title"); // Assuming you have a single portfolio content element
 
 filterButtons.forEach(button => {
@@ -21,11 +23,26 @@ filterButtons.forEach(button => {
             }
         });
 
+        tagWrapper.forEach(tag => {
+            if (filterValue === "all" || tag.classList.contains(filterValue)) {
+                tag.classList.remove("hide");
+            } else {
+                tag.classList.add("hide");
+            }
+        });
+
+        workImg.forEach(img => {
+            if (filterValue === "all" || img.classList.contains(filterValue)) {
+                img.classList.remove("hide");
+            } else {
+                img.classList.add("hide");
+            }
+        });
+
         // Scroll to the top of the portfolio content
         portfolioContent.scrollIntoView({ behavior: "smooth" });
     });
 });
-
 
 
 //=============Show and Hide the Carousel Button
@@ -246,24 +263,22 @@ function addAnimationClasses() {
 
 
 
-//============Lazy Load Modal
-// document.addEventListener('show.bs.modal', function (event) {
-//     const modal = event.target.querySelector('.modal-content');
-    
-//     // Check if the modal content is already loaded
-//     if (!modal.hasChildNodes()) {
-//         const contentURL = event.target.getAttribute('data-content-url');
-//         // Fetch the content you want to load
-//         fetch(contentURL)
-//             .then(response => response.text())
-//             .then(data => {
-//                 modal.innerHTML = data;
-//             })
-//             .catch(error => {
-//                 console.error('Error loading modal content:', error);
-//             });
-//     }
-// });
+//============Lazy Load Image
+// Get all img elements on the page
+const imgElements = document.querySelectorAll("img");
+
+// Get the "skills" section by its ID
+const skillsSection = document.getElementById("skills");
+
+// Add the loading="lazy" attribute to img elements except those in the "skills" section
+imgElements.forEach(img => {
+  // Check if the img element is not within the "skills" section
+  if (!skillsSection.contains(img)) {
+    img.setAttribute("loading", "lazy");
+  }
+});
+
+
 
 
 
