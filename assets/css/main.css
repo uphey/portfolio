@@ -16,7 +16,11 @@
     border-bottom: 0.1px solid #3b3b3b80;
     backdrop-filter: saturate(200%) blur(18px);
     -webkit-backdrop-filter: saturate(200%) blur(18px);
-    --bs-navbar-padding-y: 0.7rem;
+    --bs-navbar-padding-y: 0.5rem;
+}
+
+.navbar-brand {
+    font-weight: 900;
 }
 
 .navbar-nav {
@@ -30,7 +34,7 @@
 
 
 .nav-link {
-    font-size: .85rem;
+    font-size: .9rem;
     transition: .5s ease;
 }
 
@@ -564,6 +568,7 @@
 .accordion {
     --bs-accordion-color: #fbfbfb;
     --bs-accordion-bg: #ffffff00;
+    margin-bottom: 3rem;
 }
 
 .accordion-item {
@@ -618,9 +623,20 @@
     color: #919192;
 }
 
+.skill-wrapper {
+    display: flex;
+    align-items: center;
+}
+
 .skill-wrapper img {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
+}
+
+.button-wrapper button {
+    padding: .5rem 1rem;
+    margin: 0 .3rem;
+    border-radius: 2rem;
 }
 
 .highlight-word {
@@ -746,7 +762,7 @@ iframe {
 }
 
 .fs-7 {
-    font-size: .8rem;
+    font-size: .85rem;
 }
 @media (max-width: 1199px) {
     .modal-body {

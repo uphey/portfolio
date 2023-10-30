@@ -315,3 +315,30 @@ window.addEventListener('beforeunload', () => {
     document.removeEventListener('click', closeNavbarOnClickOutside);
     document.removeEventListener('scroll', closeNavbarOnScroll);
 });
+
+
+//=========Expand All
+// Get references to the expand and collapse buttons
+const expandAllButton = document.getElementById('expandAll');
+const collapseAllButton = document.getElementById('collapseAll');
+
+// Get references to the accordion items
+const accordionItems = document.querySelectorAll('.accordion-collapse');
+
+// Function to expand all accordion items
+const expandAll = () => {
+    accordionItems.forEach((item) => {
+        item.classList.add('show');
+    });
+};
+
+// Function to collapse all accordion items
+const collapseAll = () => {
+    accordionItems.forEach((item) => {
+        item.classList.remove('show');
+    });
+};
+
+// Add click event listeners to the buttons
+expandAllButton.addEventListener('click', expandAll);
+collapseAllButton.addEventListener('click', collapseAll);
