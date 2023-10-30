@@ -280,5 +280,38 @@ imgElements.forEach(img => {
 
 
 
+//=============Navbar Collapse
+// Get references to the navbar toggle button and the navbar itself
+const navbarToggle = document.querySelector('.navbar-toggler');
+const navbarNav = document.querySelector('.navbar-collapse');
 
+// Function to close the navbar when a click occurs outside
+const closeNavbarOnClickOutside = (event) => {
+    if (navbarNav.classList.contains('show') &&
+        event.target !== navbarToggle &&
+        !navbarToggle.contains(event.target) &&
+        !navbarNav.contains(event.target)) {
+        // Close the navbar
+        navbarToggle.click();
+    }
+};
 
+// Function to close the navbar when scrolling
+const closeNavbarOnScroll = () => {
+    if (navbarNav.classList.contains('show')) {
+        // Close the navbar
+        navbarToggle.click();
+    }
+};
+
+// Add a click event listener to the document
+document.addEventListener('click', closeNavbarOnClickOutside);
+
+// Add a scroll event listener to the document
+document.addEventListener('scroll', closeNavbarOnScroll);
+
+// Cleanup the event listeners when the page is unloaded (optional)
+window.addEventListener('beforeunload', () => {
+    document.removeEventListener('click', closeNavbarOnClickOutside);
+    document.removeEventListener('scroll', closeNavbarOnScroll);
+});

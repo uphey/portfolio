@@ -422,6 +422,10 @@
     width: 80%;
 }
 
+.work-text p {
+    font-weight: 600;
+}
+
 .work-img {
     display: flex;
     flex-wrap: wrap;
@@ -580,7 +584,7 @@
     font-size: calc(1.325rem + 0.9vw);
     font-weight: 500;
     line-height: 1.2;
-    padding-top: 1.5rem;
+    padding-top: 2rem;
     padding-bottom: .6rem;
 }
 
