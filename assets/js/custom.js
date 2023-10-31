@@ -318,27 +318,46 @@ window.addEventListener('beforeunload', () => {
 
 
 //=========Expand All
-// Get references to the expand and collapse buttons
-const expandAllButton = document.getElementById('expandAll');
-const collapseAllButton = document.getElementById('collapseAll');
+const toggleAccordionButton = document.getElementById('toggleAccordionButton');
+        const accordionItems = document.querySelectorAll('.accordion-item');
 
-// Get references to the accordion items
-const accordionItems = document.querySelectorAll('.accordion-collapse');
+        let isAccordionExpanded = true;
 
-// Function to expand all accordion items
-const expandAll = () => {
-    accordionItems.forEach((item) => {
-        item.classList.add('show');
-    });
-};
+        toggleAccordionButton.addEventListener('click', () => {
+            if (isAccordionExpanded) {
+                // Collapse all accordion items
+                accordionItems.forEach(item => {
+                    const collapseElement = item.querySelector('.accordion-collapse');
+                    if (collapseElement.classList.contains('show')) {
+                        const accordionButton = item.querySelector('.accordion-button');
+                        collapseElement.classList.remove('show');
+                        accordionButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                toggleAccordionButton.innerText = 'Show All';
+            } else {
+                // Expand all accordion items
+                accordionItems.forEach(item => {
+                    const collapseElement = item.querySelector('.accordion-collapse');
+                    if (!collapseElement.classList.contains('show')) {
+                        const accordionButton = item.querySelector('.accordion-button');
+                        collapseElement.classList.add('show');
+                        accordionButton.setAttribute('aria-expanded', 'true');
+                    }
+                });
+                toggleAccordionButton.innerText = 'Hide All';
+            }
+            isAccordionExpanded = !isAccordionExpanded;
 
-// Function to collapse all accordion items
-const collapseAll = () => {
-    accordionItems.forEach((item) => {
-        item.classList.remove('show');
-    });
-};
+            // Scroll to the #skills section
+            document.querySelector('#skills').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
 
-// Add click event listeners to the buttons
-expandAllButton.addEventListener('click', expandAll);
-collapseAllButton.addEventListener('click', collapseAll);
+        const osInstance = OverlayScrollbars(document.querySelector('body'), {});
+        OverlayScrollbars(document.querySelector('body'), {
+            overflow: {
+              x: 'hidden',
+            },
+          });
