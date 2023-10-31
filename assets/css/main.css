@@ -55,6 +55,10 @@
     display: none;
 }
 
+main {
+    overflow: hidden;
+}
+
 .overlay{
     position:absolute;
     width: 120%;
@@ -695,6 +699,10 @@ footer {
     color: #101011;
 }
 
+.footer-icon a:hover {
+    color: #444444;
+}
+
 .highlight-word {
     color: #fff;
 }
@@ -708,6 +716,78 @@ footer {
     background-color: #393939;
     color: #ffffff;
     font-size: 1.2rem;
+    transition: .5s;
+}
+
+.offcanvas-backdrop.show {
+    opacity: 0;
+}
+
+.offcanvas.offcanvas-top {
+    box-shadow: 0 0 20px #35353552;
+    border-bottom: 0;
+    height: fit-content;
+    padding-bottom: 3.5rem;
+    background-color: #ffffffe0;
+    backdrop-filter: saturate(200%) blur(18px);
+    -webkit-backdrop-filter: saturate(200%) blur(18px);
+}
+
+.offcanvas-body {
+    transition: .5s;
+}
+
+.offcanvas.showing  .offcanvas-body {
+    transform: translateY(1rem);
+    opacity: .8;
+    transition: .5s;
+}
+
+.offcanvas.show:not(.hiding) .offcanvas-body {
+    transition: .5s;
+}
+
+.offcanvas-header {
+    padding: 2rem 2rem 0 2rem;
+    justify-content: end;
+}
+
+.offcanvas-header .btn-close {
+    transform: scale(0.9);
+    opacity: 1;
+    padding: 1rem;
+    background-color: rgba(231, 231, 233, 0.6);
+    backdrop-filter: saturate(200%) blur(18px);
+    -webkit-backdrop-filter: saturate(200%) blur(18px);
+    border: 1px solid #cdcdcd30;
+    border-radius: 100%;
+    transition: 0.5s ease;
+}
+
+.offcanvas-header .btn-close:hover {
+    transform: scale(1);
+    transition: 0.5s ease;
+}
+
+.btn-close {
+    --bs-btn-close-focus-shadow: 0 0 0 0.25rem #ccc;
+}
+
+.offcanvas-body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 0;
+    padding-left: 8rem;
+    padding-right: 8rem;
+}
+
+.offcanvas-body a {
+    transition: .5s;
+}
+
+.offcanvas-body a:hover {
+    transform: scale(1.1);
     transition: .5s;
 }
 
@@ -945,6 +1025,10 @@ iframe {
         margin-left: 2rem;
         margin-right: 2rem;
     }
+    .offcanvas-body {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
     }
 
 @media (max-width: 465px) {
@@ -992,6 +1076,7 @@ iframe {
     position: fixed;
     bottom: 30px;
     right: 30px;
+    transition: .5s;
 }
 .btn, button {
     transition: 0.8s;
@@ -1014,20 +1099,16 @@ iframe {
     height: 60px;
 }
 
-.btn-resume {
+.btn-contact {
     padding-left: .8rem;
     padding-right: .8rem;
 }
 
-
-
-
-
 body {
     overflow-x: hidden;
     --sb-track-color: #f3f3f3;
-    --sb-thumb-color: #bcbcbc;
-    --sb-size: 8px;
+    --sb-thumb-color: #9a9a9a;
+    --sb-size: 9px;
   
     scrollbar-color: var(--sb-thumb-color) 
                      var(--sb-track-color);

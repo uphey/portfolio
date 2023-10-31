@@ -111,7 +111,7 @@ let hideTimer;
 
 function showScrollElement(element) {
   element.style.opacity = 1;
-  element.style.bottom = "30px";
+  element.style.bottom = "2.8rem";
 }
 
 function hideScrollElement(element) {
@@ -159,14 +159,21 @@ window.addEventListener("scroll", () => {
     scrollElements.forEach((element) => {
       hideTimer = setTimeout(() => hideScrollElement(element), 1500);
     });
+  };
+
+  // Check if you've scrolled to the footer
+  const footer = document.querySelector("footer");
+  const windowHeight = window.innerHeight;
+  const footerOffset = footer.getBoundingClientRect().top;
+
+  if (footerOffset < windowHeight) {
+    scrollElements.forEach((element) => {
+      showScrollElement(element);
+      clearTimeout(hideTimer);
+    });
   }
 });
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY === 0) {
-    scrollElements.forEach((element) => hideScrollElement(element));
-  }
-});
 
 
 //=======Scroll for Filist
@@ -361,3 +368,4 @@ const toggleAccordionButton = document.getElementById('toggleAccordionButton');
               x: 'hidden',
             },
           });
+
