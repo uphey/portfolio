@@ -55,10 +55,6 @@
     display: none;
 }
 
-main {
-    overflow: hidden;
-}
-
 .overlay{
     position:absolute;
     width: 120%;
@@ -333,6 +329,12 @@ main {
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
     background-size: 60%;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
 }
 
 .filist {
@@ -635,6 +637,12 @@ main {
 .skill-wrapper img {
     height: 35px;
     width: 35px;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
 }
 
 .button-wrapper button {
@@ -664,6 +672,12 @@ main {
 .about-img {
     border-radius: 20px;
     transition: .5s;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
 }
 
 .about-img:hover {
@@ -675,9 +689,7 @@ main {
     color: #89898a;
 }
 
-/* #contact {
-    background-color: #f5f5f6;
-} */
+
 
 footer {
     border-top: solid .5px #808080;
@@ -718,6 +730,7 @@ footer {
     font-size: 1.2rem;
     transition: .5s;
 }
+
 
 .offcanvas-backdrop.show {
     opacity: 0;
@@ -810,74 +823,10 @@ footer {
 }
 
 
-/* .img-va1 {
-    transform: translate(-120px, 100px);
-    rotate: -10deg;
-}
 
-.img-va2 {
-    transform: translate(-60px, 50px);
-    rotate: -5deg;
-}
-
-.img-va3 {
-    transform: translate(0px, 0px);
-    rotate: 0deg;
-} */
-
-/* .img-va1, .img-va2, .img-va3 {
-    max-width: 250px;
-    position: absolute;
-}
-*/
 .text-container {
     grid-column: 3/span 8;
 }
-
-/*@media (max-width: 991px) {
-    .img-va1, .img-va2, .img-va3 {
-        max-width: 65%;
-    }
-    .img-all{
-        grid-column: 1/span 12;
-    }
-    .text-va1 {
-        grid-column: 1/span 12;
-    }
-}
-
-@media (max-width: 767px) {
-    .img-va1, .img-va2, .img-va3 {
-        max-width: 60%;
-    }
-}
-
-@media (max-width: 575px) {
-    .img-va1, .img-va2, .img-va3 {
-        max-width: 65%;
-    }
-}
-
-@media (max-width: 420px) {
-    .img-va1, .img-va2, .img-va3 {
-        max-width: 55%;
-
-    }
-}
-
-@media (min-width: 1199px) {
-    .img-va1, .img-va2, .img-va3 {
-        max-width: 350px;
-
-    }
-}
-
-@media (min-width: 1399px) {
-    .img-va1, .img-va2, .img-va3 {
-        max-width: 420px;
-
-    }
-} */
 
 
 iframe {

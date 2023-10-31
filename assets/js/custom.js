@@ -176,28 +176,6 @@ window.addEventListener("scroll", () => {
 
 
 
-//=======Scroll for Filist
-// let lastScrollPosition = window.scrollY;
-// const filist = document.querySelector('.filist');
-
-// function handleScroll() {
-//   const currentScrollPosition = window.scrollY;
-
-//   if (currentScrollPosition > lastScrollPosition) {
-//     // Scrolling down
-//     filist.style.transform = 'translateY(-200%)';
-//   } else {
-//     // Scrolling up
-//     filist.style.transform = 'translateY(0)';
-//   }
-
-//   lastScrollPosition = currentScrollPosition;
-// }
-
-// window.addEventListener('scroll', handleScroll);
-
-
-
 //============Nav Item add Animation
 
 // Function to add animation classes and delays
