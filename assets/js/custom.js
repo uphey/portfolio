@@ -1,3 +1,11 @@
+window.addEventListener("load", function () {
+    const preloader = document.querySelector(".preloader");
+    setTimeout(function () {
+        preloader.classList.add("hidden");
+    }, 1000); // You can adjust the duration as needed
+});
+
+//=========Let's Go! Button
 const button = document.getElementById("highlight-button");
 
 button.addEventListener("mouseover", () => {
