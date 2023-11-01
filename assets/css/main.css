@@ -731,7 +731,6 @@ footer {
     transition: .5s;
 }
 
-
 .offcanvas-backdrop.show {
     opacity: 0;
 }
@@ -751,13 +750,21 @@ footer {
 }
 
 .offcanvas.showing  .offcanvas-body {
-    transform: translateY(1rem);
+    transform: translateY(2rem);
     opacity: .8;
     transition: .5s;
 }
 
 .offcanvas.show:not(.hiding) .offcanvas-body {
     transition: .5s;
+}
+
+.offcanvas-body a {
+    color: #000;
+}
+
+.offcanvas-body p a:hover {
+    color: #707070;
 }
 
 .offcanvas-header {
@@ -769,7 +776,7 @@ footer {
     transform: scale(0.9);
     opacity: 1;
     padding: 1rem;
-    background-color: rgba(231, 231, 233, 0.6);
+    background-color: rgba(214, 214, 216, 0.6);
     backdrop-filter: saturate(200%) blur(18px);
     -webkit-backdrop-filter: saturate(200%) blur(18px);
     border: 1px solid #cdcdcd30;
@@ -803,6 +810,26 @@ footer {
     transform: scale(1.1);
     transition: .5s;
 }
+
+
+
+  .bounce {
+    animation: bounce 1s ease;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+  
+
 
 .row {
     margin-top: 0;
