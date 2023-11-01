@@ -84,6 +84,10 @@
     padding-top: 15vh;
 }
 
+.hero-text a {
+    text-decoration: none;
+}
+
 .wave-container {  
     height: 40vh;
     background-color: #f3f8fe;
@@ -103,7 +107,6 @@
     background-position: 70vw bottom;
     background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1200  105' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M0 77L50 72C100 68 200 58 300 39C400 20 500 -8 600 1C700 11 800 58 900 77C1000 96 1100 87 1150 82L1200 77V106H1150C1100 106 1000 106 900 106C800 106 700 106 600 106C500 106 400 106 300 106C200 106 100 106 50 106H0V77Z' fill='%23ffffff'/></svg>");
   }
-  
 
 
 .hi {
@@ -153,6 +156,9 @@
 }
 
 .button1 {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
     opacity: 0;
     animation: fadeInUp1 1s ease-in-out 2s forwards, floatAnimation 2s ease-in-out 3.2s 4;
 }
@@ -352,7 +358,7 @@
     top: 5.5rem;
     position: sticky;
     z-index: 2;
-    transition: transform 0.3s ease-in-out; /* Adjust the duration and easing as needed */
+    transition: transform 0.3s ease-in-out; 
       
 }
 
@@ -911,7 +917,8 @@ iframe {
         margin-left: 2rem;
     }
     .nav-item a{
-        font-size: 1rem;
+        font-size: 1.1rem;
+        font-weight: 500;
     }
     .display-0 {
         font-size: 5em;
@@ -1055,7 +1062,7 @@ iframe {
     transition: .5s;
 }
 .btn, button {
-    transition: 0.8s;
+    transition: 0.5s;
 }
 
 .btn:hover, button:hover {
@@ -1071,8 +1078,16 @@ iframe {
 }
 
 .btn-circle {
-    width: 60px;
-    height: 60px;
+    padding: 0.9rem 1.25rem;
+}
+
+.smooth-transition-button {
+    display: flex;
+    justify-content: center;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-align: center;
+    transition: all 0.3s ease;
 }
 
 .btn-contact {

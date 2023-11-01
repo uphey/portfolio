@@ -1,3 +1,19 @@
+const button = document.getElementById("highlight-button");
+
+button.addEventListener("mouseover", () => {
+    button.classList.add("smooth-transition-button");
+    button.style.fontSize = "1.4rem"; // Change font size to small
+    button.textContent = "Let's go!";
+    button.style.width = "140px"; // Adjust the width value as needed
+});
+
+button.addEventListener("mouseout", () => {
+    button.classList.add("smooth-transition-button");
+    button.style.fontSize = "1.2rem"; // Change font size back to big
+    button.textContent = "↓";
+    button.style.width = "60px"; // Adjust the width value to match the initial width
+});
+
 //======Copy Email
 const emailLink = document.getElementById('email');
 const copyButton = document.getElementById('copyButton');
