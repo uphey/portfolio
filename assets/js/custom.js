@@ -1,9 +1,39 @@
 window.addEventListener("load", function () {
     const preloader = document.querySelector(".preloader");
+    const greeting = document.getElementById("greeting");
+
+    // Array of greeting sentences
+    const greetings = [
+        "Hello, World!",
+        "Enjoy your visit!",
+        "Loading some magic...",
+        "Greetings, Earthling!",
+        "Loading awesomeness...",
+        "Hold on tight, it's loading!",
+        "Get ready to be amazed!",
+        "Did someone say 'loading'?",
+        "Just a moment...",
+        "Brewing coffee while loading...",
+        "Almost there, don't blink!",
+        "Spinning up the hyperspace drive...",
+        "Counting to infinity...",
+        "Brace yourself, awesomeness incoming!",
+    ];
+
+    // Function to get a random greeting
+    function getRandomGreeting() {
+        const randomIndex = Math.floor(Math.random() * greetings.length);
+        return greetings[randomIndex];
+    }
+
+    // Update the greeting with a random sentence
+    greeting.textContent = getRandomGreeting();
+
     setTimeout(function () {
         preloader.classList.add("hidden");
     }, 1000); // You can adjust the duration as needed
 });
+
 
 //=========Let's Go! Button
 const button = document.getElementById("highlight-button");
