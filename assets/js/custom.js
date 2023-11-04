@@ -257,6 +257,43 @@ window.addEventListener("scroll", () => {
 });
 
 
+//================Hide Back to Top Button when modal show
+
+// Get all elements with the class 'item'
+const items1 = document.querySelectorAll('.item');
+
+// Get the elements with the class 'scroll-element'
+const scrollElements1 = document.querySelectorAll('.scroll-element');
+
+// Add a click event listener to each 'item'
+items1.forEach(item => {
+  item.addEventListener('click', () => {
+    // Hide the 'scroll-element' elements
+    scrollElements1.forEach(scrollElement => {
+      scrollElement.style.display = 'none';
+    });
+  });
+});
+
+// Get the modal element
+const modal = document.querySelector('.modal');
+
+// Function to handle the display of scroll elements
+function toggleScrollElementsDisplay() {
+  const displayValue = modal.classList.contains('show') ? 'none' : 'block';
+
+  // Set the display value for each scroll element
+  scrollElements1.forEach(scrollElement => {
+    scrollElement.style.display = displayValue;
+  });
+}
+
+// Initial call to set the display based on the modal's class
+toggleScrollElementsDisplay();
+
+// Add an event listener to handle changes in modal visibility
+modal.addEventListener('transitionend', toggleScrollElementsDisplay);
+
 
 //============Nav Item add Animation
 
@@ -331,19 +368,18 @@ function addAnimationClasses() {
 
 
 //============Lazy Load Image
-// Get all img elements on the page
-const imgElements = document.querySelectorAll("img");
+        // Get all img and video elements on the page
+        const mediaElements = document.querySelectorAll("img");
 
-// Get the "skills" section by its ID
-const skillsSection = document.getElementById("skills");
+        // Get the "skills" section by its ID
+        const skillsSection = document.getElementById("skills");
 
-// Add the loading="lazy" attribute to img elements except those in the "skills" section
-imgElements.forEach(img => {
-  // Check if the img element is not within the "skills" section
-  if (!skillsSection.contains(img)) {
-    img.setAttribute("loading", "lazy");
-  }
-});
+        mediaElements.forEach(element => {
+            // Check if the element is not within the "skills" section
+            if (!skillsSection.contains(element)) {
+                element.setAttribute("loading", "lazy");
+            }
+        });
 
 
 
