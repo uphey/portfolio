@@ -481,74 +481,8 @@ setTimeout(() => {
 
 
 
-//MODAL HTML
 
-// Create a large amount of HTML content as a string
-// const largeHTML = `
-// <div class="container px-5 pb-5">
-//                             <h1 class="pb-3 display-5 fw-bold">Anybooks Farm <br>Podcast Videos</h1>
-//                             <p class="p pb-3 modal-text">
-//                                 "Anybooks Farm" is a Cantonese educational podcast channel dedicated to simplifying challenging reads. I elevate the listening experience with engaging audio mixing and video editing techniques.
-//                             </p>
-//                             <!-- <a href="https://www.youtube.com/@anybooksfarm" target="_blank"><button class="btn btn-dark rounded-pill py-2">View Videos</button></a> -->
-                            
-//                             <video src="assets/img/portfolio/anybooks/opening_cowgortalk.mp4" class="object-fit-contain img-fluid shadow-sm mb-4" autoplay loop playsinline muted controlsList="nodownload" oncontextmenu="return false;" loading="lazy"></video>
-
-//                             <div class="row pt-5 pb-4 reverse">
-//                                 <div class="col-md-6 py-3 pe-md-5">
-//                                     <h2 class="h1 fw-bold">Starting with Audio</h2>
-//                                     <p class="p modal-text pt-3">Initially, the podcast offered audio-only content. Collaborating with our podcast host, Peter, I handle audio mixing using Audacity. This involves <span class="highlight-word-black">selecting appropriate background music, routine noise reduction, tempo adjustments, equalization (EQ), and loudness normalization</span>  for each episode.
-//                                     </p>
-//                                 </div>
-//                                 <div class="col-md-6">
-//                                     <iframe id="iframe1" class="shadow-sm" src="https://open.spotify.com/embed/episode/6fBTqJKruH2lEY6unmlapk?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-//                                 </div>
-//                             </div>
-
-//                             <div class="row py-4">
-//                                 <div class="col-md-6">
-//                                     <video class="img-fluid shadow-sm" src="assets/img/portfolio/anybooks/anybooks_youtube.mp4" playsinline autoplay muted loop controlsList="nodownload" oncontextmenu="return false;" loading="lazy"></video>
-//                                 </div>
-//                                 <div class="col-md-6 ps-md-5">
-//                                     <h2 class="h1 fw-bold">Venturing into the Video World</h2>
-//                                     <p class="p modal-text pt-3">Upon surpassing 100,000 plays, we made the strategic decision to <span class="highlight-word-black">enhance the listening experience through the addition of video content.</span> Consequently, we expanded our presence to YouTube, effectively broadening our reach to a wider and more diverse audience.
-//                                     </p>
-//                                 </div>
-//                             </div>
-
-//                             <div class="row py-5 reverse">
-//                                 <div class="col-md-10 pe-md-5">
-//                                     <h2 class="h1 pt-2 fw-bold"><span class="singletone">Single Tone,</span> Dual Styles</h2>
-//                                     <p class="p modal-text pt-3">In response to the YouTube audience's evolving preferences, we introduced a new podcast series, <span class="highlight-word-black">Think Out Of The Box</span>, in addition to our original, academically-focused series, <span class="highlight-word-black">Cowgor's Talk</span>. The new series is characterized by its brevity and entertaining style, exploring unconventional and counterintuitive topics.</p>
-
-//                                     <p class="p modal-text">To distinguish between the two series, <span class="highlight-word-black">a distinctive visual theme was designed for the new series, enhancing its recognizability.</span> I've retained a consistent tone with the original series to maintain a sense of continuity, ensuring that our audience can still connect with our content seamlessly.</p>
-//                                 </div>
-                                
-//                                 <video class="img-fluid shadow-sm col-md-12 video-lg" src="assets/img/portfolio/anybooks/video_background_all.mp4" playsinline autoplay muted loop controlsList="nodownload" oncontextmenu="return false;" loading="lazy"></video>
-
-//                                 <div class="col-md-12">
-//                                     <video class="img-fluid shadow-sm video-sm" src="assets/img/portfolio/anybooks/video_background_all_sm.mp4" playsinline autoplay muted loop controlsList="nodownload" oncontextmenu="return false;" loading="lazy"></video>
-//                                 </div>
-
-//                             </div>
-
-//                             <div class="pt-5 mt-5 youtube-video">
-//                                 <div class="ratio ratio-16x9">
-//                                     <iframe id="youtubeVideo" loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/uC1qgSMouEo?si=f0T-dN_ctM0nhPtT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;" allowfullscreen></iframe>
-//                                 </div>
-//                             </div>
-//                                 <img src="" alt="" class="img-fluid">
-//                         </div>
-// `;
-
-// // Get the container element by its ID
-// const container = document.getElementById("modBody1");
-
-// // Insert the large HTML content into the container
-// container.innerHTML = largeHTML;
-
-
-///////////////////
+///////////////////Load Modal Content
 
 // Define an array of URLs and corresponding data-bs-target values
 const contentInfo = [
