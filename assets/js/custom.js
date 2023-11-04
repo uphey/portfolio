@@ -463,23 +463,3 @@ const toggleAccordionButton = document.getElementById('toggleAccordionButton');
         });
 
 
-//=========Image Slider
-// const divider = document.querySelector(".divider");
-// const before = document.querySelector(".before");
-// const after = document.querySelector(".after");
-// let isDragging = false;
-
-// divider.addEventListener("mousedown", (e) => {
-//     isDragging = true;
-// });
-
-// document.addEventListener("mousemove", (e) => {
-//     if (!isDragging) return;
-//     const xPos = (e.clientX / window.innerWidth) * 100;
-//     before.style.clipPath = `polygon(0% 0%, ${xPos}% 0%, ${xPos}% 100%, 0% 100%)`;
-//     divider.style.left = `${xPos}%`;
-// });
-
-// document.addEventListener("mouseup", () => {
-//     isDragging = false;
-// });
