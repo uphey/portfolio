@@ -26,8 +26,12 @@ window.addEventListener("load", function () {
         return greetings[randomIndex];
     }
 
-    // Update the greeting with a random sentence
-    greeting.textContent = getRandomGreeting();
+    // Update the greeting with a random sentence with a smooth transition
+    greeting.style.opacity = 0;
+    setTimeout(function () {
+        greeting.textContent = getRandomGreeting();
+        greeting.style.opacity = 1;
+    }, 200); // You can adjust the duration as needed
 
     setTimeout(function () {
         preloader.classList.add("hidden");
