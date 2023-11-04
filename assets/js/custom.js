@@ -462,4 +462,20 @@ const toggleAccordionButton = document.getElementById('toggleAccordionButton');
             });
         });
 
+        
+//========Video Controls
+// Get all video elements on the page
+const videoElements = document.querySelectorAll("video");
+
+// Add the "controls" attribute to each video element
+videoElements.forEach(video => {
+    video.setAttribute("controls", true);
+});
+
+// Remove the "controls" attribute after 0.1 seconds
+setTimeout(() => {
+    videoElements.forEach(video => {
+        video.removeAttribute("controls");
+    });
+}, 100);
 
