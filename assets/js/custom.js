@@ -491,53 +491,64 @@ const contentInfo = [
     // Add more entries for additional content containers
 ];
 
-// Function to load and insert external HTML content
-function loadExternalContent(url, target) {
-    // Find the modal body element inside the parent modal
-    const modal = document.querySelector(target);
-    const modalBody = modal ? modal.querySelector(".modal-body") : null;
+        // Function to load and insert external HTML content
+        function loadExternalContent(url, target) {
+            // Find the modal body element inside the parent modal
+            const modal = document.querySelector(target);
+            const modalBody = modal ? modal.querySelector(".modal-body") : null;
 
-    if (modalBody) {
-        // Use fetch to load the external HTML content
-        fetch(url)
-            .then(response => response.text())
-            .then(externalHTML => {
-                // Insert the external HTML content into the modal body
-                modalBody.innerHTML = externalHTML;
-            })
-            .catch(error => {
-                console.error("Error loading external content:", error);
-            });
-    }
-}
+            if (modalBody) {
+                // Use fetch to load the external HTML content
+                fetch(url)
+                    .then(response => response.text())
+                    .then(externalHTML => {
+                        // Insert the external HTML content into the modal body
+                        modalBody.innerHTML = externalHTML;
 
-// Function to unload content with a delay
-function unloadContent(target) {
-    const modal = document.querySelector(target);
-    const modalBody = modal ? modal.querySelector(".modal-body") : null;
-    if (modalBody) {
-        setTimeout(() => {
-            modalBody.innerHTML = ""; // Remove content after a delay
-        }, 0);
-    }
-}
+                        // Add the 'controls' attribute to video elements
+                        const videoElements = modalBody.querySelectorAll("video");
+                        videoElements.forEach(video => {
+                            video.setAttribute("controls", "controls");
 
-// Add click event listeners for each link to trigger loading and unloading
-contentInfo.forEach(info => {
-    const loadLink = document.querySelector(`a[data-bs-target="${info.target}"]`);
-    if (loadLink) {
-        loadLink.addEventListener("click", function (e) {
-            e.preventDefault(); // Prevent the default link behavior
-            loadExternalContent(info.url, info.target); // Load the external content
+                            // Remove the 'controls' attribute after 0.1 seconds
+                            setTimeout(() => {
+                                video.removeAttribute("controls");
+                            }, 400);
+                        });
+                    })
+                    .catch(error => {
+                        console.error("Error loading external content:", error);
+                    });
+            }
+        }
+
+        // Function to unload content with a delay
+        function unloadContent(target) {
+            const modal = document.querySelector(target);
+            const modalBody = modal ? modal.querySelector(".modal-body") : null;
+            if (modalBody) {
+                setTimeout(() => {
+                    modalBody.innerHTML = ""; // Remove content after a delay
+                }, 0);
+            }
+        }
+
+        // Add click event listeners for each link to trigger loading and unloading
+        contentInfo.forEach(info => {
+            const loadLink = document.querySelector(`a[data-bs-target="${info.target}"]`);
+            if (loadLink) {
+                loadLink.addEventListener("click", function (e) {
+                    e.preventDefault(); // Prevent the default link behavior
+                    loadExternalContent(info.url, info.target); // Load the external content
+                });
+            }
         });
-    }
-});
 
-// Add event listener to handle modal hide event and unload content
-const modals = document.querySelectorAll('.modal');
-modals.forEach(modal => {
-    modal.addEventListener('hidden.bs.modal', function () {
-        const target = `#${modal.id}`;
-        unloadContent(target); // Unload the content when modal is hidden
-    });
-});
+        // Add event listener to handle modal hide event and unload content
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.addEventListener('hidden.bs.modal', function () {
+                const target = `#${modal.id}`;
+                unloadContent(target); // Unload the content when modal is hidden
+            });
+        });
