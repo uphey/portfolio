@@ -338,7 +338,7 @@
         color: #fff;
         text-align: center;
         background: 0 0;
-        background-color: rgba(40, 40, 40, 0.5);
+        background-color: rgba(69, 69, 69, 0.5);
         border: 0;
         border-radius: 100%;
         transition: .5s ease-in-out;
@@ -668,6 +668,10 @@ h1+.modal-text {
     color: #c47f36;
 }
 
+.modal-tool .p {
+    color: #808080;
+}
+
 .modal-footer {
     justify-content: center;
     border-top: none;
@@ -758,6 +762,7 @@ h1+.modal-text {
 .skill-wrapper img {
     height: 35px;
     width: 35px;
+    border-radius: 0;
     -webkit-user-drag: none;
     user-select: none;
     -moz-user-select: none;

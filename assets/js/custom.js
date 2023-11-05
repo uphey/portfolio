@@ -17,7 +17,7 @@ window.addEventListener("load", function () {
         "Almost there, don't blink!",
         "Spinning up the hyperspace drive...",
         "Counting to infinity...",
-        "Brace yourself, awesomeness incoming!",
+        "Awesomeness incoming!",
     ];
 
     // Function to get a random greeting
