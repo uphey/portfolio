@@ -56,6 +56,79 @@ button.addEventListener("mouseout", () => {
     button.style.width = "60px"; // Adjust the width value to match the initial width
 });
 
+
+///////////////////Load Modal Content
+
+// Define an object mapping target IDs to URLs
+const contentInfo = {
+    "#mod1": "assets/modal/mod1.html",
+    "#mod2": "assets/modal/mod2.html",
+    // Add more entries for additional content containers
+};
+
+// Function to load and insert external HTML content
+async function loadExternalContent(url, target) {
+    try {
+        // Use fetch to load the external HTML content
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch ${url}`);
+        }
+
+        const externalHTML = await response.text();
+
+        // Insert the external HTML content into the modal body
+        const modalBody = document.querySelector(target + " .modal-body");
+        if (modalBody) {
+            modalBody.innerHTML = externalHTML;
+
+            // Add the 'controls' attribute to video elements
+            const videoElements = modalBody.querySelectorAll("video");
+            videoElements.forEach(video => {
+                video.setAttribute("controls", "controls");
+
+                // Remove the 'controls' attribute after 0.1 seconds
+                setTimeout(() => {
+                    video.removeAttribute("controls");
+                }, 400);
+            });
+        }
+    } catch (error) {
+        console.error("Error loading external content:", error);
+    }
+}
+
+// Function to unload content with a delay
+function unloadContent(target) {
+    const modalBody = document.querySelector(target + " .modal-body");
+    if (modalBody) {
+        setTimeout(() => {
+            modalBody.innerHTML = ""; // Remove content after a delay
+        }, 0);
+    }
+}
+
+// Add click event listeners for each link to trigger loading and unloading
+for (const target in contentInfo) {
+    const loadLink = document.querySelector(`a[data-bs-target="${target}"]`);
+    if (loadLink) {
+        loadLink.addEventListener("click", function (e) {
+            e.preventDefault(); // Prevent the default link behavior
+            loadExternalContent(contentInfo[target], target); // Load the external content
+        });
+    }
+}
+
+// Add event listener to handle modal hide event and unload content
+const modals = document.querySelectorAll('.modal');
+modals.forEach(modal => {
+    modal.addEventListener('hidden.bs.modal', function () {
+        unloadContent(`#${modal.id}`);
+    });
+});
+
+
+
 //======Copy Email
 const emailLink = document.getElementById('email');
 const copyButton = document.getElementById('copyButton');
@@ -482,73 +555,3 @@ setTimeout(() => {
 
 
 
-///////////////////Load Modal Content
-
-// Define an array of URLs and corresponding data-bs-target values
-const contentInfo = [
-    { url: "assets/modal/mod1.html", target: "#mod1" },
-    { url: "assets/modal/mod2.html", target: "#mod2" },
-    // Add more entries for additional content containers
-];
-
-        // Function to load and insert external HTML content
-        function loadExternalContent(url, target) {
-            // Find the modal body element inside the parent modal
-            const modal = document.querySelector(target);
-            const modalBody = modal ? modal.querySelector(".modal-body") : null;
-
-            if (modalBody) {
-                // Use fetch to load the external HTML content
-                fetch(url)
-                    .then(response => response.text())
-                    .then(externalHTML => {
-                        // Insert the external HTML content into the modal body
-                        modalBody.innerHTML = externalHTML;
-
-                        // Add the 'controls' attribute to video elements
-                        const videoElements = modalBody.querySelectorAll("video");
-                        videoElements.forEach(video => {
-                            video.setAttribute("controls", "controls");
-
-                            // Remove the 'controls' attribute after 0.1 seconds
-                            setTimeout(() => {
-                                video.removeAttribute("controls");
-                            }, 400);
-                        });
-                    })
-                    .catch(error => {
-                        console.error("Error loading external content:", error);
-                    });
-            }
-        }
-
-        // Function to unload content with a delay
-        function unloadContent(target) {
-            const modal = document.querySelector(target);
-            const modalBody = modal ? modal.querySelector(".modal-body") : null;
-            if (modalBody) {
-                setTimeout(() => {
-                    modalBody.innerHTML = ""; // Remove content after a delay
-                }, 0);
-            }
-        }
-
-        // Add click event listeners for each link to trigger loading and unloading
-        contentInfo.forEach(info => {
-            const loadLink = document.querySelector(`a[data-bs-target="${info.target}"]`);
-            if (loadLink) {
-                loadLink.addEventListener("click", function (e) {
-                    e.preventDefault(); // Prevent the default link behavior
-                    loadExternalContent(info.url, info.target); // Load the external content
-                });
-            }
-        });
-
-        // Add event listener to handle modal hide event and unload content
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(modal => {
-            modal.addEventListener('hidden.bs.modal', function () {
-                const target = `#${modal.id}`;
-                unloadContent(target); // Unload the content when modal is hidden
-            });
-        });
