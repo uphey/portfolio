@@ -81,49 +81,48 @@ async function loadExternalContent(url, target) {
         const modalBody = document.querySelector(target + " .modal-body");
         if (modalBody) {
             modalBody.innerHTML = externalHTML;
-
-            // Add the 'controls' attribute to video elements
-            const videoElements = modalBody.querySelectorAll("video");
-            videoElements.forEach(video => {
-                video.setAttribute("controls", "controls");
-
-                // Remove the 'controls' attribute after 0.1 seconds
-                setTimeout(() => {
-                    video.removeAttribute("controls");
-                }, 400);
-            });
         }
     } catch (error) {
         console.error("Error loading external content:", error);
     }
 }
 
-// Function to unload content with a delay
-function unloadContent(target) {
-    const modalBody = document.querySelector(target + " .modal-body");
-    if (modalBody) {
-        setTimeout(() => {
-            modalBody.innerHTML = ""; // Remove content after a delay
-        }, 0);
+// Function to load the iframe
+function loadIframe(target) {
+    const iframe = document.querySelector(target + " iframe");
+    if (iframe) {
+        const iframeSrc = iframe.getAttribute("data-src");
+        if (iframeSrc) {
+            iframe.src = iframeSrc;
+        }
     }
 }
 
-// Add click event listeners for each link to trigger loading and unloading
+// Function to unload the iframe when the modal is hidden
+function unloadIframe(target) {
+    const iframe = document.querySelector(target + " iframe");
+    if (iframe) {
+        iframe.src = ""; // Unload the iframe by clearing its src
+    }
+}
+
+// Add click event listeners for each link to trigger loading content and the iframe
 for (const target in contentInfo) {
     const loadLink = document.querySelector(`a[data-bs-target="${target}"]`);
     if (loadLink) {
         loadLink.addEventListener("click", function (e) {
             e.preventDefault(); // Prevent the default link behavior
             loadExternalContent(contentInfo[target], target); // Load the external content
+            loadIframe(target); // Load the iframe
         });
     }
 }
 
-// Add event listener to handle modal hide event and unload content
+// Add event listener to handle modal hide event and unload the iframe
 const modals = document.querySelectorAll('.modal');
 modals.forEach(modal => {
     modal.addEventListener('hidden.bs.modal', function () {
-        unloadContent(`#${modal.id}`);
+        unloadIframe(`#${modal.id}`);
     });
 });
 
