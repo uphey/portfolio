@@ -1,4 +1,18 @@
-
+.fade {
+  backdrop-filter: saturate(200%) blur(18px);
+  -webkit-backdrop-filter: saturate(200%) blur(18px);
+  transition: 0.2s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade {
+    transition: none;
+  }
+}
+.fade:not(.show) {
+  backdrop-filter: saturate(100%) blur(0px);
+  -webkit-backdrop-filter: saturate(100%) blur(0px);
+  opacity: 0;
+}
 
 .modal {
   --bs-modal-zindex: 1055;
