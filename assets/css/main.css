@@ -50,6 +50,10 @@
     transition: .5s ease;
 }
 
+.nav-button {
+    padding: 0.5rem;
+}
+
 .navbar-toggler {
     border: none;
 }
@@ -1292,7 +1296,7 @@ iframe {
 }
 
 .btn-circle {
-    padding: 0.9rem 1.25rem;
+    padding: 0.85rem 1.25rem;
 }
 
 .smooth-transition-button {
