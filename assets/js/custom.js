@@ -81,6 +81,17 @@ async function loadExternalContent(url, target) {
         const modalBody = document.querySelector(target + " .modal-body");
         if (modalBody) {
             modalBody.innerHTML = externalHTML;
+
+            // Add the 'controls' attribute to video elements
+            const videoElements = modalBody.querySelectorAll("video");
+            videoElements.forEach(video => {
+                video.setAttribute("controls", "controls");
+
+                // Remove the 'controls' attribute after 0.1 seconds
+                setTimeout(() => {
+                    video.removeAttribute("controls");
+                }, 400);
+            });
         }
     } catch (error) {
         console.error("Error loading external content:", error);
