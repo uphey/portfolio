@@ -119,7 +119,7 @@ function unloadIframe(target) {
 
 // Add click event listeners for each link to trigger loading content and the iframe
 for (const target in contentInfo) {
-    const loadLink = document.querySelector(`a[data-bs-target="${target}"]`);
+    const loadLink = document.querySelector(`div[data-bs-target="${target}"]`);
     if (loadLink) {
         loadLink.addEventListener("click", function (e) {
             e.preventDefault(); // Prevent the default link behavior
@@ -463,9 +463,9 @@ function addAnimationClasses() {
 
         mediaElements.forEach(element => {
             // Check if the element is not within the "skills" section
-            if (!skillsSection.contains(element)) {
+            
                 element.setAttribute("loading", "lazy");
-            }
+            
         });
 
 

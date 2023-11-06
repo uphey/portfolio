@@ -11,30 +11,28 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <link href="assets/css/custom.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
-
 </head>
 
 <body id="page-top">
-    <div class="preloader">
-        <div class="bounce">
-            <div class="ball">
-                <img class="img-fluid" src="assets/img/preloader.png" alt="">
-            </div>
-        </div>
-        <p class="greeting p pt-2" id="greeting">&nbsp;</p>
-    </div>
+
     <header>
+        <div class="preloader">
+            <div class="bounce">
+                <div class="ball">
+                    <img class="img-fluid" src="assets/img/preloader.png" alt="">
+                </div>
+            </div>
+            <p class="greeting p pt-2" id="greeting">&nbsp;</p>
+        </div>
         <!-- ======= Navbar ======= -->
         <nav class="navbar navbar-expand-md fixed-top" id="mainNav">
             <div class="container navbar-wrapper">
-                <a class="navbar-brand" href="index.html">TOMMY CHIU</a>
+                <a class="navbar-brand" href="/">TOMMY CHIU</a>
                 <div class="d-flex align-items-center">
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false"
@@ -139,7 +137,8 @@
                         <div class="carousel-inner">
                             <div class="trigger-element"></div>
                             <div class="carousel-item active">
-                                <img src="assets/img/highlights/podcast.png" class="img1" alt="...">
+                                <img src="assets/img/highlights/podcast.png" width="640" height="360" class="img1"
+                                    alt="...">
                                 <div class="carousel-caption">
                                     <h2 class="fw-bold">Video & Audio Editing</h2>
                                     <p>Create outstanding video and audio content for a podcast channel with over
@@ -150,7 +149,8 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/img/highlights/website.png" class="img1" alt="...">
+                                <img src="assets/img/highlights/website.png" width="640" height="360" class="img1"
+                                    alt="...">
                                 <div class="carousel-caption">
                                     <h2 class="fw-bold">Web Design & Development</h2>
                                     <p>Create fantastic and cutting-edge front-end websites using the power of HTML5,
@@ -161,7 +161,8 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/img/highlights/graphic.png" class="img1" alt="...">
+                                <img src="assets/img/highlights/graphic.png" width="640" height="360" class="img1"
+                                    alt="...">
                                 <div class="carousel-caption">
                                     <h2 class="fw-bold">Graphic Design</h2>
                                     <p class="carousel-p">Dedicate skills and creativity to craft beautiful and
@@ -172,7 +173,8 @@
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="assets/img/highlights/photography.png" class="img1" alt="...">
+                                <img src="assets/img/highlights/photography.png" width="640" height="360" class="img1"
+                                    alt="...">
                                 <div class="carousel-caption">
                                     <h2 class="fw-bold">Photography</h2>
                                     <p>Capture stunning and breathtaking moments through the lens of photography.</p>
@@ -224,163 +226,145 @@
 
                     <div class="items" data-aos="fade-up">
 
-                        <div class="item col-lg-4 video">
-                            <a data-bs-toggle="modal" data-bs-target="#mod1">
-                                <div class="d-flex select-box overflow-hidden">
-                                    <div class="img-overlay">
-                                        <p>Elevate the listening experience with engaging mixing and editing techniques
-                                            for an educational podcast channel.</p>
-                                    </div>
-                                    <div class="p-4 work-text position-absolute">
-                                        <p class="h4">Anybooks Farm Podcast Videos</p>
-                                    </div>
-                                    <div class="p-4 work-tag position-absolute">
-                                        <div class="tag-wrapper video">
-                                            <p class="">#Video</p>
-                                        </div>
-                                    </div>
-                                    <div class="work-img">
-                                        <img class="inside-img video" src="assets/img/portfolio/anybooks.png" alt="">
-                                    </div>
-
+                        <div class="item col-lg-4 video" data-bs-toggle="modal" data-bs-target="#mod1">
+                            <div class="d-flex select-box overflow-hidden">
+                                <div class="img-overlay">
+                                    <p>Elevate the listening experience with engaging mixing and editing techniques
+                                        for an educational podcast channel.</p>
                                 </div>
-                            </a>
+                                <div class="p-4 work-text position-absolute">
+                                    <p class="h4">Anybooks Farm Podcast Videos</p>
+                                </div>
+                                <div class="p-4 work-tag position-absolute">
+                                    <div class="tag-wrapper video">
+                                        <p class="">#Video</p>
+                                    </div>
+                                </div>
+                                <div class="work-img">
+                                    <img class="inside-img video" src="assets/img/portfolio/anybooks.png" alt="">
+                                </div>
+
+                            </div>
                         </div>
 
-                        <div class="item col-lg-4 web">
-                            <a data-bs-toggle="modal" data-bs-target="#mod2">
-                                <div class="d-flex select-box overflow-hidden">
-                                    <div class="img-overlay">
-                                        <p>Revamp the CLTDC website with a major redesign, providing it with a modern
-                                            appearance and responsive functionality.</p>
-                                    </div>
-                                    <div class="p-4 work-text position-absolute">
-                                        <p class="h4">CLTDC Website Renovation</p>
-                                    </div>
-                                    <div class="p-4 work-tag position-absolute">
-                                        <div class="tag-wrapper web">
-                                            <p class="">#Web</p>
-                                        </div>
-                                    </div>
-                                    <div class="work-img">
-                                        <img class="inside-img web" src="assets/img/portfolio/cltdc_website.png" alt="">
+                        <div class="item col-lg-4 web" data-bs-toggle="modal" data-bs-target="#mod2">
+                            <div class="d-flex select-box overflow-hidden">
+                                <div class="img-overlay">
+                                    <p>Revamp the CLTDC website with a major redesign, providing it with a modern
+                                        appearance and responsive functionality.</p>
+                                </div>
+                                <div class="p-4 work-text position-absolute">
+                                    <p class="h4">CLTDC Website Renovation</p>
+                                </div>
+                                <div class="p-4 work-tag position-absolute">
+                                    <div class="tag-wrapper web">
+                                        <p class="">#Web</p>
                                     </div>
                                 </div>
-                            </a>
+                                <div class="work-img">
+                                    <img class="inside-img web" src="assets/img/portfolio/cltdc_website.png" alt="">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="item col-lg-4 graphic">
-                            <a data-bs-toggle="modal" data-bs-target="#mod1">
-                                <div class="d-flex select-box overflow-hidden">
-                                    <div class="img-overlay">
-                                        <p>Establish the podcast's brand identity by crafting a unified appearance
-                                            through logo design, cover art, and post templates.</p>
-                                    </div>
-                                    <div class="p-4 work-text position-absolute">
-                                        <p class="h4">Podcast Brand Design</p>
-                                    </div>
-                                    <div class="p-4 work-tag position-absolute">
-                                        <div class="tag-wrapper graphic">
-                                            <p class="">#Graphic</p>
-                                        </div>
-                                    </div>
-                                    <div class="work-img">
-                                        <img class="inside-img graphic" src="assets/img/portfolio/cowtalk_brand.png"
-                                            alt="">
+                        <div class="item col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod1">
+                            <div class="d-flex select-box overflow-hidden">
+                                <div class="img-overlay">
+                                    <p>Establish the podcast's brand identity by crafting a unified appearance
+                                        through logo design, cover art, and post templates.</p>
+                                </div>
+                                <div class="p-4 work-text position-absolute">
+                                    <p class="h4">Podcast Brand Design</p>
+                                </div>
+                                <div class="p-4 work-tag position-absolute">
+                                    <div class="tag-wrapper graphic">
+                                        <p class="">#Graphic</p>
                                     </div>
                                 </div>
-                            </a>
+                                <div class="work-img">
+                                    <img class="inside-img graphic" src="assets/img/portfolio/cowtalk_brand.png" alt="">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="item col-lg-4 graphic">
-                            <a data-bs-toggle="modal" data-bs-target="#mod1">
-                                <div class="d-flex select-box overflow-hidden">
-                                    <div class="img-overlay">
-                                        <p>Design dynamic visuals for a secondary school running race, encompassing
-                                            podium backdrops, finish line banners, and watermarks tattoos.</p>
-                                    </div>
-                                    <div class="p-4 work-text position-absolute">
-                                        <p class="h4">Running Race Graphics</p>
-                                    </div>
-                                    <div class="p-4 work-tag position-absolute">
-                                        <div class="tag-wrapper graphic">
-                                            <p class="">#Graphic</p>
-                                        </div>
-                                    </div>
-                                    <div class="work-img">
-                                        <img class="inside-img graphic" src="assets/img/portfolio/running_race.png"
-                                            alt="">
+                        <div class="item col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod1">
+                            <div class="d-flex select-box overflow-hidden">
+                                <div class="img-overlay">
+                                    <p>Design dynamic visuals for a secondary school running race, encompassing
+                                        podium backdrops, finish line banners, and watermarks tattoos.</p>
+                                </div>
+                                <div class="p-4 work-text position-absolute">
+                                    <p class="h4">Running Race Graphics</p>
+                                </div>
+                                <div class="p-4 work-tag position-absolute">
+                                    <div class="tag-wrapper graphic">
+                                        <p class="">#Graphic</p>
                                     </div>
                                 </div>
-                            </a>
+                                <div class="work-img">
+                                    <img class="inside-img graphic" src="assets/img/portfolio/running_race.png" alt="">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="item col-lg-4 graphic">
-                            <a data-bs-toggle="modal" data-bs-target="#mod1">
-                                <div class="d-flex select-box overflow-hidden">
-                                    <div class="img-overlay">
-                                        <p>Craft a cinematic poster and design stickers for the school's Anti-Drug
-                                            campaign to engage students effectively.</p>
-                                    </div>
-                                    <div class="p-4 work-text position-absolute">
-                                        <p class="h4">Anti-Drug Graphics</p>
-                                    </div>
-                                    <div class="p-4 work-tag position-absolute">
-                                        <div class="tag-wrapper graphic">
-                                            <p class="">#Graphic</p>
-                                        </div>
-                                    </div>
-                                    <div class="work-img">
-                                        <img class="inside-img graphic" src="assets/img/portfolio/antidrug.png" alt="">
+                        <div class="item col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod1">
+                            <div class="d-flex select-box overflow-hidden">
+                                <div class="img-overlay">
+                                    <p>Craft a cinematic poster and design stickers for the school's Anti-Drug
+                                        campaign to engage students effectively.</p>
+                                </div>
+                                <div class="p-4 work-text position-absolute">
+                                    <p class="h4">Anti-Drug Graphics</p>
+                                </div>
+                                <div class="p-4 work-tag position-absolute">
+                                    <div class="tag-wrapper graphic">
+                                        <p class="">#Graphic</p>
                                     </div>
                                 </div>
-                            </a>
+                                <div class="work-img">
+                                    <img class="inside-img graphic" src="assets/img/portfolio/antidrug.png" alt="">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="item col-lg-4 video">
-                            <a data-bs-toggle="modal" data-bs-target="#mod1">
-                                <div class="d-flex select-box overflow-hidden">
-                                    <div class="img-overlay">
-                                        <p>Produce engaging animations to effectively illustrate academic concepts and
-                                            boost student self-motivation for learning.</p>
-                                    </div>
-                                    <div class="p-4 work-text position-absolute">
-                                        <p class="h4">eLearning Videos</p>
-                                    </div>
-                                    <div class="p-4 work-tag position-absolute">
-                                        <div class="tag-wrapper video">
-                                            <p class="">#Video</p>
-                                        </div>
-                                    </div>
-                                    <div class="work-img">
-                                        <img class="inside-img video" src="assets/img/portfolio/elearning_video.png"
-                                            alt="">
+                        <div class="item col-lg-4 video" data-bs-toggle="modal" data-bs-target="#mod1">
+                            <div class="d-flex select-box overflow-hidden">
+                                <div class="img-overlay">
+                                    <p>Produce engaging animations to effectively illustrate academic concepts and
+                                        boost student self-motivation for learning.</p>
+                                </div>
+                                <div class="p-4 work-text position-absolute">
+                                    <p class="h4">eLearning Videos</p>
+                                </div>
+                                <div class="p-4 work-tag position-absolute">
+                                    <div class="tag-wrapper video">
+                                        <p class="">#Video</p>
                                     </div>
                                 </div>
-                            </a>
+                                <div class="work-img">
+                                    <img class="inside-img video" src="assets/img/portfolio/elearning_video.png" alt="">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="item col-lg-4 graphic">
-                            <a data-bs-toggle="modal" data-bs-target="#mod1">
-                                <div class="d-flex select-box overflow-hidden">
-                                    <div class="img-overlay">
-                                        <p>Design a refined poster for the department's admission talk on the
-                                            university's Information Day.</p>
-                                    </div>
-                                    <div class="p-4 work-text position-absolute">
-                                        <p class="h4">College Event Poster</p>
-                                    </div>
-                                    <div class="p-4 work-tag position-absolute">
-                                        <div class="tag-wrapper graphic">
-                                            <p class="">#Graphic</p>
-                                        </div>
-                                    </div>
-                                    <div class="work-img">
-                                        <img class="inside-img graphic" src="assets/img/portfolio/cuhk_poster.png"
-                                            alt="">
+                        <div class="item col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod1">
+                            <div class="d-flex select-box overflow-hidden">
+                                <div class="img-overlay">
+                                    <p>Design a refined poster for the department's admission talk on the
+                                        university's Information Day.</p>
+                                </div>
+                                <div class="p-4 work-text position-absolute">
+                                    <p class="h4">College Event Poster</p>
+                                </div>
+                                <div class="p-4 work-tag position-absolute">
+                                    <div class="tag-wrapper graphic">
+                                        <p class="">#Graphic</p>
                                     </div>
                                 </div>
-                            </a>
+                                <div class="work-img">
+                                    <img class="inside-img graphic" src="assets/img/portfolio/cuhk_poster.png" alt="">
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -705,50 +689,7 @@
             </div>
         </section>
         <!-- End About Section -->
-
-        <!-- ======= Contact Section ======= -->
-        <!-- <section id="contact">
-    
-    <div class="portfolio-title display-5 fw-bold text-center pt-7 pb-5">Contact</div>
-
-</section> -->
-        <!-- End Contact Section -->
     </main>
-
-    <!-- ======= Video & Audio Section ======= -->
-    <!-- <section id="videoaudio" class="">
-    <div class="container pb-7">
-        <div class="h1 fw-bold text-center pb-4">Video & Audio Editing</div>
-        <div class="grid">
-
-        <div class="img-all row">
-            <div class="col">
-            <img src="assets/img/Podcast/cover_member.png" alt="Logo of the CowgorTalk Podcast" class="img-fluid rounded shadow-sm img-va1">
-             </div>
-
-             <div class="col">
-                <img src="assets/img/Podcast/cowgortalk_icon_v2.png" alt="Logo of the CowgorTalk Podcast" class="img-fluid rounded shadow-sm img-va3">
-                  </div>
-             
-             <div class="col">
-            <img src="assets/img/Podcast/cover_0.png" alt="Logo of the CowgorTalk Podcast" class="img-fluid rounded shadow-sm img-va2">
-             </div>
-
-        </div>
-
-
-
-        <div class="text-container pb-7">
-            <p class="text-container pb-7">Dynamic Island bubbles up alerts and Live Activities — so you don’t miss them while you’re doing something else. You can track your next ride, see who’s calling, check your flight status and so much more.</p>
-            <p class="text-container pb-7">Dynamic Island bubbles up alerts and Live Activities — so you don’t miss them while you’re doing something else. You can track your next ride, see who’s calling, check your flight status and so much more.</p>
-            <p class="text-container pb-7">Dynamic Island bubbles up alerts and Live Activities — so you don’t miss them while you’re doing something else. You can track your next ride, see who’s calling, check your flight status and so much more.</p>
-
-        </div>
-        
-    </div>
-    </div>
-</section> -->
-    <!-- End Video & Audio Section -->
 
     <footer id="contact" data-aos="flip-up">
         <div class="row mt-3 mb-5 align-items-center">
