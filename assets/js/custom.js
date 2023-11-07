@@ -347,39 +347,35 @@ window.addEventListener("scroll", () => {
 //================Hide Back to Top Button when modal show
 
 // Get all elements with the class 'item'
-const items1 = document.querySelectorAll('.item');
+const customItems = document.querySelectorAll('.item');
 
 // Get the elements with the class 'scroll-element'
-const scrollElements1 = document.querySelectorAll('.scroll-element');
+const customScrollElements = document.querySelectorAll('.scroll-element');
 
-// Add a click event listener to each 'item'
-items1.forEach(item => {
-  item.addEventListener('click', () => {
-    // Hide the 'scroll-element' elements
-    scrollElements1.forEach(scrollElement => {
-      scrollElement.style.display = 'none';
-    });
-  });
-});
-
-// Get the modal element
-const modal = document.querySelector('.modal');
+// Get all modal elements
+const customModals = document.querySelectorAll('.modal');
 
 // Function to handle the display of scroll elements
-function toggleScrollElementsDisplay() {
-  const displayValue = modal.classList.contains('show') ? 'none' : 'block';
-
-  // Set the display value for each scroll element
-  scrollElements1.forEach(scrollElement => {
+function toggleScrollElementsDisplay(displayValue) {
+  customScrollElements.forEach(scrollElement => {
     scrollElement.style.display = displayValue;
   });
 }
 
-// Initial call to set the display based on the modal's class
-toggleScrollElementsDisplay();
+// Add a click event listener to each 'item'
+customItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // Hide the 'scroll-element' elements
+    toggleScrollElementsDisplay('none');
+  });
+});
 
-// Add an event listener to handle changes in modal visibility
-modal.addEventListener('transitionend', toggleScrollElementsDisplay);
+// Add event listeners to handle the display of scroll elements when modals are shown/hidden
+customModals.forEach(modal => {
+  modal.addEventListener('hide.bs.modal', () => {
+    toggleScrollElementsDisplay('block');
+  });
+});
 
 
 //============Nav Item add Animation
