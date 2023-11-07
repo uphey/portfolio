@@ -53,7 +53,7 @@ button.addEventListener("mouseout", () => {
     button.classList.add("smooth-transition-button");
     button.style.fontSize = "1.2rem"; // Change font size back to big
     button.textContent = "↓";
-    button.style.width = "60px"; // Adjust the width value to match the initial width
+    button.style.width = "58px"; // Adjust the width value to match the initial width
 });
 
 
@@ -447,23 +447,6 @@ function addAnimationClasses() {
             }
         }
     });
-
-
-
-//============Lazy Load Image
-        // Get all img and video elements on the page
-        const mediaElements = document.querySelectorAll("img");
-
-        // Get the "skills" section by its ID
-        const skillsSection = document.getElementById("skills");
-
-        mediaElements.forEach(element => {
-            // Check if the element is not within the "skills" section
-            
-                element.setAttribute("loading", "lazy");
-            
-        });
-
 
 
 //=============Navbar Collapse
