@@ -423,30 +423,31 @@ function addAnimationClasses() {
 
 
 //=============Change the active state of a navbar item
-    // Get all the nav-links
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navbarHeight = 150; // Adjust this value to match your navbar height
+// Get all the nav-links
+const navLinks = document.querySelectorAll('.nav-link');
+const navbarHeight = 150; // Adjust this value to match your navbar height
 
-    // Listen for scroll events
-    window.addEventListener('scroll', () => {
-        // Get the current scroll position with navbar offset
-        const scrollPosition = window.scrollY + navbarHeight;
+// Listen for scroll events
+window.addEventListener('scroll', () => {
+    // Get the current scroll position with navbar offset
+    const scrollPosition = window.scrollY + navbarHeight;
 
-        // Loop through the sections
-        for (const section of document.querySelectorAll('section')) {
-            const sectionTop = section.offsetTop;
-            const sectionId = section.getAttribute('id');
+    // Loop through the sections, excluding the #highlight section
+    for (const section of document.querySelectorAll('section:not(#highlight)')) {
+        const sectionTop = section.offsetTop;
+        const sectionId = section.getAttribute('id');
 
-            // Check if the current scroll position is within the section
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + section.offsetHeight) {
-                // Remove the 'active' class from all nav-links
-                navLinks.forEach(link => link.classList.remove('active'));
-                
-                // Add the 'active' class to the nav-link corresponding to the section
-                document.querySelector(`.nav-link[href="#${sectionId}"]`).classList.add('active');
-            }
+        // Check if the current scroll position is within the section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + section.offsetHeight) {
+            // Remove the 'active' class from all nav-links
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Add the 'active' class to the nav-link corresponding to the section
+            document.querySelector(`.nav-link[href="#${sectionId}"]`).classList.add('active');
         }
-    });
+    }
+});
+
 
 
 //=============Navbar Collapse
