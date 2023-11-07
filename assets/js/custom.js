@@ -47,6 +47,7 @@ button.addEventListener("mouseover", () => {
     button.style.fontSize = "1.4rem"; // Change font size to small
     button.textContent = "Let's go!";
     button.style.width = "140px"; // Adjust the width value as needed
+    console.log("Welcome to my website!")
 });
 
 button.addEventListener("mouseout", () => {
