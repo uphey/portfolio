@@ -70,10 +70,8 @@
     position:absolute;
     width: 120%;
     height:100%;
-    background-image:linear-gradient(transparent,rgba(228, 228, 227, 0.35))!important;
-    backdrop-filter: saturate(120%);
-    -webkit-backdrop-filter: saturate(120%);
     z-index: 2;
+    background-image:linear-gradient(transparent,rgba(228, 228, 227, 0.35))!important;
   }
 
 .overlay{
@@ -168,20 +166,34 @@
     justify-content: center;
     text-decoration: none;
     opacity: 0;
-    animation: fadeInUp1 1s ease-in-out 2.1s forwards, floatAnimation 2s ease-in-out 3.5s 4;
+    animation: fadeInUp 1s ease-in-out 2.2s forwards, floatAnimation 2s ease-in-out 3.4s 4;
+}
+
+.smooth-transition-button {
+    display: flex;
+    justify-content: center;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-align: center;
+    width: 58px;
+    transition: all 0.3s ease;
+}
+
+.smooth-transition-button:hover {
+    width: 140px;
+    transition: all 0.3s ease;
+}
+
+.button1-sm {
+    display: none;
 }
 
 @keyframes fadeInUp {
-    0% {opacity: 0; transform: translateY(50px);}
-    100% {opacity: 1;}
-}
-
-@keyframes fadeInUp1 {
     0% {opacity: 0;transform: translateY(50px);}
     100% {opacity: 0.9;}
 }
 
-@keyframes floatAnimation{
+@keyframes floatAnimation {
 0% {
     -webkit-transform: translateY(0);
     transform: translateY(0);
@@ -1130,6 +1142,13 @@ iframe {
     .image-wrapper {
         width: 95%;
     }
+    .button1-lg {
+        display: none;
+    }
+    
+    .button1-sm {
+        display: block;
+    }
 }
 
 @media (max-width: 495px) {
@@ -1281,21 +1300,6 @@ iframe {
 
 .btn-circle {
     padding: 0.85rem 1.25rem;
-}
-
-.smooth-transition-button {
-    display: flex;
-    justify-content: center;
-    text-wrap: nowrap;
-    overflow: hidden;
-    text-align: center;
-    width: 58px;
-    transition: all 0.3s ease;
-}
-
-.smooth-transition-button:hover {
-    width: 140px;
-    transition: all 0.3s ease;
 }
 
 .btn-contact {
