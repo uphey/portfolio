@@ -71,6 +71,8 @@
     width: 120%;
     height:100%;
     background-image:linear-gradient(transparent,rgba(228, 228, 227, 0.35))!important;
+    backdrop-filter: saturate(120%);
+    -webkit-backdrop-filter: saturate(120%);
     z-index: 2;
   }
 
@@ -83,11 +85,11 @@
   }
 
   @keyframes unBlur {
-    from{backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);}
+    from{backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);}
   }
 
 #heroImage {
-    background-image: url("../../assets/img/background.JPG");
+    background-image: url("../../assets/img/background.webp");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -131,11 +133,7 @@
     padding-top: 7rem;
     margin-bottom: .2rem;
     opacity: 0;
-    animation-name: fadeInUpHi;
-    animation-duration: 1s;
-    animation-delay: 1s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
+    animation: Up 1s ease-out 1s forwards, fadeIn 1s ease-in-out 1s forwards;
 }
 
 .name {
@@ -146,54 +144,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    animation-name: zoomout;
-    animation-duration: 1.8s;
-    animation-timing-function: ease-in-out;
-    animation-delay: 1.2s;
-    animation-fill-mode: forwards;
-    opacity: 0%; 
-    
+    animation: Up 1s ease-out 1.5s forwards, fadeIn 1s ease-in-out 1.5s forwards;
+    opacity: 0;
 }
 
-@keyframes zoomout {
-    from {font-size: 20rem;}
-    to {opacity: 100%;}
+@keyframes Up {
+    from {transform: translateY(50px);}
+}
+
+@keyframes fadeIn {
+    to {opacity: 1;}
 }
 
 .intro {
     margin-top: 2.2rem;
     opacity: 0;
-    animation-name: fadeInUp;
-    animation-duration: 1.2s;
-    animation-timing-function: ease-in-out;
-    animation-delay: 2.2s;
-    animation-fill-mode: forwards;
+    animation: Up 1s ease-out 1.7s forwards, fadeIn 1s ease-in-out 1.8s forwards;
 }
 
-@keyframes fadein {
-    to {opacity: 100%;}
-}
 
 .button1 {
     display: flex;
     justify-content: center;
     text-decoration: none;
     opacity: 0;
-    animation: fadeInUp1 1s ease-in-out 3s forwards, floatAnimation 2s ease-in-out 4.2s 4;
+    animation: fadeInUp1 1s ease-in-out 2.1s forwards, floatAnimation 2s ease-in-out 3.5s 4;
 }
 
 @keyframes fadeInUp {
-    0% {opacity: 0;padding-top: 2rem;}
-    100% {opacity: 1;}
-}
-
-@keyframes fadeInUpHi {
-    0% {opacity: 0;padding-top: 12rem;}
+    0% {opacity: 0; transform: translateY(50px);}
     100% {opacity: 1;}
 }
 
 @keyframes fadeInUp1 {
-    0% {opacity: 0;padding-top: 2rem;}
+    0% {opacity: 0;transform: translateY(50px);}
     100% {opacity: 0.9;}
 }
 
@@ -1305,6 +1289,12 @@ iframe {
     text-wrap: nowrap;
     overflow: hidden;
     text-align: center;
+    width: 58px;
+    transition: all 0.3s ease;
+}
+
+.smooth-transition-button:hover {
+    width: 140px;
     transition: all 0.3s ease;
 }
 

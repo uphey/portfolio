@@ -753,7 +753,46 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 
+    <script>window.addEventListener("load", function () {
+            const preloader = document.querySelector(".preloader");
+            const greeting = document.getElementById("greeting");
 
+            // Array of greeting sentences
+            const greetings = [
+                "Hello, World!",
+                "Enjoy your visit!",
+                "Loading some magic...",
+                "Greetings, Earthling!",
+                "Loading awesomeness...",
+                "Hold on tight, it's loading!",
+                "Get ready to be amazed!",
+                "Did someone say 'loading'?",
+                "Just a moment...",
+                "Brewing coffee while loading...",
+                "Almost there, don't blink!",
+                "Spinning up the hyperspace drive...",
+                "Counting to infinity...",
+                "Awesomeness incoming!",
+            ];
+
+            // Function to get a random greeting
+            function getRandomGreeting() {
+                const randomIndex = Math.floor(Math.random() * greetings.length);
+                return greetings[randomIndex];
+            }
+
+            // Update the greeting with a random sentence with a smooth transition
+            greeting.style.opacity = 0;
+            setTimeout(function () {
+                greeting.textContent = getRandomGreeting();
+                greeting.style.opacity = 1;
+            }, 200);
+
+            setTimeout(function () {
+                preloader.classList.add("hidden");
+            }, 1000);
+        });
+    </script>
     <script src="assets/js/custom.js"></script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
