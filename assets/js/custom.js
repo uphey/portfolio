@@ -499,3 +499,24 @@ setTimeout(() => {
     video.removeAttribute("controls");
   });
 }, 100);
+
+
+//===========Load img in Skills Section
+window.addEventListener('load', function () {
+    // Select the section with id "skills"
+    const skillsSection = document.getElementById('skills');
+  
+    // Select all the images within the skills section
+    const images = skillsSection.querySelectorAll('img');
+  
+    // Loop through the images and set their 'src' attribute to load them
+    images.forEach(image => {
+      const src = image.getAttribute('data-src'); // Use a 'data-src' attribute to store the image source
+      if (src) {
+        image.src = src;
+      }
+    });
+  });
+  
+
+  
