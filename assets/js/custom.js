@@ -101,10 +101,10 @@ window.addEventListener('load', function () {
     function updateNavVisibility() {
       const scrollPosition = window.scrollY;
   
-      if (scrollPosition <= homeSectionOffset) {
+      if (scrollPosition <= homeSectionOffset * 0.95) {
         // At the top of the page or within the #home section
         navName.style.opacity = '0';
-        navName.style.transform = 'translateY(7px)';
+        navName.style.transform = 'translateY(8px)';
         navLogo.style.opacity = '1';
         navLogo.style.transform = 'translateY(0)';
       } else {
@@ -112,7 +112,7 @@ window.addEventListener('load', function () {
         navName.style.opacity = '1';
         navName.style.transform = 'translateY(0)';
         navLogo.style.opacity = '0';
-        navLogo.style.transform = 'translateY(7px)';
+        navLogo.style.transform = 'translateY(8px)';
       }
     }
   });
