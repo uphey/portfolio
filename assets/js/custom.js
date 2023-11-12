@@ -1,3 +1,79 @@
+/////////
+document.addEventListener('DOMContentLoaded', function () {
+    const fadeInUp = document.querySelectorAll('.ani-fade-in-up');
+  
+    window.addEventListener('scroll', function () {
+        fadeInUp.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        const triggerOffset = windowHeight * 0.85;
+  
+        if (itemTop < triggerOffset) {
+          item.classList.add('fade-in-up');
+        } else {
+          item.classList.remove('fade-in-up');
+        }
+      });
+    });
+  });
+  
+////////
+document.addEventListener('DOMContentLoaded', function () {
+    const zoomInUp = document.querySelectorAll('.ani-zoom-in-up');
+  
+    window.addEventListener('scroll', function () {
+        zoomInUp.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        const triggerOffset = windowHeight;
+  
+        if (itemTop < triggerOffset) {
+          item.classList.add('zoom-in-up');
+        } else {
+          item.classList.remove('zoom-in-up');
+        }
+      });
+    });
+  });  
+
+
+////////
+document.addEventListener('DOMContentLoaded', function () {
+    const flipUp = document.querySelectorAll('.ani-flip-up');
+  
+    window.addEventListener('scroll', function () {
+        flipUp.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        const triggerOffset = windowHeight * 0.9;
+  
+        if (itemTop < triggerOffset) {
+          item.classList.add('flip-up');
+        } else {
+          item.classList.remove('flip-up');
+        }
+      });
+    });
+  });  
+
+//===========Load img in Skills Section
+window.addEventListener('load', function () {
+    // Select the section with id "skills"
+    const skillsSection = document.getElementById('skills');
+  
+    // Select all the images within the skills section
+    const images = skillsSection.querySelectorAll('img');
+  
+    // Loop through the images and set their 'src' attribute to load them
+    images.forEach(image => {
+      const src = image.getAttribute('data-src'); // Use a 'data-src' attribute to store the image source
+      if (src) {
+        image.src = src;
+      }
+    });
+  });
+  
+
 //=========Let's Go! Button
 const button = document.getElementById("highlight-button");
 
@@ -18,6 +94,7 @@ button.addEventListener("mouseout", () => {
 const contentInfo = {
   "#mod1": "assets/modal/mod1.html",
   "#mod2": "assets/modal/mod2.html",
+  "#mod3": "assets/modal/mod3.html",
   // Add more entries for additional content containers
 };
 
@@ -446,44 +523,6 @@ window.addEventListener("beforeunload", () => {
   document.removeEventListener("scroll", closeNavbarOnScroll);
 });
 
-//=========Expand All
-const toggleAccordionButton = document.getElementById("toggleAccordionButton");
-const accordionItems = document.querySelectorAll(".accordion-item");
-
-let isAccordionExpanded = true;
-
-toggleAccordionButton.addEventListener("click", () => {
-  if (isAccordionExpanded) {
-    // Collapse all accordion items
-    accordionItems.forEach((item) => {
-      const collapseElement = item.querySelector(".accordion-collapse");
-      if (collapseElement.classList.contains("show")) {
-        const accordionButton = item.querySelector(".accordion-button");
-        collapseElement.classList.remove("show");
-        accordionButton.setAttribute("aria-expanded", "false");
-      }
-    });
-    toggleAccordionButton.innerText = "Show All";
-  } else {
-    // Expand all accordion items
-    accordionItems.forEach((item) => {
-      const collapseElement = item.querySelector(".accordion-collapse");
-      if (!collapseElement.classList.contains("show")) {
-        const accordionButton = item.querySelector(".accordion-button");
-        collapseElement.classList.add("show");
-        accordionButton.setAttribute("aria-expanded", "true");
-      }
-    });
-    toggleAccordionButton.innerText = "Hide All";
-  }
-  isAccordionExpanded = !isAccordionExpanded;
-
-  // Scroll to the #skills section
-  document.querySelector("#skills").scrollIntoView({
-    behavior: "smooth",
-  });
-});
-
 //========Video Controls
 // Get all video elements on the page
 const videoElements = document.querySelectorAll("video");
@@ -501,22 +540,9 @@ setTimeout(() => {
 }, 100);
 
 
-//===========Load img in Skills Section
-window.addEventListener('load', function () {
-    // Select the section with id "skills"
-    const skillsSection = document.getElementById('skills');
+
+
   
-    // Select all the images within the skills section
-    const images = skillsSection.querySelectorAll('img');
-  
-    // Loop through the images and set their 'src' attribute to load them
-    images.forEach(image => {
-      const src = image.getAttribute('data-src'); // Use a 'data-src' attribute to store the image source
-      if (src) {
-        image.src = src;
-      }
-    });
-  });
-  
+
 
   

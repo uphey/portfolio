@@ -17,10 +17,12 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     </noscript>
 
@@ -58,7 +60,7 @@
                             <a class="nav-link active" href="#home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#portfolio">Portfolio</a>
+                            <a class="nav-link" href="#projects">Projects</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#skills">Skills</a>
@@ -216,10 +218,10 @@
         </section>
         <!-- End Hightlight Section -->
 
-        <!-- ======= Portfolio Section ======= -->
-        <section id="portfolio">
+        <!-- ======= Projects Section ======= -->
+        <section id="projects">
             <div class="container pb-7">
-                <div class="portfolio-title display-5 fw-bold text-center pt-6 pb-3">Portfolio</div>
+                <div class="portfolio-title display-5 fw-bold text-center pt-6 pb-3">Projects</div>
 
 
                 <div class="portfolio-content" data-aos="fade-up">
@@ -276,14 +278,14 @@
                             </div>
                         </div>
 
-                        <div class="item col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod1">
+                        <div class="item col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod3">
                             <div class="d-flex select-box overflow-hidden">
                                 <div class="img-overlay">
                                     <p>Establish the podcast's brand identity by crafting a unified appearance
                                         through logo design, cover art, and post templates.</p>
                                 </div>
                                 <div class="p-4 work-text position-absolute">
-                                    <p class="h4">Podcast Brand Design</p>
+                                    <p class="h4">Podcast Brand Identity</p>
                                 </div>
                                 <div class="p-4 work-tag position-absolute">
                                     <div class="tag-wrapper graphic">
@@ -352,8 +354,8 @@
                                     </div>
                                 </div>
                                 <div class="work-img">
-                                    <img class="inside-img video" src="assets/img/portfolio/elearning_video.webp"
-                                        alt="">
+                                    <img class="inside-img video" src="assets/img/portfolio/elearning_video.webp" alt=""
+                                        loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -373,7 +375,8 @@
                                     </div>
                                 </div>
                                 <div class="work-img">
-                                    <img class="inside-img graphic" src="assets/img/portfolio/cuhk_poster.webp" alt="">
+                                    <img class="inside-img graphic" src="assets/img/portfolio/cuhk_poster.webp" alt=""
+                                        loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -418,7 +421,7 @@
                                 </div>
                                 <div class="modal-header">
                                     <div class="container">
-                                        <h1 class="modal-title display-5 fw-bold">Modern Time, Modern Web</h1>
+                                        <h1 class="modal-title display-5 fw-bold">Modern Time, Modern Web.</h1>
                                     </div>
 
                                 </div>
@@ -431,7 +434,28 @@
                         </div>
                     </div>
 
+                    <div id="mod3" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel1"
+                        aria-hidden="true" loading="lazy">
+                        <div class="modal-dialog ">
+                            <div class="modal-content">
+                                <div class="btn-wrapper">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-header">
+                                    <div class="container">
+                                        <h1 class="modal-title display-5 fw-bold">Defining a Brand.</h1>
+                                    </div>
 
+                                </div>
+                                <div class="modal-body"> </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                 </div>
@@ -446,11 +470,11 @@
         <!-- =======Skills Section ======= -->
 
         <section id="skills">
-            <div class="container px-sm-5 pb-7">
+            <div class="container px-sm-5 pb-7 skills-anchor">
                 <div class="portfolio-title display-5 fw-bold text-center pt-7 pb-5">Skills</div>
 
-                <div class="accordion accordion-flush mx-3" id="accordionSkills" data-aos="fade-up">
-                    <div class="accordion-item" data-aos="fade-up" data-aos-once="true">
+                <div class="accordion accordion-flush mx-3" id="accordionSkills">
+                    <div class="accordion-item ani-fade-in-up">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#panelsStayOpen-collapse1" aria-expanded="true"
@@ -482,7 +506,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-once="true">
+                    <div class="accordion-item ani-fade-in-up">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#panelsStayOpen-collapse2" aria-expanded="true"
@@ -524,7 +548,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-once="true">
+                    <div class="accordion-item ani-fade-in-up">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#panelsStayOpen-collapse3" aria-expanded="true"
@@ -561,7 +585,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-once="true">
+                    <div class="accordion-item ani-fade-in-up">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#panelsStayOpen-collapse4" aria-expanded="true"
@@ -593,7 +617,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-once="true">
+                    <div class="accordion-item ani-fade-in-up">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#panelsStayOpen-collapse5" aria-expanded="true"
@@ -625,7 +649,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-once="true">
+                    <div class="accordion-item ani-fade-in-up">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#panelsStayOpen-collapse6" aria-expanded="true"
@@ -674,11 +698,7 @@
 
 
 
-                <div class="button-wrapper d-flex justify-content-center">
-                    <button id="toggleAccordionButton" class="btn btn-dark" data-bs-toggle="button" aria-pressed="true">
-                        Hide All
-                    </button>
-                </div>
+
 
             </div>
         </section>
@@ -688,7 +708,7 @@
         <section id="about">
             <div class="large-container">
                 <div class="portfolio-title display-5 fw-bold text-center pt-7 pb-1">About</div>
-                <div class="about-container" data-aos="zoom-in-up">
+                <div class="about-container ani-zoom-in-up">
 
 
                     <div class="about-wrapper row align-items-center">
@@ -720,13 +740,13 @@
         <!-- End About Section -->
     </main>
 
-    <footer id="contact" data-aos="flip-up">
+    <footer id="contact" class="ani-flip-up">
         <div class="row mt-3 mb-5 align-items-center">
             <div class="col-md-3">
                 <div class="footer-brand text-center">TOMMY CHIU</div>
             </div>
             <div class="col-md-6 footer-text">
-                <div class="p text-center">Designed and hand-coded by me</div>
+                <div class="p text-center">Designed and hand-coded by myself</div>
                 <div class="p text-center">© 2023 Tommy Chiu</div>
             </div>
             <div class="col-md-3 footer-icon d-flex align-items-center justify-content-center">
@@ -739,7 +759,7 @@
                     </svg>
                 </a>
                 <a href="mailto:chiushtommy@gmail.com" target="_blank" aria-label="email" class="btn" role="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
                         class="bi bi-envelope-fill" viewBox="0 0 16 16">
                         <path
                             d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
