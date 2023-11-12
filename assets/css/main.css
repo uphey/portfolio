@@ -1347,9 +1347,11 @@ body {
     .button1-lg {
         display: none;
     }
-    
     .button1-sm {
         display: block;
+    }
+    .btn-circle {
+        padding: 0.85rem 1.2rem;
     }
 }
 

@@ -134,84 +134,87 @@ button.addEventListener("mouseout", () => {
 
 ///////////////////Load Modal Content
 
-// Define an object mapping target IDs to URLs
-const contentInfo = {
-  "#mod1": "assets/modal/mod1.html",
-  "#mod2": "assets/modal/mod2.html",
-  "#mod3": "assets/modal/mod3.html",
-  // Add more entries for additional content containers
-};
-
-// Function to load and insert external HTML content
-async function loadExternalContent(url, target) {
-  try {
-    // Use fetch to load the external HTML content
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Failed to fetch ${url}`);
+// Define an array of objects with target IDs and corresponding URLs
+const contentInfo = [
+    { target: "#mod1", url: "assets/modal/mod1.html" },
+    { target: "#mod2", url: "assets/modal/mod2.html" },
+    { target: "#mod3", url: "assets/modal/mod3.html" },
+    // Add more entries for additional content containers
+  ];
+  
+  // Function to load and insert external HTML content
+  async function loadExternalContent(url, target) {
+    try {
+      // Use fetch to load the external HTML content
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${url}`);
+      }
+  
+      const externalHTML = await response.text();
+  
+      // Insert the external HTML content into the modal body
+      const modalBody = document.querySelector(`${target} .modal-body`);
+      if (modalBody) {
+        modalBody.innerHTML = externalHTML;
+  
+        // Add the 'controls' attribute to video elements
+        const videoElements = modalBody.querySelectorAll("video");
+        videoElements.forEach((video) => {
+          video.setAttribute("controls", "controls");
+  
+          // Remove the 'controls' attribute after 0.1 seconds
+          setTimeout(() => {
+            video.removeAttribute("controls");
+          }, 400);
+        });
+      }
+    } catch (error) {
+      console.error("Error loading external content:", error);
     }
-
-    const externalHTML = await response.text();
-
-    // Insert the external HTML content into the modal body
-    const modalBody = document.querySelector(target + " .modal-body");
-    if (modalBody) {
-      modalBody.innerHTML = externalHTML;
-
-      // Add the 'controls' attribute to video elements
-      const videoElements = modalBody.querySelectorAll("video");
-      videoElements.forEach((video) => {
-        video.setAttribute("controls", "controls");
-
-        // Remove the 'controls' attribute after 0.1 seconds
-        setTimeout(() => {
-          video.removeAttribute("controls");
-        }, 400);
+  }
+  
+  // Function to load the iframe
+  function loadIframe(target) {
+    const iframe = document.querySelector(`${target} iframe`);
+    if (iframe) {
+      const iframeSrc = iframe.getAttribute("data-src");
+      if (iframeSrc) {
+        iframe.src = iframeSrc;
+      }
+    }
+  }
+  
+  // Function to unload the iframe when the modal is hidden
+  function unloadIframe(target) {
+    const iframe = document.querySelector(`${target} iframe`);
+    if (iframe) {
+      iframe.src = ""; // Unload the iframe by clearing its src
+    }
+  }
+  
+  // Cache modal elements
+  const modalTargets = contentInfo.map((info) => document.querySelector(info.target));
+  
+  // Add click event listeners for each link to trigger loading content and the iframe
+  contentInfo.forEach(({ target, url }) => {
+    const loadLink = document.querySelector(`div[data-bs-target="${target}"]`);
+    if (loadLink) {
+      loadLink.addEventListener("click", function (e) {
+        e.preventDefault(); // Prevent the default link behavior
+        loadExternalContent(url, target); // Load the external content
+        loadIframe(target); // Load the iframe
       });
     }
-  } catch (error) {
-    console.error("Error loading external content:", error);
-  }
-}
-
-// Function to load the iframe
-function loadIframe(target) {
-  const iframe = document.querySelector(target + " iframe");
-  if (iframe) {
-    const iframeSrc = iframe.getAttribute("data-src");
-    if (iframeSrc) {
-      iframe.src = iframeSrc;
-    }
-  }
-}
-
-// Function to unload the iframe when the modal is hidden
-function unloadIframe(target) {
-  const iframe = document.querySelector(target + " iframe");
-  if (iframe) {
-    iframe.src = ""; // Unload the iframe by clearing its src
-  }
-}
-
-// Add click event listeners for each link to trigger loading content and the iframe
-for (const target in contentInfo) {
-  const loadLink = document.querySelector(`div[data-bs-target="${target}"]`);
-  if (loadLink) {
-    loadLink.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent the default link behavior
-      loadExternalContent(contentInfo[target], target); // Load the external content
-      loadIframe(target); // Load the iframe
-    });
-  }
-}
-
-// Add event listener to handle modal hide event and unload the iframe
-const modals = document.querySelectorAll(".modal");
-modals.forEach((modal) => {
-  modal.addEventListener("hidden.bs.modal", function () {
-    unloadIframe(`#${modal.id}`);
   });
-});
+  
+  // Add event listener to handle modal hide event and unload the iframe
+  modalTargets.forEach((modal) => {
+    modal.addEventListener("hidden.bs.modal", function () {
+      unloadIframe(`#${modal.id}`);
+    });
+  });
+  
 
 //======Copy Email
 const emailLink = document.getElementById("email");
