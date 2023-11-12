@@ -56,21 +56,65 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });  
 
-//===========Load img in Skills Section
+//===========Load img after page load
 window.addEventListener('load', function () {
-    // Select the section with id "skills"
-    const skillsSection = document.getElementById('skills');
+    // Function to load images within a section
+    function loadImagesInSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (!section) return;
   
-    // Select all the images within the skills section
-    const images = skillsSection.querySelectorAll('img');
+      const images = section.querySelectorAll('img');
+      images.forEach(image => {
+        const src = image.getAttribute('data-src');
+        if (src) {
+          image.src = src;
+        }
+      });
+    }
   
-    // Loop through the images and set their 'src' attribute to load them
-    images.forEach(image => {
-      const src = image.getAttribute('data-src'); // Use a 'data-src' attribute to store the image source
-      if (src) {
-        image.src = src;
-      }
+    // Call the function for each section
+    loadImagesInSection('skills');
+    loadImagesInSection('about');
+  });
+  
+
+
+//================NavBrand Transition
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const navName = document.querySelector('.nav-name');
+    const navLogo = document.querySelector('.nav-logo');
+  
+    // Get the offset of the #home section
+    const homeSection = document.getElementById('home');
+    const homeSectionOffset = homeSection.offsetTop + homeSection.offsetHeight;
+  
+    // Initial state based on scroll position
+    updateNavVisibility();
+  
+    // Listen for scroll events
+    window.addEventListener('scroll', function () {
+      updateNavVisibility();
     });
+  
+    // Function to update the visibility of nav elements based on scroll position
+    function updateNavVisibility() {
+      const scrollPosition = window.scrollY;
+  
+      if (scrollPosition <= homeSectionOffset) {
+        // At the top of the page or within the #home section
+        navName.style.opacity = '0';
+        navName.style.transform = 'translateY(7px)';
+        navLogo.style.opacity = '1';
+        navLogo.style.transform = 'translateY(0)';
+      } else {
+        // Scrolled away from the #home section
+        navName.style.opacity = '1';
+        navName.style.transform = 'translateY(0)';
+        navLogo.style.opacity = '0';
+        navLogo.style.transform = 'translateY(7px)';
+      }
+    }
   });
   
 
