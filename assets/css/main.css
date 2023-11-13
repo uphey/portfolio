@@ -224,7 +224,7 @@
 }
 }
 
-#portfolio {
+#projects {
     background-color: #f9f9fa;
 }
 
@@ -624,6 +624,12 @@
     width: 100%;
     object-fit: cover;
     object-position: center;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
 }
 
 .modal-header .container {
@@ -636,32 +642,6 @@
     margin-top: 3rem;
     line-height: 2.5rem;
 }
-
-/* #mod1 .modal-header {
-    background-image: url(../img/portfolio/anybooks.png);
-}
-
-#mod2 .modal-header {
-    background-image: url(../img/portfolio/cltdc_website.png);
-}
-
-#mod3 .modal-header {
-    background-image: url(../img/portfolio/cowtalk_brand.png);
-}
-
-@media (max-width: 767px) {
-    #mod1 .modal-header {
-        background-image: url(../img/portfolio/anybooks.webp);
-    }
-    
-    #mod2 .modal-header {
-        background-image: url(../img/portfolio/cltdc_website.webp);
-    }
-    
-    #mod3 .modal-header {
-        background-image: url(../img/portfolio/cowtalk_brand.webp);
-    }
-} */
 
 .btn-wrapper {
     position: absolute;
@@ -869,13 +849,13 @@ h1+.modal-text {
 
 .about-img {
     border-radius: 20px;
-    transition: .6s;
+    transition: 1.5s;
     -webkit-user-drag: none;
 }
 
 .about-img:hover {
-    transform: scale(1.02);
-    transition: .6s;
+    transform: scale(1.05);
+    transition: 1.5s;
 }
 
 .about-wrapper .p {
@@ -1265,6 +1245,9 @@ body {
 @media (max-width: 991px) {
     .item {
         padding: .75rem .5rem;
+    }
+    #about .d-flex {
+        justify-content: center;
     }
 }
 

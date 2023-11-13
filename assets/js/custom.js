@@ -1,60 +1,78 @@
 /////////
 document.addEventListener('DOMContentLoaded', function () {
     const fadeInUp = document.querySelectorAll('.ani-fade-in-up');
-  
-    window.addEventListener('scroll', function () {
+
+    function handleScroll() {
         fadeInUp.forEach(item => {
-        const itemTop = item.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        const triggerOffset = windowHeight * 0.85;
-  
-        if (itemTop < triggerOffset) {
-          item.classList.add('fade-in-up');
-        } else {
-          item.classList.remove('fade-in-up');
-        }
-      });
-    });
-  });
+            const itemTop = item.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            const triggerOffset = windowHeight * 0.85;
+
+            if (itemTop < triggerOffset) {
+                item.classList.add('fade-in-up');
+            } else {
+                item.classList.remove('fade-in-up');
+            }
+        });
+    }
+
+    // Initial check for items in the viewport
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+});
+
   
 ////////
 document.addEventListener('DOMContentLoaded', function () {
     const zoomInUp = document.querySelectorAll('.ani-zoom-in-up');
-  
-    window.addEventListener('scroll', function () {
+
+    function handleScroll() {
         zoomInUp.forEach(item => {
-        const itemTop = item.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        const triggerOffset = windowHeight;
-  
-        if (itemTop < triggerOffset) {
-          item.classList.add('zoom-in-up');
-        } else {
-          item.classList.remove('zoom-in-up');
-        }
-      });
-    });
-  });  
+            const itemTop = item.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            const triggerOffset = windowHeight;
+
+            if (itemTop < triggerOffset) {
+                item.classList.add('zoom-in-up');
+            } else {
+                item.classList.remove('zoom-in-up');
+            }
+        });
+    }
+
+    // Initial check for items in the viewport
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+});
+
 
 
 ////////
 document.addEventListener('DOMContentLoaded', function () {
     const flipUp = document.querySelectorAll('.ani-flip-up');
-  
-    window.addEventListener('scroll', function () {
+
+    function handleScroll() {
         flipUp.forEach(item => {
-        const itemTop = item.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        const triggerOffset = windowHeight * 0.9;
-  
-        if (itemTop < triggerOffset) {
-          item.classList.add('flip-up');
-        } else {
-          item.classList.remove('flip-up');
-        }
-      });
-    });
-  });  
+            const itemTop = item.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            const triggerOffset = windowHeight * 0.9;
+
+            if (itemTop < triggerOffset) {
+                item.classList.add('flip-up');
+            } else {
+                item.classList.remove('flip-up');
+            }
+        });
+    }
+
+    // Initial check for items in the viewport
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+});
+
 
 //===========Load img after page load
 window.addEventListener('load', function () {
@@ -178,89 +196,6 @@ button.addEventListener("mouseout", () => {
   button.style.fontSize = "1.2rem";
   button.textContent = "↓";
 });
-
-///////////////////Load Modal Content
-
-// Define an array of objects with target IDs and corresponding URLs
-// const contentInfo = [
-//     { target: "#mod1", url: "assets/modal/mod1.html" },
-//     { target: "#mod2", url: "assets/modal/mod2.html" },
-//     { target: "#mod3", url: "assets/modal/mod3.html" },
-//     // Add more entries for additional content containers
-//   ];
-  
-//   // Function to load and insert external HTML content
-//   async function loadExternalContent(url, target) {
-//     try {
-//       // Use fetch to load the external HTML content
-//       const response = await fetch(url);
-//       if (!response.ok) {
-//         throw new Error(`Failed to fetch ${url}`);
-//       }
-  
-//       const externalHTML = await response.text();
-  
-//       // Insert the external HTML content into the modal body
-//       const modalBody = document.querySelector(`${target} .modal-body`);
-//       if (modalBody) {
-//         modalBody.innerHTML = externalHTML;
-  
-//         // Add the 'controls' attribute to video elements
-//         const videoElements = modalBody.querySelectorAll("video");
-//         videoElements.forEach((video) => {
-//           video.setAttribute("controls", "controls");
-  
-//           // Remove the 'controls' attribute after 0.1 seconds
-//           setTimeout(() => {
-//             video.removeAttribute("controls");
-//           }, 400);
-//         });
-//       }
-//     } catch (error) {
-//       console.error("Error loading external content:", error);
-//     }
-//   }
-  
-//   // Function to load the iframe
-//   function loadIframe(target) {
-//     const iframe = document.querySelector(`${target} iframe`);
-//     if (iframe) {
-//       const iframeSrc = iframe.getAttribute("data-src");
-//       if (iframeSrc) {
-//         iframe.src = iframeSrc;
-//       }
-//     }
-//   }
-  
-//   // Function to unload the iframe when the modal is hidden
-//   function unloadIframe(target) {
-//     const iframe = document.querySelector(`${target} iframe`);
-//     if (iframe) {
-//       iframe.src = ""; // Unload the iframe by clearing its src
-//     }
-//   }
-  
-//   // Cache modal elements
-//   const modalTargets = contentInfo.map((info) => document.querySelector(info.target));
-  
-//   // Add click event listeners for each link to trigger loading content and the iframe
-//   contentInfo.forEach(({ target, url }) => {
-//     const loadLink = document.querySelector(`div[data-bs-target="${target}"]`);
-//     if (loadLink) {
-//       loadLink.addEventListener("click", function (e) {
-//         e.preventDefault(); // Prevent the default link behavior
-//         loadExternalContent(url, target); // Load the external content
-//         loadIframe(target); // Load the iframe
-//       });
-//     }
-//   });
-  
-//   // Add event listener to handle modal hide event and unload the iframe
-//   modalTargets.forEach((modal) => {
-//     modal.addEventListener("hidden.bs.modal", function () {
-//       unloadIframe(`#${modal.id}`);
-//     });
-//   });
   
 
 //======Copy Email
