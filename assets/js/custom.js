@@ -73,12 +73,12 @@ window.addEventListener('load', function () {
     }
   
     // Call the function for each section
+    loadImagesInSection('projects');
     loadImagesInSection('skills');
     loadImagesInSection('about');
   });
-  
 
-//===============Load video after page load
+//===============Load video when modal show
 document.addEventListener('DOMContentLoaded', function () {
     // Function to load media elements within a modal
     function loadMediaInModal(target) {

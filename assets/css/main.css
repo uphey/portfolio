@@ -600,7 +600,7 @@
 }
 
 .modal-header {
-    padding: 2rem 2rem 0 2rem;
+    padding: 0;
     border-bottom: 0;
     border-radius: 2rem 2rem 0 0;
     align-items: flex-start;
@@ -611,13 +611,33 @@
     background-color: #212529;
 }
 
+.modal-img-wrapper {
+    width: 100%;
+    height: 65vh;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    border-radius: 2rem 2rem 0 0;
+}
+
+.modal-img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.modal-header .container {
+    position: absolute;
+    padding: 2rem;
+}
+
 .modal-title {
     color: #fff;
     margin-top: 3rem;
     line-height: 2.5rem;
 }
 
-#mod1 .modal-header {
+/* #mod1 .modal-header {
     background-image: url(../img/portfolio/anybooks.png);
 }
 
@@ -628,6 +648,20 @@
 #mod3 .modal-header {
     background-image: url(../img/portfolio/cowtalk_brand.png);
 }
+
+@media (max-width: 767px) {
+    #mod1 .modal-header {
+        background-image: url(../img/portfolio/anybooks.webp);
+    }
+    
+    #mod2 .modal-header {
+        background-image: url(../img/portfolio/cltdc_website.webp);
+    }
+    
+    #mod3 .modal-header {
+        background-image: url(../img/portfolio/cowtalk_brand.webp);
+    }
+} */
 
 .btn-wrapper {
     position: absolute;
