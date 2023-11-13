@@ -608,6 +608,7 @@
     height: 65vh;
     background-size: cover;
     background-position: center;
+    background-color: #212529;
 }
 
 .modal-title {
