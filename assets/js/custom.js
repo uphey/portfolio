@@ -97,50 +97,50 @@ window.addEventListener('load', function () {
   });
 
 //===============Load video when modal show
-document.addEventListener('DOMContentLoaded', function () {
-    // Function to load media elements within a modal
-    function loadMediaInModal(target) {
-      const modal = document.querySelector(target);
-      if (!modal) return;
+// document.addEventListener('DOMContentLoaded', function () {
+//     // Function to load media elements within a modal
+//     function loadMediaInModal(target) {
+//       const modal = document.querySelector(target);
+//       if (!modal) return;
   
-      // Load videos and iframes
-      const mediaElements = modal.querySelectorAll('video[data-src], iframe[data-src]');
-      mediaElements.forEach(media => {
-        const src = media.getAttribute('data-src');
-        if (src) {
-          media.src = src;
-        }
-      });
-    }
+//       // Load videos and iframes
+//       const mediaElements = modal.querySelectorAll('video[data-src], iframe[data-src]');
+//       mediaElements.forEach(media => {
+//         const src = media.getAttribute('data-src');
+//         if (src) {
+//           media.src = src;
+//         }
+//       });
+//     }
   
-    // Function to unload iframes within a modal
-    function unloadIframesInModal(target) {
-      const modal = document.querySelector(target);
-      if (!modal) return;
+//     // Function to unload iframes within a modal
+//     function unloadIframesInModal(target) {
+//       const modal = document.querySelector(target);
+//       if (!modal) return;
   
-      const iframes = modal.querySelectorAll('iframe[data-src]');
-      iframes.forEach(iframe => {
-        iframe.src = ''; // Unload the iframe by clearing its src
-      });
-    }
+//       const iframes = modal.querySelectorAll('iframe[data-src]');
+//       iframes.forEach(iframe => {
+//         iframe.src = ''; // Unload the iframe by clearing its src
+//       });
+//     }
   
-    // Add click event listeners for each modal trigger
-    const modalTriggers = document.querySelectorAll('[data-bs-toggle="modal"]');
-    modalTriggers.forEach(trigger => {
-      trigger.addEventListener('click', function () {
-        const target = this.getAttribute('data-bs-target');
-        loadMediaInModal(target);
-      });
-    });
+//     // Add click event listeners for each modal trigger
+//     const modalTriggers = document.querySelectorAll('[data-bs-toggle="modal"]');
+//     modalTriggers.forEach(trigger => {
+//       trigger.addEventListener('click', function () {
+//         const target = this.getAttribute('data-bs-target');
+//         loadMediaInModal(target);
+//       });
+//     });
   
-    // Add event listener to handle modal hide event and unload iframes
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
-      modal.addEventListener('hidden.bs.modal', function () {
-        unloadIframesInModal(`#${modal.id}`);
-      });
-    });
-  });
+//     // Add event listener to handle modal hide event and unload iframes
+//     const modals = document.querySelectorAll('.modal');
+//     modals.forEach(modal => {
+//       modal.addEventListener('hidden.bs.modal', function () {
+//         unloadIframesInModal(`#${modal.id}`);
+//       });
+//     });
+//   });
   
 
 
