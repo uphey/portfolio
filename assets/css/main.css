@@ -675,7 +675,6 @@
 .modal-body {
     padding: 4rem 7rem;
     min-height: 50vh;
-    background-color: #fff;
 }
 
 .modal-text {
@@ -689,6 +688,15 @@ h1+.modal-text {
 
 .modal-body .row {
     align-items: center;
+}
+
+.modal-body img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
 }
 
 .modal-body video, .modal-body img {

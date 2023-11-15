@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fadeInUp.forEach(item => {
             const itemTop = item.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
-            const triggerOffset = windowHeight * 0.85;
+            const triggerOffset = windowHeight * 0.95;
 
             if (itemTop < triggerOffset) {
                 item.classList.add('fade-in-up');
@@ -107,7 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
       const mediaElements = modal.querySelectorAll('video[data-src], iframe[data-src]');
       mediaElements.forEach(media => {
         const src = media.getAttribute('data-src');
-        if (src) {
+        if (src && !media.src && media.tagName === 'VIDEO') {
+          media.src = src;
+        }
+        if (src && media.tagName === 'IFRAME') {
           media.src = src;
         }
       });
@@ -141,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
+  
   
 
 
