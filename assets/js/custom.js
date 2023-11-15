@@ -503,26 +503,41 @@ window.addEventListener("resize", checkScreenWidth);
 // Initial check when the page loads
 checkScreenWidth();
 
-//=============Nav Link Click
+//=============Link Click go to ID
 document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('.nav-link');
+    // Function to handle scroll to target
+    function scrollToTarget(target) {
+      const targetElement = document.querySelector(target);
   
+      if (targetElement) {
+        // Scroll to the target element with a smooth animation
+        targetElement.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    }
+  
+    // Add click event listeners for .nav-link elements
+    const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
       link.addEventListener('click', function (event) {
         event.preventDefault();
-  
         const target = this.getAttribute('data-href');
-        const targetElement = document.querySelector(target);
-  
-        if (targetElement) {
-          // Scroll to the target element with a smooth animation
-          targetElement.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
+        scrollToTarget(target);
       });
     });
+  
+    // Add click event listener for .highlight-button
+    const highlightButton = document.querySelector('#highlight-button');
+    if (highlightButton) {
+      highlightButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        const target = this.getAttribute('data-href');
+        scrollToTarget(target);
+      });
+    }
   });
+  
   
   
 //=============Change the active state of a navbar item
