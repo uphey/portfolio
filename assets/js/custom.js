@@ -333,6 +333,22 @@ hoveredElements.forEach((element) => {
   element.addEventListener("mouseout", hideHiddenElement);
 });
 
+
+//======== Back to Top Button
+document.addEventListener('DOMContentLoaded', function () {
+    const scrollToTopButton = document.querySelector('.button-top');
+  
+    if (scrollToTopButton) {
+      scrollToTopButton.addEventListener('click', function () {
+        // Scroll to the top of the page with a smooth animation
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  });
+
 // =========Show on Scroll
 const scrollElements = document.querySelectorAll(".scroll-element");
 let lastScrollY = window.scrollY;
@@ -487,6 +503,28 @@ window.addEventListener("resize", checkScreenWidth);
 // Initial check when the page loads
 checkScreenWidth();
 
+//=============Nav Link Click
+document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('.nav-link');
+  
+    navLinks.forEach(link => {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+  
+        const target = this.getAttribute('data-href');
+        const targetElement = document.querySelector(target);
+  
+        if (targetElement) {
+          // Scroll to the target element with a smooth animation
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
+  
+  
 //=============Change the active state of a navbar item
 // Get all the nav-links
 const navLinks = document.querySelectorAll(".nav-link");
@@ -512,7 +550,7 @@ window.addEventListener("scroll", () => {
 
       // Add the 'active' class to the nav-link corresponding to the section
       document
-        .querySelector(`.nav-link[href="#${sectionId}"]`)
+        .querySelector(`.nav-link[data-href="#${sectionId}"]`)
         .classList.add("active");
     }
   }

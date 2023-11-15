@@ -58,7 +58,12 @@
 .nav-link {
     font-size: .95rem;
     font-weight: 400;
-    transition: .5s ease;
+    cursor: pointer;
+    transition: .6s ease;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
 }
 
 .nav-link.active {
@@ -585,8 +590,48 @@
 .modal {
     padding: 0;
     margin: 0;
+    transition: .3s ease-in-out;
 }
 
+.fade {
+    backdrop-filter: saturate(200%) blur(18px);
+    -webkit-backdrop-filter: saturate(200%) blur(18px);
+    transition: 0.2s ease;
+  }
+  
+  .fade:not(.show) {
+    backdrop-filter: saturate(100%) blur(0px);
+    -webkit-backdrop-filter: saturate(100%) blur(0px);
+    opacity: 0;
+  }
+  
+  .modal.fade .modal-dialog {
+    transition: .5s ease;
+    transform: translate(0, 500px);
+  }
+  
+  .modal.show .modal-dialog {
+    transform: none;
+  }
+  .modal.modal-static .modal-dialog {
+    transform: scale(1.02);
+  }
+  
+  .modal-backdrop {
+    --bs-backdrop-bg: #000000;
+    --bs-backdrop-opacity: 0.4;
+    transition: .2s ease;
+  }
+  .modal-backdrop.fade {
+    opacity: 0;
+    transition: .2s ease-out;
+  }
+  .modal-backdrop.show {
+    opacity: var(--bs-backdrop-opacity);
+    transition: .2s ease-in;
+  }
+  
+  
 .modal-dialog {
     max-width: 95vw;
     margin-top: 4rem;
