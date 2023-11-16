@@ -101,6 +101,7 @@ window.onload = function () {
     }
 
     // Create an Intersection Observer for each section
+    createIntersectionObserver('offcanvas');
     createIntersectionObserver('projects');
     createIntersectionObserver('skills');
     createIntersectionObserver('about');
