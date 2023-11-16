@@ -214,31 +214,30 @@ button.addEventListener("mouseout", () => {
   
 
 //======Copy Email
-const emailLink = document.getElementById("email");
 const copyButton = document.getElementById("copyButton");
+        const copyButtonText = document.getElementById("copyButtonText");
+        const text = "chiushtommy@gmail.com"; 
 
-const text = emailLink.innerHTML;
+        const copyContent = async () => {
+            try {
+                await navigator.clipboard.writeText(text);
+                console.log("Content copied to clipboard");
 
-const copyContent = async () => {
-  try {
-    await navigator.clipboard.writeText(text);
-    console.log("Content copied to clipboard");
+                // Change the button text to "Copied!" on successful copy
+                copyButtonText.textContent = "Copied!👏";
 
-    // Change the button text to "Copied!" on successful copy
-    copyButton.textContent = "Copied!👏";
+                // Add a CSS class for the bounce animation
+                copyButton.classList.add("bounce1");
 
-    // Add a CSS class for the bounce animation
-    copyButton.classList.add("bounce");
-
-    // Remove the bounce class after a short delay (1 second in this example)
-    setTimeout(() => {
-      copyButton.textContent = "Copy Email";
-      copyButton.classList.remove("bounce");
-    }, 1000);
-  } catch (err) {
-    console.error("Failed to copy: ", err);
-  }
-};
+                // Remove the bounce class and reset the text after a short delay (2 seconds in this example)
+                setTimeout(() => {
+                    copyButton.classList.remove("bounce1");
+                    copyButtonText.textContent = "Copy Email";
+                }, 2000);
+            } catch (err) {
+                console.error("Failed to copy: ", err);
+            }
+        };
 
 //========FilterButton
 const filterButtons = document.querySelectorAll(".filter-button");
