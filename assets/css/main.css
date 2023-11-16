@@ -788,8 +788,8 @@ h1+.modal-text {
     display: none;
 }
 
-#imageLoop1,
-#imageLoop2 {
+.imageLoop1,
+.imageLoop2 {
      position: absolute;
     top: 0;
     left: 0;
@@ -798,7 +798,7 @@ h1+.modal-text {
     transition: opacity 1s ease-in-out;
 }
 
-.image-container {
+.loop-image-container {
     border-radius: 2rem;
     position: relative;
     width: 100%;

@@ -598,47 +598,52 @@ window.addEventListener("beforeunload", () => {
   document.removeEventListener("scroll", closeNavbarOnScroll);
 });
 
-// //========Video Controls
-// // Get all video elements on the page
-// const videoElements = document.querySelectorAll("video");
+//========Video Controls
+// Get all video elements on the page
+const videoElements = document.querySelectorAll("video");
 
-// // Add the "controls" attribute to each video element
-// videoElements.forEach((video) => {
-//   video.setAttribute("controls", true);
-// });
+// Add the "controls" attribute to each video element
+videoElements.forEach((video) => {
+  video.setAttribute("controls", true);
+});
 
-// // Remove the "controls" attribute after 0.1 seconds
-// setTimeout(() => {
-//   videoElements.forEach((video) => {
-//     video.removeAttribute("controls");
-//   });
-// }, 100);
+// Remove the "controls" attribute after 0.1 seconds
+setTimeout(() => {
+  videoElements.forEach((video) => {
+    video.removeAttribute("controls");
+  });
+}, 100);
 
 
 //=======Loop Image
 document.addEventListener('DOMContentLoaded', function () {
-    const imageElement1 = document.getElementById('imageLoop1');
-    const imageElement2 = document.getElementById('imageLoop2');
-    const intervalTime = 6000; 
+    const imageElements1 = document.querySelectorAll('.imageLoop1');
+    const imageElements2 = document.querySelectorAll('.imageLoop2');
+    const intervalTime = 6000;
 
-    function crossfadeImages() {
-        // Set opacity for imageElement1 to 0 and imageElement2 to 1
-        imageElement1.style.opacity = '0';
-        imageElement2.style.opacity = '1';
+    function crossfadeImages(elements1, elements2) {
+        elements1.forEach((element1, index) => {
+            const element2 = elements2[index];
 
-        // Wait for the specified interval
-        setTimeout(() => {
-            // Swap the opacity values to show imageElement1 and hide imageElement2
-            imageElement1.style.opacity = '1';
-            imageElement2.style.opacity = '0';
-        }, intervalTime / 2); // Half of the interval for each image
+            // Set opacity for element1 to 0 and element2 to 1
+            element1.style.opacity = '0';
+            element2.style.opacity = '1';
+
+            // Wait for the specified interval
+            setTimeout(() => {
+                // Swap the opacity values to show element1 and hide element2
+                element1.style.opacity = '1';
+                element2.style.opacity = '0';
+            }, intervalTime / 2); // Half of the interval for each element
+        });
     }
 
     // Start the loop
-    setInterval(crossfadeImages, intervalTime);
+    setInterval(() => crossfadeImages(imageElements1, imageElements2), intervalTime);
 });
 
-    
+
+
 
 
 
