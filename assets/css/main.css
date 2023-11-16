@@ -788,6 +788,23 @@ h1+.modal-text {
     display: none;
 }
 
+#imageLoop1,
+#imageLoop2 {
+     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    transition: opacity 1s ease-in-out;
+}
+
+.image-container {
+    border-radius: 2rem;
+    position: relative;
+    width: 100%;
+    aspect-ratio : 1 / 1;
+}
+
 
 #skills {
     background-color: #101011;
