@@ -74,27 +74,38 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//===========Load img after page load
-window.addEventListener('load', function () {
-    // Function to load images within a section
-    function loadImagesInSection(sectionId) {
-      const section = document.getElementById(sectionId);
-      if (!section) return;
-  
-      const images = section.querySelectorAll('img');
-      images.forEach(image => {
-        const src = image.getAttribute('data-src');
-        if (src) {
-          image.src = src;
-        }
-      });
+//===========Load img after page load and when scroll to previous sections
+window.onload = function () {
+    function loadImagesOnScroll(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const images = entry.target.querySelectorAll('img[data-src]');
+                images.forEach(image => {
+                    const src = image.getAttribute('data-src');
+                    if (src) {
+                        image.src = src;
+                        image.removeAttribute('data-src');
+                    }
+                });
+                observer.unobserve(entry.target);
+            }
+        });
     }
-  
-    // Call the function for each section
-    loadImagesInSection('projects');
-    loadImagesInSection('skills');
-    loadImagesInSection('about');
-  });
+
+    function createIntersectionObserver(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const observer = new IntersectionObserver(loadImagesOnScroll, { rootMargin: '0px 0px 300px 0px' });
+            observer.observe(section);
+        }
+    }
+
+    // Create an Intersection Observer for each section
+    createIntersectionObserver('projects');
+    createIntersectionObserver('skills');
+    createIntersectionObserver('about');
+};
+
 
 //===============Load video when modal show
 document.addEventListener('DOMContentLoaded', function () {
