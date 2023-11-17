@@ -656,10 +656,70 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+//=========Hide elements when modal show
+document.addEventListener('DOMContentLoaded', function () {
+    // Add event listeners for modal show events
+    document.querySelectorAll('.modal').forEach(function (modal) {
+        modal.addEventListener('show.bs.modal', function () {
+            hideSectionsAndBackground();
+        });
 
+        // Add event listener for modal hide events
+        modal.addEventListener('hide.bs.modal', function () {
+            showAllSectionsAndBackground();
+        });
+    });
+});
 
+function hideSectionsAndBackground() {
+    const sectionsToHide = document.querySelectorAll('#about, .img1, .about-img, .offcanvas, .inside-img, .accordion, #footer');
+    sectionsToHide.forEach(section => {
+        // Gradually reduce opacity before hiding
+        let opacity = 1;
+        const fadeOutInterval = setInterval(() => {
+            section.style.opacity = opacity;
+            opacity -= 0.1;
 
-  
+            if (opacity <= 0) {
+                // Set display to 'none' after fading out
+                section.style.contentVisibility = 'hidden';
+                clearInterval(fadeOutInterval);
+            }
+        }, 60);
+    });
 
+    const heroImage = document.getElementById('heroImage');
+    if (heroImage) {
+        // Gradually reduce opacity of the background image
+        let opacity = 1;
+        const fadeOutInterval = setInterval(() => {
+            heroImage.style.opacity = opacity;
+            opacity -= 0.1;
 
-  
+            if (opacity <= 0) {
+                // Set background image to 'none' after fading out
+                heroImage.style.backgroundImage = 'none';
+                clearInterval(fadeOutInterval);
+            }
+        }, 50);
+    }
+}
+
+// Function to show all sections and reset background
+function showAllSectionsAndBackground() {
+    const allSections = document.querySelectorAll('#about, .img1, .about-img, .offcanvas, .inside-img, .accordion, #footer');
+    allSections.forEach(section => {
+        // Reset opacity before showing
+        section.style.opacity = 1;
+        section.style.contentVisibility = 'visible';
+    });
+
+    const heroImage = document.getElementById('heroImage');
+    if (heroImage) {
+        // Reset opacity of the background image
+        heroImage.style.opacity = 1;
+        // Reset to your default background image
+        heroImage.style.backgroundImage = 'url("../../assets/img/background.webp")';
+    }
+}
+
