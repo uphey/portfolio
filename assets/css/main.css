@@ -1051,6 +1051,7 @@ footer {
 
 .namecard {
     background-color: #d0d0d060;
+    max-width: 500px;
     padding: 1.5rem;
     border-radius: 2rem;
     border: 1px solid #cdcdcd30;

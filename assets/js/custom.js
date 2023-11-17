@@ -100,12 +100,27 @@ window.onload = function () {
         }
     }
 
-    // Create an Intersection Observer for each section
-    createIntersectionObserver('offcanvas');
-    createIntersectionObserver('projects');
-    createIntersectionObserver('skills');
-    createIntersectionObserver('about');
+    // Load images in specified sections immediately after the page loads
+    ['projects', 'highlight'].forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            const images = section.querySelectorAll('img[data-src]');
+            images.forEach(image => {
+                const src = image.getAttribute('data-src');
+                if (src) {
+                    image.src = src;
+                    image.removeAttribute('data-src');
+                }
+            });
+        }
+    });
+
+    // Create an Intersection Observer for other sections
+    ['offcanvas', 'skills', 'about'].forEach(sectionId => {
+        createIntersectionObserver(sectionId);
+    });
 };
+
 
 
 //===============Load video when modal show
