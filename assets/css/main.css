@@ -725,6 +725,12 @@
     color: #808080;
 }
 
+.modal-text-photo {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #808080;
+}
+
 h1+.modal-text {
     max-width: 500px;
 }
@@ -748,6 +754,10 @@ h1+.modal-text {
     padding-right: 0;
 }
 
+.photo-holder img {
+    border-radius: 0;
+}
+
 .modal-body a.btn {
     display: flex;
     align-items: center;
@@ -756,6 +766,7 @@ h1+.modal-text {
 
 .video-sm {
     display: none;
+    content-visibility: hidden;
 }
 
 .singletone {
@@ -1450,9 +1461,11 @@ body {
     }
     .video-sm {
         display: block;
+        content-visibility: visible;
     }
     .video-lg {
         display: none;
+        content-visibility: hidden;
     }
     .space-between {
         display: flex;
