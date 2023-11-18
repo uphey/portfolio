@@ -736,5 +736,6 @@ function showAllSectionsAndBackground() {
         // Reset to your default background image
         heroImage.style.backgroundImage = 'url("../../assets/img/background.webp")';
     }
-}
+};
+
 

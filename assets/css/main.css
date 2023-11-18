@@ -52,7 +52,6 @@
     padding-right: 3rem;
 }
 
-
 .nav-link {
     font-size: .95rem;
     font-weight: 400;
@@ -922,7 +921,9 @@ h1+.modal-text {
 }
 
 .about-wrapper {
-    padding: 1.5rem 3rem 3rem 3rem;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
     overflow: hidden;
 }
 
@@ -992,17 +993,28 @@ footer {
 }
 
 .offcanvas.offcanvas-top {
-    box-shadow: 0 0 20px #35353552;
+    box-shadow: 0 0 10px #35353520;
     border-bottom: 0;
     height: fit-content;
     background-color: #ffffffe0;
     backdrop-filter: saturate(200%) blur(18px);
     -webkit-backdrop-filter: saturate(200%) blur(18px);
+    transition: all 0.3s;
+}
+
+.offcanvas.showing {
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.offcanvas.show:not(.hiding) {
+    opacity: 1;
+    transition: all 0.3s;
 }
 
 .offcanvas.showing  .offcanvas-body {
-    transform: translateY(2rem);
-    opacity: .8;
+    transform: translateY(1.5rem);
+    opacity: .9;
     transition: .5s;
 }
 
@@ -1049,8 +1061,8 @@ footer {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-top: -1.5rem;
-    padding: 0 8rem 3rem 8rem;
+    margin-top: -2rem;
+    padding: 0 2rem 3rem 2rem;
     transition: .5s;
 }
 
@@ -1061,6 +1073,10 @@ footer {
 .offcanvas-body a:hover {
     transform: scale(1.1);
     transition: .5s;
+}
+
+.offcanvas-title {
+    color: #000;
 }
 
 
@@ -1179,7 +1195,7 @@ iframe {
     display: block;
     opacity: 0;
     transition: all .5s ease;
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .button-top {
@@ -1458,7 +1474,7 @@ body {
         margin-right: 1rem;
     }
     .about-wrapper {
-        padding: .1rem 1.5rem 2.5rem 1.5rem;
+        padding: 1.5rem 1.5rem 2.5rem 1.5rem;
     }
     .modal-body .reverse {
         flex-direction: column-reverse;
