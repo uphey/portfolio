@@ -301,75 +301,124 @@ filterButtons.forEach((button) => {
   });
 });
 
-// Function to check if two elements overlap
+//============Filist Show and Hide
+
 function isOverlap(element1, element2) {
   const rect1 = element1.getBoundingClientRect();
   const rect2 = element2.getBoundingClientRect();
 
-  return !(rect1.right < rect2.left || 
-           rect1.left > rect2.right || 
-           rect1.bottom < rect2.top || 
-           rect1.top > rect2.bottom);
+  return !(rect1.right < rect2.left ||
+    rect1.left > rect2.right ||
+    rect1.bottom < rect2.top ||
+    rect1.top > rect2.bottom);
 }
 
-// Function to handle the opacity of .filist elements
 function handleFilistOpacity() {
-  const selectBoxes = document.querySelectorAll('.select-box');
-  const filists = document.querySelectorAll('.filist');
-  const filterButtons = document.querySelectorAll('.filter-button');
+  const screenWidth = window.innerWidth;
 
-  filists.forEach(filist => {
-    let isOverlapping = false;
+  // Only apply the script on screens with a minimum width of 768px
+  if (screenWidth >= 768) {
+    const selectBoxes = document.querySelectorAll('.select-box');
+    const filists = document.querySelectorAll('.filist');
+    const filterButtons = document.querySelectorAll('.filter-button');
 
-    // Check if filist overlaps with any select-box
-    selectBoxes.forEach(selectBox => {
-      if (isOverlap(filist, selectBox)) {
-        isOverlapping = true;
+    filists.forEach(filist => {
+      let isOverlapping = false;
+
+      selectBoxes.forEach(selectBox => {
+        if (isOverlap(filist, selectBox)) {
+          isOverlapping = true;
+        }
+      });
+
+      if (isOverlapping && !filist.classList.contains('hovered')) {
+        filist.style.opacity = '0.3';
+        filist.style.transform = 'scale(0.9)';
+        filterButtons.forEach(button => {
+          button.style.color = '#fff0';
+        });
+      } else {
+        filist.style.opacity = '1';
+        filist.style.transform = 'scale(1)';
+        filterButtons.forEach(button => {
+          button.style.color = '';
+        });
       }
     });
+  } else {
+    const selectBoxes = document.querySelectorAll('.select-box');
+    const filists = document.querySelectorAll('.filist');
+    const filterButtons = document.querySelectorAll('.filter-button');
 
-    // Set opacity based on the overlap status and hover state
-    if (isOverlapping && !filist.classList.contains('hovered')) {
-      filist.style.opacity = '0.3';
-      filist.style.transform = 'scale(0.9)';
-      filterButtons.forEach(button => {
-        button.style.color = '#fff0';
+    filists.forEach(filist => {
+      let isOverlapping = false;
+
+      selectBoxes.forEach(selectBox => {
+        if (isOverlap(filist, selectBox)) {
+          isOverlapping = true;
+        }
+      });
+
+      if (isOverlapping && !filist.classList.contains('hovered')) {
+        filist.style.visibility = 'hidden';
+        filist.style.opacity = '0';
+        filist.style.transform = 'scale(0.9)';
+        filterButtons.forEach(button => {
+          button.style.color = '#fff0';
+        });
+      } else {
+        filist.style.opacity = '1';
+        filist.style.transform = 'scale(1)';
+        filterButtons.forEach(button => {
+          button.style.color = '';
+        });
+      }
     });
-    } else {
-      filist.style.opacity = '1';
-      filist.style.transform = 'scale(1)';
-      filterButtons.forEach(button => {
-        button.style.color = '';
-    });
-    }
-  });
+  }
 }
 
-// Add event listener for scroll and resize
-window.addEventListener('scroll', handleFilistOpacity);
-window.addEventListener('resize', handleFilistOpacity);
+let lastScrollTop = 0;
 
-// Add event listener for mouseover to set the "hovered" class
+window.addEventListener('scroll', function () {
+  const currentScrollTop = window.scrollY;
+  const scrollDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
+  lastScrollTop = currentScrollTop;
+
+  if (scrollDirection === 'down') {
+    handleFilistOpacity();
+  } else {
+    document.querySelectorAll('.filist').forEach(filist => {
+      filist.style.visibility = 'visible';
+      filist.style.opacity = '1';
+      filist.style.transform = 'scale(1)';
+    });
+    document.querySelectorAll('.filter-button').forEach(button => {
+      button.style.color = '';
+    });
+  }
+});
+
 document.querySelectorAll('.filist').forEach(filist => {
-  filist.style.transition = 'all 0.6s ease'; // Adjust the transition duration and easing as needed
+  filist.style.transition = 'all 0.6s ease';
 
-  filist.addEventListener('mouseover', function() {
+  filist.addEventListener('mouseover', function () {
     this.classList.add('hovered');
+    this.style.visibility = 'visible';
     this.style.opacity = '1';
     this.style.transform = 'scale(1)';
-    filterButtons.forEach(button => {
+    document.querySelectorAll('.filter-button').forEach(button => {
       button.style.color = '';
-  });
+    });
   });
 
-  filist.addEventListener('mouseout', function() {
+  filist.addEventListener('mouseout', function () {
     this.classList.remove('hovered');
     handleFilistOpacity();
   });
 });
 
-// Call the function to set initial opacity
 handleFilistOpacity();
+
 
 
 //=============Show and Hide the Carousel Button
