@@ -793,7 +793,7 @@ function hideSectionsAndBackground() {
 
             if (opacity <= 0) {
                 // Set display to 'none' after fading out
-                section.style.contentVisibility = 'hidden';
+                section.style.visibility = 'hidden';
                 clearInterval(fadeOutInterval);
             }
         }, 60);
@@ -822,7 +822,7 @@ function showAllSectionsAndBackground() {
     allSections.forEach(section => {
         // Reset opacity before showing
         section.style.opacity = 1;
-        section.style.contentVisibility = 'visible';
+        section.style.visibility = 'visible';
     });
 
     const heroImage = document.getElementById('heroImage');
