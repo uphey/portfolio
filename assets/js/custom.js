@@ -314,67 +314,43 @@ function isOverlap(element1, element2) {
 }
 
 function handleFilistOpacity() {
-  const screenWidth = window.innerWidth;
+  const isWideScreen = window.innerWidth >= 768;
+  const selectBoxes = document.querySelectorAll('.select-box');
+  const filists = document.querySelectorAll('.filist');
+  const filterButtons = document.querySelectorAll('.filter-button');
 
-  // Only apply the script on screens with a minimum width of 768px
-  if (screenWidth >= 768) {
-    const selectBoxes = document.querySelectorAll('.select-box');
-    const filists = document.querySelectorAll('.filist');
-    const filterButtons = document.querySelectorAll('.filter-button');
+  filists.forEach(filist => {
+    let isOverlapping = false;
 
-    filists.forEach(filist => {
-      let isOverlapping = false;
+    selectBoxes.forEach(selectBox => {
+      if (isOverlap(filist, selectBox)) {
+        isOverlapping = true;
+      }
+    });
 
-      selectBoxes.forEach(selectBox => {
-        if (isOverlap(filist, selectBox)) {
-          isOverlapping = true;
-        }
-      });
-
-      if (isOverlapping && !filist.classList.contains('hovered')) {
+    if (isOverlapping && !filist.classList.contains('hovered')) {
+      if (isWideScreen) {
         filist.style.opacity = '0.3';
         filist.style.transform = 'scale(0.9)';
         filterButtons.forEach(button => {
           button.style.color = '#fff0';
         });
       } else {
-        filist.style.opacity = '1';
-        filist.style.transform = 'scale(1)';
-        filterButtons.forEach(button => {
-          button.style.color = '';
-        });
-      }
-    });
-  } else {
-    const selectBoxes = document.querySelectorAll('.select-box');
-    const filists = document.querySelectorAll('.filist');
-    const filterButtons = document.querySelectorAll('.filter-button');
-
-    filists.forEach(filist => {
-      let isOverlapping = false;
-
-      selectBoxes.forEach(selectBox => {
-        if (isOverlap(filist, selectBox)) {
-          isOverlapping = true;
-        }
-      });
-
-      if (isOverlapping && !filist.classList.contains('hovered')) {
         filist.style.visibility = 'hidden';
         filist.style.opacity = '0';
         filist.style.transform = 'scale(0.9)';
         filterButtons.forEach(button => {
           button.style.color = '#fff0';
         });
-      } else {
-        filist.style.opacity = '1';
-        filist.style.transform = 'scale(1)';
-        filterButtons.forEach(button => {
-          button.style.color = '';
-        });
       }
-    });
-  }
+    } else {
+      filist.style.opacity = '1';
+      filist.style.transform = 'scale(1)';
+      filterButtons.forEach(button => {
+        button.style.color = '';
+      });
+    }
+  });
 }
 
 let lastScrollTop = 0;
@@ -401,24 +377,24 @@ window.addEventListener('scroll', function () {
 document.querySelectorAll('.filist').forEach(filist => {
   filist.style.transition = 'all 0.6s ease';
 
-  filist.addEventListener('mouseover', function () {
-    this.classList.add('hovered');
-    this.style.visibility = 'visible';
-    this.style.opacity = '1';
-    this.style.transform = 'scale(1)';
-    document.querySelectorAll('.filter-button').forEach(button => {
-      button.style.color = '';
+  if (window.innerWidth >= 768) {
+    filist.addEventListener('mouseover', function () {
+      this.classList.add('hovered');
+      this.style.opacity = '1';
+      this.style.transform = 'scale(1)';
+      document.querySelectorAll('.filter-button').forEach(button => {
+        button.style.color = '';
+      });
     });
-  });
 
-  filist.addEventListener('mouseout', function () {
-    this.classList.remove('hovered');
-    handleFilistOpacity();
-  });
+    filist.addEventListener('mouseout', function () {
+      this.classList.remove('hovered');
+      handleFilistOpacity();
+    });
+  }
 });
 
 handleFilistOpacity();
-
 
 
 //=============Show and Hide the Carousel Button
