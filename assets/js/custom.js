@@ -1,25 +1,63 @@
+//=======Add ani class to elements in modal body
+document.addEventListener('DOMContentLoaded', function () {
+  // Get all elements with class .modal-body
+  const modalBodies = document.querySelectorAll('.modal-body');
+
+  // Loop through each modal body
+  modalBodies.forEach(modalBody => {
+      // Get all <h> elements, <p> elements, and .skill-wrapper elements inside the current modal body
+      const elementsToAnimate = modalBody.querySelectorAll('a, h1, h2, h3, h4, h5, h6, p, video, img:not(.skill-wrapper img), .skill-wrapper');
+
+      // Add the class .ani-fade-in-up to each element
+      elementsToAnimate.forEach(element => {
+          element.classList.add('ani-fade-in-up');
+      });
+  });
+});
+
+
 /////////
 document.addEventListener('DOMContentLoaded', function () {
-    const fadeInUp = document.querySelectorAll('.ani-fade-in-up');
+  const fadeInUp = document.querySelectorAll('.ani-fade-in-up');
 
-    function handleScroll() {
-        fadeInUp.forEach(item => {
-            const itemTop = item.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            const triggerOffset = windowHeight * 0.95;
+  function handleScroll() {
+      fadeInUp.forEach(item => {
+          const itemTop = item.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          const triggerOffset = windowHeight * 0.95;
 
-            if (itemTop < triggerOffset) {
-                item.classList.add('fade-in-up');
-            } else {
-                item.classList.remove('fade-in-up');
-            }
-        });
-    }
+          if (itemTop < triggerOffset) {
+              item.classList.add('fade-in-up');
+          } else {
+              item.classList.remove('fade-in-up');
+          }
+      });
+  }
 
-    // Initial check for items in the viewport
-    handleScroll();
+  function handleModalScroll() {
+      // Check for items in the viewport when the modal is scrolled
+      handleScroll();
+  }
 
-    window.addEventListener('scroll', handleScroll);
+  // Initial check for items in the viewport
+  handleScroll();
+
+  // Add event listener for the window scroll
+  window.addEventListener('scroll', handleScroll);
+
+  // Add event listener for modal show event
+  document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('show.bs.modal', function () {
+          // Add event listener for modal scroll
+          modal.addEventListener('scroll', handleModalScroll);
+      });
+
+      // Add event listener for modal hide event
+      modal.addEventListener('hide.bs.modal', function () {
+          // Remove event listener for modal scroll
+          modal.removeEventListener('scroll', handleModalScroll);
+      });
+  });
 });
 
   
@@ -41,12 +79,31 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Initial check for items in the viewport
-    handleScroll();
+    function handleModalScroll() {
+      // Check for items in the viewport when the modal is scrolled
+      handleScroll();
+  }
 
-    window.addEventListener('scroll', handleScroll);
+  // Initial check for items in the viewport
+  handleScroll();
+
+  // Add event listener for the window scroll
+  window.addEventListener('scroll', handleScroll);
+
+  // Add event listener for modal show event
+  document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('show.bs.modal', function () {
+          // Add event listener for modal scroll
+          modal.addEventListener('scroll', handleModalScroll);
+      });
+
+      // Add event listener for modal hide event
+      modal.addEventListener('hide.bs.modal', function () {
+          // Remove event listener for modal scroll
+          modal.removeEventListener('scroll', handleModalScroll);
+      });
+  });
 });
-
 
 
 ////////
@@ -67,11 +124,33 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Initial check for items in the viewport
-    handleScroll();
+    function handleModalScroll() {
+      // Check for items in the viewport when the modal is scrolled
+      handleScroll();
+  }
 
-    window.addEventListener('scroll', handleScroll);
+  // Initial check for items in the viewport
+  handleScroll();
+
+  // Add event listener for the window scroll
+  window.addEventListener('scroll', handleScroll);
+
+  // Add event listener for modal show event
+  document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('show.bs.modal', function () {
+          // Add event listener for modal scroll
+          modal.addEventListener('scroll', handleModalScroll);
+      });
+
+      // Add event listener for modal hide event
+      modal.addEventListener('hide.bs.modal', function () {
+          // Remove event listener for modal scroll
+          modal.removeEventListener('scroll', handleModalScroll);
+      });
+  });
 });
+
+
 
 
 //===========Load img after page load and when scroll to previous sections
@@ -448,7 +527,7 @@ function showElement(index) {
   const elementToHide = elementsToHide[index];
   elementToHide.style.display = "flex";
   elementToHide.style.opacity = "1";
-  elementToHide.style.maxHeight = "180px"; // Adjust the value to match your element's height
+  elementToHide.style.maxHeight = "180px"; 
   isHiddenArray[index] = false;
 }
 
