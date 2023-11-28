@@ -594,6 +594,11 @@
     padding: 0;
     margin: 0;
     transition: .3s ease-in-out;
+    opacity: 0;
+}
+
+.modal.show {
+    opacity: 1;
 }
 
 .fade {
