@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Loop through each modal body
   modalBodies.forEach(modalBody => {
       // Get all <h> elements, <p> elements, and .skill-wrapper elements inside the current modal body
-      const elementsToAnimate = modalBody.querySelectorAll('a, h1, h2, h3, h4, h5, h6, p, video, img:not(.skill-wrapper img), .skill-wrapper');
+      const elementsToAnimate = modalBody.querySelectorAll('a, h1:not(:first-of-type), h2, h3, h4, h5, h6, p, video, img:not(.skill-wrapper img), .skill-wrapper');
 
       // Add the class .ani-fade-in-up to each element
       elementsToAnimate.forEach(element => {
