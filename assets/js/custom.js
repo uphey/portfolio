@@ -173,6 +173,34 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
   
+//=========Modal blur overlay
+document.addEventListener('DOMContentLoaded', function () {
+  const bluroverlay = document.querySelector('.bluroverlay');
+  
+  // Add click event listener to elements with data-bs-toggle="modal"
+  document.querySelectorAll('[data-bs-toggle="modal"]').forEach(modalTrigger => {
+    modalTrigger.addEventListener('click', function () {
+      // Show bluroverlay with smooth transition and set opacity to 1
+      bluroverlay.style.transition = 'opacity 0.4s ease'; // You can adjust the duration and easing
+      bluroverlay.style.display = 'block';
+      setTimeout(() => {
+        bluroverlay.style.opacity = '1';
+      }, 10);
+    });
+  });
+
+  // Add event listener for modal hide event
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.addEventListener('hide.bs.modal', function () {
+      // Hide bluroverlay with smooth transition
+      bluroverlay.style.transition = 'opacity 0.4s ease'; // You can adjust the duration and easing
+      bluroverlay.style.opacity = '0';
+      setTimeout(() => {
+        bluroverlay.style.display = 'none';
+      }, 300); // Adjust the timeout to match the transition duration
+    });
+  });
+});
 
 
 //================NavBrand Transition
@@ -783,7 +811,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function hideSectionsAndBackground() {
-    const sectionsToHide = document.querySelectorAll('#about, .img1, .about-img, .offcanvas, .inside-img, .accordion, #footer');
+    const sectionsToHide = document.querySelectorAll('#about, .img1, .about-img, .offcanvas, .accordion, #footer');
     sectionsToHide.forEach(section => {
         // Gradually reduce opacity before hiding
         let opacity = 1;
@@ -818,7 +846,7 @@ function hideSectionsAndBackground() {
 
 // Function to show all sections and reset background
 function showAllSectionsAndBackground() {
-    const allSections = document.querySelectorAll('#about, .img1, .about-img, .offcanvas, .inside-img, .accordion, #footer');
+    const allSections = document.querySelectorAll('#about, .img1, .about-img, .offcanvas, .accordion, #footer');
     allSections.forEach(section => {
         // Reset opacity before showing
         section.style.opacity = 1;

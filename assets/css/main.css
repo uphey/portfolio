@@ -601,16 +601,20 @@
     opacity: 1;
 }
 
-.fade {
-    backdrop-filter: saturate(200%) blur(18px);
-    -webkit-backdrop-filter: saturate(200%) blur(18px);
-    transition: 0.2s ease;
-  }
-  
-  .fade:not(.show) {
-    backdrop-filter: saturate(100%) blur(0px);
-    -webkit-backdrop-filter: saturate(100%) blur(0px);
+.bluroverlay {
+    z-index: 1054;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: saturate(150%) blur(18px);
+    -webkit-backdrop-filter: saturate(150%) blur(18px);
+    display: none;
     opacity: 0;
+    transition: opacity .5s;
+}
+
+.fade {
+    transition: 0.2s ease;
   }
   
   .modal.fade .modal-dialog {
@@ -648,7 +652,7 @@
 
 
 .modal-content  {
-    border-radius: 2rem;
+    border-radius: 2.05rem;
     box-shadow: rgba(73, 73, 74, 0.32) 0px 0px 16px 0px;
 }
 
