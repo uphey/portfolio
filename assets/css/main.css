@@ -452,7 +452,7 @@
 
 }
 
-.item:hover {
+.select-box:hover {
     transform: scale(1.04);
     transition: 0.5s;
 }
@@ -522,7 +522,7 @@
     -webkit-backdrop-filter: saturate(200%) blur(18px);
 }
 
-.item:hover .img-overlay {
+.select-box:hover .img-overlay {
     opacity: 1;
 }
 
@@ -539,7 +539,7 @@
     transition: .5s;
 }
 
-.item:hover .img-overlay p {
+.select-box:hover .img-overlay p {
     user-select: auto;
     -moz-user-select: auto; 
     -webkit-text-select: auto; 
