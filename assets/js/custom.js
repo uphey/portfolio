@@ -179,19 +179,26 @@ window.onload = function () {
     }
 
     // Load images in specified sections immediately after the page loads
-    ['projects', 'highlight'].forEach(sectionId => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            const images = section.querySelectorAll('img[data-src]');
-            images.forEach(image => {
-                const src = image.getAttribute('data-src');
-                if (src) {
-                    image.src = src;
-                    image.removeAttribute('data-src');
-                }
-            });
-        }
-    });
+    ['highlight', 'projects'].forEach(sectionId => {
+      const section = document.getElementById(sectionId);
+      if (section) {
+          const images = section.querySelectorAll('img[data-src]');
+          images.forEach(image => {
+              const src = image.getAttribute('data-src');
+              if (src && sectionId === 'projects') {
+                  // Delay the loading of images in #projects by 1s
+                  setTimeout(() => {
+                      image.src = src;
+                      image.removeAttribute('data-src');
+                  }, 1000); 
+              } else if (src) {
+                  // Load images in #highlight immediately
+                  image.src = src;
+                  image.removeAttribute('data-src');
+              }
+          });
+      }
+  });
 
     // Create an Intersection Observer for other sections
     ['offcanvas', 'skills', 'about'].forEach(sectionId => {
