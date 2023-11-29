@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         zoomInUp.forEach(item => {
             const itemTop = item.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
-            const triggerOffset = windowHeight;
+            const triggerOffset = windowHeight * 1.07;
 
             if (itemTop < triggerOffset) {
                 item.classList.add('zoom-in-up');
@@ -288,44 +288,60 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//================NavBrand Transition
+//================NavBrand Transitions
+document.addEventListener('DOMContentLoaded', function () {
+  // Check if viewport width is over 300px
+  if (window.innerWidth > 300) {
+      const navName = document.querySelector('.nav-name');
+      const navLogo = document.querySelector('.nav-logo');
 
-  document.addEventListener('DOMContentLoaded', function () {
-    const navName = document.querySelector('.nav-name');
-    const navLogo = document.querySelector('.nav-logo');
-  
-    // Get the offset of the #home section
-    const homeSection = document.getElementById('home');
-    const homeSectionOffset = homeSection.offsetTop + homeSection.offsetHeight;
-  
-    // Initial state based on scroll position
-    updateNavVisibility();
-  
-    // Listen for scroll events
-    window.addEventListener('scroll', function () {
+      // Get the offset of the #home section
+      const homeSection = document.getElementById('home');
+      const homeSectionOffset = homeSection.offsetTop + homeSection.offsetHeight;
+
+      // Initial state based on scroll position
       updateNavVisibility();
-    });
-  
-    // Function to update the visibility of nav elements based on scroll position
-    function updateNavVisibility() {
-      const scrollPosition = window.scrollY;
-  
-      if (scrollPosition <= homeSectionOffset * 0.95) {
-        // At the top of the page or within the #home section
-        navName.style.opacity = '0';
-        navName.style.transform = 'translateY(8px)';
-        navLogo.style.opacity = '1';
-        navLogo.style.transform = 'translateY(0)';
-      } else {
-        // Scrolled away from the #home section
-        navName.style.opacity = '1';
-        navName.style.transform = 'translateY(0)';
-        navLogo.style.opacity = '0';
-        navLogo.style.transform = 'translateY(8px)';
+
+      // Listen for scroll events
+      window.addEventListener('scroll', function () {
+          updateNavVisibility();
+      });
+
+      // Function to update the visibility of nav elements based on scroll position
+      function updateNavVisibility() {
+          const scrollPosition = window.scrollY;
+
+          if (scrollPosition <= homeSectionOffset * 0.95) {
+              // At the top of the page or within the #home section
+              navName.style.opacity = '0';
+              navName.style.transform = 'translateY(8px)';
+              navLogo.style.opacity = '1';
+              navLogo.style.transform = 'translateY(0)';
+          } else {
+              // Scrolled away from the #home section
+              navName.style.display = 'block';  // Change display to 'block'
+              setTimeout(function () {
+                  navName.style.opacity = '1';
+                  navName.style.transform = 'translateY(0)';
+              }, 1);
+
+              navLogo.style.opacity = '0';
+              navLogo.style.transform = 'translateY(8px)';
+
+              // Add event listener for transitionend on navName
+              navName.addEventListener('transitionend', function handleTransitionEnd() {
+                  // Check if the opacity transition is complete
+                  if (navName.style.opacity === '0') {
+                      navName.style.display = 'none';  // Change display to 'none'
+                      // Remove the event listener to prevent multiple executions
+                      navName.removeEventListener('transitionend', handleTransitionEnd);
+                  }
+              });
+          }
       }
-    }
-  });
-  
+  }
+});
+
 
 //=========Let's Go! Button
 const button = document.getElementById("highlight-button");

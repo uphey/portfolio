@@ -31,7 +31,7 @@
 
 .navbar-brand:hover {
     transform: scale(1.1);
-    transition: 0.3s ease;
+    transition: 0.4s ease;
 }
 
 .nav-name,
@@ -41,6 +41,7 @@
 
 .nav-name {
   position: absolute;
+  display: none;
 }
 
 .navbar-nav {
@@ -88,16 +89,16 @@
     position:absolute;
     width: 120%;
     height:100%;
-    z-index: 2;
+    z-index: 3;
     background-image:linear-gradient(transparent,rgba(228, 228, 227, 0.35))!important;
   }
 
 .overlay{
     position:absolute;
-    width: 120%;
-    height:100%;
+    width: 100vw;
+    height:105vh;
     animation: unBlur 2s ease-in-out 1s forwards;
-    z-index: 3;
+    z-index: 2;
   }
 
   @keyframes unBlur {
@@ -146,15 +147,14 @@
 
 
 .hi {
-    padding-top: 7rem;
-    margin-bottom: .2rem;
+    padding-top: 6rem;
+    margin-bottom: 0rem;
     opacity: 0;
     animation: Up 1s ease-out 1s forwards, fadeIn 1s ease-in-out 1s forwards;
 }
 
 .name {
     font-weight: 800;
-    line-height: 1em;
     letter-spacing: -0.04em;
     white-space: nowrap;
     display: flex;
@@ -173,7 +173,7 @@
 }
 
 .intro {
-    margin-top: 2.2rem;
+    margin-top: 1.8rem;
     opacity: 0;
     animation: Up 1s ease-out 1.7s forwards, fadeIn 1s ease-in-out 1.8s forwards;
 }
@@ -1204,7 +1204,7 @@ iframe {
 }
 
 .display-0 {
-    font-size: 8em;
+    font-size: 8rem;
 }
 
 .fs-7 {
@@ -1215,7 +1215,7 @@ iframe {
     display: block;
     opacity: 0;
     transition: all .5s ease;
-    z-index: 9999;
+    z-index: 9998;
 }
 
 .button-top {
@@ -1479,7 +1479,7 @@ body {
         background-position: center;
     }
     .intro {
-        margin-top: 1.5rem;
+        margin-top: 1.2rem;
     }
     .modal .px-5 {
         padding-left: 0!important;
@@ -1593,10 +1593,14 @@ body {
 @media (max-width: 495px) {
     .name {
         white-space: initial;
+        line-height: 4.5rem;
     }
     .hi {
-        padding-top: 3rem;
-        margin-bottom: .7rem;
+        padding-top: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .intro {
+        margin-top: 1.5rem;
     }
 }
 
@@ -1630,6 +1634,9 @@ body {
     .filist {
         padding-left: 2rem;
         padding-right: 2rem;
+    }
+    .carousel-caption {
+        padding-right: 4rem;
     }
 }
 
