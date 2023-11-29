@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
 /////////
 document.addEventListener('DOMContentLoaded', function () {
   const fadeInUp = document.querySelectorAll('.ani-fade-in-up');
