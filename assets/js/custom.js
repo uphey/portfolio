@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
       fadeInUp.forEach(item => {
           const itemTop = item.getBoundingClientRect().top;
           const windowHeight = window.innerHeight;
-          const triggerOffset = windowHeight * 1.05;
+          const triggerOffset = windowHeight;
 
           if (itemTop < triggerOffset) {
               item.classList.add('fade-in-up');

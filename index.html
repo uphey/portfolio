@@ -37,6 +37,12 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
+    <noscript>
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    </noscript>
 
     <link href="assets/css/main.css" rel="stylesheet">
 </head>
@@ -176,7 +182,7 @@
                 <h1 class="display-5 text-center pt-7 fw-bold">Highlights</h1>
 
                 <div class="pt-4">
-                    <div id="carousel" class="hoveredElement carousel slide ani-fade-in-up" data-bs-ride="carousel">
+                    <div id="carousel" class="hoveredElement carousel slide" data-aos="fade-up" data-bs-ride="carousel">
 
 
                         <div id="hiddenElement" class="carousel-indicators">
@@ -270,18 +276,19 @@
                 <div class="portfolio-title display-5 fw-bold text-center pt-6 pb-3">Projects</div>
 
 
-                <div class="portfolio-content ani-fade-in-up">
+                <div class="portfolio-content" data-aos="fade-up">
                     <div class="filist filters">
                         <button class="btn btn-light filter-button" data-filter="all">All</button>
                         <button class="btn btn-light filter-button" data-filter="video">Video</button>
                         <button class="btn btn-light filter-button" data-filter="web">Web</button>
                         <button class="btn btn-light filter-button" data-filter="graphic">Graphic</button>
                         <button class="btn btn-light filter-button" data-filter="photo">Photo</button>
+
                     </div>
 
-                    <div class="items">
+                    <div class="items" data-aos="fade-up">
 
-                        <div class="item ani-fade-in-up col-lg-4 video" data-bs-toggle="modal" data-bs-target="#mod1">
+                        <div class="item col-lg-4 video" data-bs-toggle="modal" data-bs-target="#mod1">
                             <div class="d-flex select-box overflow-hidden">
                                 <div class="img-overlay">
                                     <p>Elevate the listening experience with engaging mixing and editing techniques
@@ -303,7 +310,7 @@
                             </div>
                         </div>
 
-                        <div class="item ani-fade-in-up col-lg-4 web" data-bs-toggle="modal" data-bs-target="#mod2">
+                        <div class="item col-lg-4 web" data-bs-toggle="modal" data-bs-target="#mod2">
                             <div class="d-flex select-box overflow-hidden">
                                 <div class="img-overlay">
                                     <p>Revamp the CLTDC website with a major redesign, providing it with a modern
@@ -324,7 +331,7 @@
                             </div>
                         </div>
 
-                        <div class="item ani-fade-in-up col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod3">
+                        <div class="item col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod3">
                             <div class="d-flex select-box overflow-hidden">
                                 <div class="img-overlay">
                                     <p>Establish the podcast's brand identity by crafting a unified appearance
@@ -345,7 +352,7 @@
                             </div>
                         </div>
 
-                        <div class="item ani-fade-in-up col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod4">
+                        <div class="item col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod4">
                             <div class="d-flex select-box overflow-hidden">
                                 <div class="img-overlay">
                                     <p>Design dynamic visuals for a secondary school running race, encompassing
@@ -366,7 +373,7 @@
                             </div>
                         </div>
 
-                        <div class="item ani-fade-in-up col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod5">
+                        <div class="item col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod5">
                             <div class="d-flex select-box overflow-hidden">
                                 <div class="img-overlay">
                                     <p>Craft a cinematic poster and design stickers for the school's Anti-Drug
@@ -387,7 +394,7 @@
                             </div>
                         </div>
 
-                        <div class="item ani-fade-in-up col-lg-4 video" data-bs-toggle="modal" data-bs-target="#mod6">
+                        <div class="item col-lg-4 video" data-bs-toggle="modal" data-bs-target="#mod6">
                             <div class="d-flex select-box overflow-hidden">
                                 <div class="img-overlay">
                                     <p>Produce engaging animations to effectively illustrate academic concepts and
@@ -408,7 +415,7 @@
                             </div>
                         </div>
 
-                        <div class="item ani-fade-in-up col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod7">
+                        <div class="item col-lg-4 graphic" data-bs-toggle="modal" data-bs-target="#mod7">
                             <div class="d-flex select-box overflow-hidden">
                                 <div class="img-overlay">
                                     <p>Design a refined poster for the department's admission talk on the
@@ -429,7 +436,7 @@
                             </div>
                         </div>
 
-                        <div class="item ani-fade-in-up col-lg-4 photo" data-bs-toggle="modal" data-bs-target="#mod8">
+                        <div class="item col-lg-4 photo" data-bs-toggle="modal" data-bs-target="#mod8">
                             <div class="d-flex select-box overflow-hidden">
                                 <div class="img-overlay">
                                     <p>From the adrenaline
@@ -451,7 +458,7 @@
                             </div>
                         </div>
 
-                        <div class="item ani-fade-in-up col-lg-4 photo" data-bs-toggle="modal" data-bs-target="#mod9">
+                        <div class="item col-lg-4 photo" data-bs-toggle="modal" data-bs-target="#mod9">
                             <div class="d-flex select-box overflow-hidden">
                                 <div class="img-overlay">
                                     <p>Explore the world through my lens in a collection of travel photographs.</p>
@@ -474,7 +481,9 @@
                     </div>
                 </div>
             </div>
+
             </div>
+
             <!-- MODAL -->
             <div id="mod1" class="modal fade" tabindex="-1" aria-labelledby="ModalLabel1" aria-hidden="true">
                 <div class="modal-dialog ">
@@ -493,7 +502,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="container px-5">
-                                <h1 class="pb-3 display-5 fw-bold">Anybooks Farm <br>Podcast
+                                <h1 class="pb-3 display-5 fw-bold ani-fade-in-up">Anybooks Farm <br>Podcast
                                     Videos</h1>
                                 <p class="p pb-3 modal-text ani-fade-in-up">
                                     "Anybooks Farm" is a Cantonese educational podcast channel dedicated to
@@ -2033,6 +2042,10 @@
         });
     </script>
     <script src="assets/js/custom.js" defer></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
