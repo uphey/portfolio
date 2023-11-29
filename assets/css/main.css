@@ -1293,8 +1293,8 @@ body {
 /* Transition */
 .ani-fade-in-up {
     opacity: 0;
-    transform: translateY(70px); 
-    transition: opacity 0.5s, transform 0.5s;
+    transform: translateY(90px); 
+    transition: opacity 0.4s, transform 0.5s;
   }
   
   .fade-in-up {
