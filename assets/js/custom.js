@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateNavbarStyle() {
       const scrollPosition = window.scrollY;
 
-      if (scrollPosition <= 50) {
+      if (scrollPosition <= 20) {
           // At the top of the viewport
           navbar.style.backgroundColor = 'rgba(251, 251, 253, 0)';
           navbar.style.borderColor = '#3b3b3b00';
@@ -1078,3 +1078,55 @@ function showAllSectionsAndBackground() {
 };
 
 
+//========Dot Transform
+document.addEventListener('DOMContentLoaded', function () {
+  const dot = document.querySelector('.dot');
+  let isAtTop = true;
+
+  // Function to apply continuous transformations to the dot
+  function autoTransform() {
+    const scrollPosition = window.scrollY;
+    const transitionTime = Math.max(0, 0.5 - (scrollPosition / 200) * 0.5); // Gradually decrease transition time from 0.5s to 0
+
+    if (isAtTop) {
+      const rotation = Math.sin(Date.now() / 8000) * 360; // Rotate more slowly
+      const skewX = Math.cos(Date.now() / 8000) * 20; // Skew more slowly
+      const skewY = Math.sin(Date.now() / 8000) * 10; // Skew more slowly
+      const scale = 1.2 + Math.sin(Date.now() / 8000) * 0.2; // Scale more slowly
+
+      
+      dot.style.transform = `rotate(${rotation}deg) skew(${skewX}deg, ${skewY}deg) scale(${scale})`;
+    } 
+    dot.style.transition = `transform ${transitionTime}s ease`; // Adjusted transition time
+    requestAnimationFrame(autoTransform);
+  }
+
+  // Start the continuous transformations
+  autoTransform();
+
+  window.addEventListener('scroll', function () {
+    const scrollPosition = window.scrollY;
+
+    // Check if at the top of the viewport
+    isAtTop = scrollPosition === 0;
+  });
+
+  function getRandomValue(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  let randomValue = getRandomValue(100, 200)
+
+  window.addEventListener('scroll', function () {
+    const scrollPosition = window.scrollY;
+
+    // Generate random values for rotation, skew, and scale
+    const rotation = Math.sin(scrollPosition / randomValue) * 90; // Rotates between -45 and 45 degrees
+    const skewX = Math.cos(scrollPosition / randomValue) * 20; // Skews between -20 and 20 degrees
+    const skewY = Math.sin(scrollPosition / randomValue) * 20; // Skews between -20 and 20 degrees
+    const scale = 1 + Math.sin(scrollPosition / randomValue) * 0.5; // Scales between 0.8 and 1.2
+    
+    // Apply the rotation, skew, and scale to the .dot element
+    dot.style.transform = `rotate(${rotation}deg) skew(${skewX}deg, ${skewY}deg) scale(${scale})`;
+  });
+});

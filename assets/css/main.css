@@ -103,8 +103,8 @@
     position:fixed;
     width: 100vw;
     height:115vh;
-    backdrop-filter: blur(80px); 
-    -webkit-backdrop-filter: blur(80px);
+    backdrop-filter: blur(70px); 
+    -webkit-backdrop-filter: blur(70px);
     z-index: 1;
   }
 
@@ -134,7 +134,7 @@
     position: fixed;
     justify-content: center;
     align-items: center;
-    margin-top: 10vh;
+    margin-top: 8vh;
     z-index: 0;
 }
 
@@ -143,25 +143,47 @@
     aspect-ratio: 1 / 1;
     background: linear-gradient(0deg, rgb(155, 239, 203) 0%, rgb(241, 197, 104) 70%);
     border-radius: 50%;
-    animation: rotate 8s linear infinite;
+    /* animation: rotate 8s linear infinite; */
   }
 
-  @keyframes rotate {
+  /* @keyframes rotate {
     0% {transform:rotate(0deg) scale(1) skewX(0deg)}
     50% {transform:rotate(180deg) scale(1.5) skewX(20deg)}
     100% {transform:rotate(360deg) scale(1) skewX(0deg)}
-  }
+  } */
 
 .hero-text {
     height: 100vh;
     z-index: 4;
     position:relative;
-    padding-top: 25vh;
+    padding-top: 24vh;
     opacity: .9;
+    cursor: default;
+}
+
+.hero-bottom {
+    z-index: 4;
+    position:relative;
+    opacity: .9;
+    bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1320px;
+    animation: Up .7s ease-out 2.8s forwards, fadeIn .7s ease-in-out 2.8s forwards;
+    opacity: 0;
 }
 
 .hero-text a {
     text-decoration: none;
+}
+
+.hero-note, .hero-icon {
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.hero-note {
+    padding-right: 10%;
 }
 
 .wave-container {  
@@ -977,7 +999,7 @@ h1+.modal-text {
 }
 
 .about-box {
-    background-color: rgba(241, 241, 243, 0.85);
+    background-color: rgba(235, 235, 237, 0.85);
     backdrop-filter: saturate(200%) blur(18px);
     -webkit-backdrop-filter: saturate(200%) blur(18px);
     border: 1px solid #cdcdcd30;
@@ -1555,7 +1577,7 @@ body {
         max-height: none;
     }
     .dot {
-        height: 40%;
+        height: 45%;
     }
 }
 
@@ -1760,4 +1782,9 @@ body {
     }
 }
 
-
+@media (min-width: 1920px) {
+    .hero-text {
+        transform: scale(1.4);
+        padding-top: 28vh;
+    }
+}
