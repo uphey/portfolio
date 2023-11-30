@@ -154,43 +154,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //===========Load img after page load and when scroll to previous sections
 window.onload = function () {
-    function loadImagesOnScroll(entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const images = entry.target.querySelectorAll('img[data-src]');
-                images.forEach(image => {
-                    const src = image.getAttribute('data-src');
-                    if (src) {
-                        image.src = src;
-                        image.removeAttribute('data-src');
-                    }
-                });
-                observer.unobserve(entry.target);
-            }
-        });
-    }
+  // Function to change data-src attribute to src for all img in all .modal elements
+  function changeModalImages() {
+      const modalImages = document.querySelectorAll('.modal img[data-src]');
+      modalImages.forEach(image => {
+          const src = image.getAttribute('data-src');
+          if (src) {
+              image.src = src;
+              image.removeAttribute('data-src');
+          }
+      });
+  }
 
-    function createIntersectionObserver(sectionId) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-            const observer = new IntersectionObserver(loadImagesOnScroll, { rootMargin: '0px 0px 300px 0px' });
-            observer.observe(section);
-        }
-    }
+  // Function to load images on scroll
+  function loadImagesOnScroll(entries, observer) {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              const images = entry.target.querySelectorAll('img[data-src]');
+              images.forEach(image => {
+                  const src = image.getAttribute('data-src');
+                  if (src) {
+                      image.src = src;
+                      image.removeAttribute('data-src');
+                  }
+              });
+              observer.unobserve(entry.target);
+          }
+      });
+  }
 
-    // Load images in specified sections immediately after the page loads
-    ['highlight', 'projects'].forEach(sectionId => {
+  // Function to create Intersection Observer
+  function createIntersectionObserver(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+          const observer = new IntersectionObserver(loadImagesOnScroll, { rootMargin: '0px 0px 300px 0px' });
+          observer.observe(section);
+      }
+  }
+
+  // Change data-src attribute in all img in all .modal elements after page load
+  setTimeout(changeModalImages, 800);
+
+  // Load images in specified sections immediately after the page loads
+  ['highlight', 'projects'].forEach(sectionId => {
       const section = document.getElementById(sectionId);
       if (section) {
           const images = section.querySelectorAll('img[data-src]');
           images.forEach(image => {
               const src = image.getAttribute('data-src');
               if (src && sectionId === 'projects') {
-                  // Delay the loading of images in #projects by 1s
+                  // Delay the loading of images in #projects
                   setTimeout(() => {
                       image.src = src;
                       image.removeAttribute('data-src');
-                  }, 1000); 
+                  }, 800);
               } else if (src) {
                   // Load images in #highlight immediately
                   image.src = src;
@@ -200,11 +217,12 @@ window.onload = function () {
       }
   });
 
-    // Create an Intersection Observer for other sections
-    ['offcanvas', 'skills', 'about'].forEach(sectionId => {
-        createIntersectionObserver(sectionId);
-    });
+  // Create Intersection Observer for other sections
+  ['offcanvas', 'skills', 'about'].forEach(sectionId => {
+      createIntersectionObserver(sectionId);
+  });
 };
+
 
 
 
@@ -341,6 +359,48 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   }
 });
+
+//======Navbar transition
+document.addEventListener('DOMContentLoaded', function () {
+  const navbar = document.querySelector('.navbar');
+  const navbarToggler = document.querySelector('.navbar-toggler');
+
+  // Function to update the navbar style based on scroll position
+  function updateNavbarStyle() {
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition === 0) {
+          // At the top of the viewport
+          navbar.style.backgroundColor = 'rgba(251, 251, 253, 0)';
+          navbar.style.borderColor = '#3b3b3b00';
+          navbar.style.backdropFilter = 'none';
+          navbar.style.webkitBackdropFilter = 'none';
+      } else {
+          // Not at the top of the viewport
+          // Set back to original styles or use classes for better management
+          navbar.style.backgroundColor = 'rgba(251, 251, 253, 0.8)';
+          navbar.style.borderColor = '#3b3b3b80'; 
+          navbar.style.backdropFilter = 'saturate(200%) blur(18px)';
+          navbar.style.webkitBackdropFilter = 'saturate(200%) blur(18px)';
+      }
+  }
+
+  // Apply smooth transition to the navbar
+  navbar.style.transition = 'background-color 0.3s, border 0.3s';
+
+  // Listen for scroll events
+  window.addEventListener('scroll', updateNavbarStyle);
+
+  // Listen for click events on the navbar-toggler
+  navbarToggler.addEventListener('click', function () {
+      // Change the style here when the navbar-toggler is clicked
+      navbar.style.backgroundColor = 'rgba(251, 251, 253, 0.8)';
+      navbar.style.borderColor = '#3b3b3b80'; 
+      navbar.style.backdropFilter = 'saturate(200%) blur(18px)';
+      navbar.style.webkitBackdropFilter = 'saturate(200%) blur(18px)';
+  });
+});
+
 
 
 //=========Let's Go! Button
@@ -618,7 +678,13 @@ function hideScrollElement(element) {
 
 function checkScrollDirection() {
   const currentScrollY = window.scrollY;
-  if (currentScrollY < lastScrollY) {
+
+  // Check if the user is at the top of the viewport
+  if (currentScrollY === 0) {
+    scrollElements.forEach((element) => {
+      hideScrollElement(element);
+    });
+  } else if (currentScrollY < lastScrollY) {
     // Scrolling up
     scrollElements.forEach((element) => {
       showScrollElement(element);
@@ -670,6 +736,7 @@ window.addEventListener("scroll", () => {
     });
   }
 });
+
 
 //================Hide Back to Top Button when modal show
 
