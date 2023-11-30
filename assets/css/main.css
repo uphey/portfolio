@@ -13,7 +13,7 @@
     background-color: rgba(251,251,253,0);
     border-bottom: 0.1px solid #3b3b3b00;
     --bs-navbar-padding-y: 0.5rem;
-    padding-top: 1.2rem;
+    padding-top: 1.3rem;
     transform: scale(1.03);
 }
 
@@ -141,7 +141,7 @@
 .dot {
     height: 60%;
     aspect-ratio: 1 / 1;
-    background: linear-gradient(0deg, rgb(155, 239, 203) 0%, rgb(241, 197, 104) 80%);
+    background: linear-gradient(0deg, rgb(155, 239, 203) 0%, rgb(241, 197, 104) 70%);
     border-radius: 50%;
     animation: rotate 8s linear infinite;
   }

@@ -376,14 +376,14 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateNavbarStyle() {
       const scrollPosition = window.scrollY;
 
-      if (scrollPosition === 0) {
+      if (scrollPosition <= 50) {
           // At the top of the viewport
           navbar.style.backgroundColor = 'rgba(251, 251, 253, 0)';
           navbar.style.borderColor = '#3b3b3b00';
           navbar.style.backdropFilter = 'none';
           navbar.style.webkitBackdropFilter = 'none';
           navbar.style.transform = 'scale(1.03)';
-          navbar.style.paddingTop = '1.2rem';
+          navbar.style.paddingTop = '1.3rem';
       } else {
           // Not at the top of the viewport
           // Set back to original styles or use classes for better management
