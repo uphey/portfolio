@@ -279,7 +279,8 @@ document.addEventListener('DOMContentLoaded', function () {
 //=========Modal blur overlay
 document.addEventListener('DOMContentLoaded', function () {
   const bluroverlay = document.querySelector('.bluroverlay');
-  
+  const heroImage = document.getElementById('heroImage');
+
   // Add click event listener to elements with data-bs-toggle="modal"
   document.querySelectorAll('[data-bs-toggle="modal"]').forEach(modalTrigger => {
     modalTrigger.addEventListener('click', function () {
@@ -289,6 +290,9 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(() => {
         bluroverlay.style.opacity = '1';
       }, 10);
+
+      // Add "invisible" class to #heroImage
+      heroImage.classList.add('invisible');
     });
   });
 
@@ -301,6 +305,9 @@ document.addEventListener('DOMContentLoaded', function () {
       setTimeout(() => {
         bluroverlay.style.display = 'none';
       }, 300); // Adjust the timeout to match the transition duration
+
+      // Remove "invisible" class from #heroImage
+      heroImage.classList.remove('invisible');
     });
   });
 });
@@ -375,6 +382,8 @@ document.addEventListener('DOMContentLoaded', function () {
           navbar.style.borderColor = '#3b3b3b00';
           navbar.style.backdropFilter = 'none';
           navbar.style.webkitBackdropFilter = 'none';
+          navbar.style.transform = 'scale(1.03)';
+          navbar.style.paddingTop = '1.2rem';
       } else {
           // Not at the top of the viewport
           // Set back to original styles or use classes for better management
@@ -382,11 +391,13 @@ document.addEventListener('DOMContentLoaded', function () {
           navbar.style.borderColor = '#3b3b3b80'; 
           navbar.style.backdropFilter = 'saturate(200%) blur(18px)';
           navbar.style.webkitBackdropFilter = 'saturate(200%) blur(18px)';
+          navbar.style.transform = 'scale(1)';
+          navbar.style.paddingTop = '0.5rem';
       }
   }
 
   // Apply smooth transition to the navbar
-  navbar.style.transition = 'background-color 0.3s, border 0.3s';
+  navbar.style.transition = 'background-color .5s, border .5s, transform .5s, padding-top .5s';
 
   // Listen for scroll events
   window.addEventListener('scroll', updateNavbarStyle);
@@ -398,9 +409,45 @@ document.addEventListener('DOMContentLoaded', function () {
       navbar.style.borderColor = '#3b3b3b80'; 
       navbar.style.backdropFilter = 'saturate(200%) blur(18px)';
       navbar.style.webkitBackdropFilter = 'saturate(200%) blur(18px)';
+      navbar.style.transform = 'scale(1)';
+      navbar.style.paddingTop = '0.5rem';
   });
 });
 
+
+//====Navbar-wrapper behaviour
+document.addEventListener('DOMContentLoaded', function () {
+  const navbarWrapper = document.querySelector('.navbar-wrapper');
+
+  // Set initial state based on scroll position
+  updateNavbarClass();
+
+  // Function to update the class of navbar-wrapper based on scroll position
+  function updateNavbarClass() {
+    const scrollPosition = window.scrollY;
+
+    // Check if the user is at the top of the viewport
+    if (scrollPosition === 0) {
+      // At the top of the viewport
+      navbarWrapper.classList.add('attop');
+    } else {
+      // Not at the top of the viewport
+      navbarWrapper.classList.remove('attop');
+    }
+  }
+
+  // Apply smooth transition to the navbar-wrapper
+  navbarWrapper.style.transition = 'background-color 0.3s';
+
+  // Listen for scroll events (though this won't affect the initial state)
+  window.addEventListener('scroll', function () {
+    // Ignore scroll events after the page has loaded
+    window.removeEventListener('scroll', arguments.callee);
+
+    // You can keep the existing logic for updating the class on scroll
+    updateNavbarClass();
+  });
+});
 
 
 //=========Let's Go! Button
