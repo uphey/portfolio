@@ -1089,10 +1089,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const transitionTime = Math.max(0, 0.5 - (scrollPosition / 200) * 0.5); // Gradually decrease transition time from 0.5s to 0
 
     if (isAtTop) {
-      const rotation = Math.sin(Date.now() / 8000) * 360; // Rotate more slowly
-      const skewX = Math.cos(Date.now() / 8000) * 20; // Skew more slowly
-      const skewY = Math.sin(Date.now() / 8000) * 10; // Skew more slowly
-      const scale = 1.2 + Math.sin(Date.now() / 8000) * 0.2; // Scale more slowly
+      const rotation = Math.sin(Date.now() / 8000) * 360; 
+      const skewX = Math.cos(Date.now() / 8000) * 20; 
+      const skewY = Math.sin(Date.now() / 8000) * 10; 
+      const scale = 1.2 + Math.sin(Date.now() / 8000) * 0.3; 
 
       
       dot.style.transform = `rotate(${rotation}deg) skew(${skewX}deg, ${skewY}deg) scale(${scale})`;
@@ -1104,13 +1104,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // Start the continuous transformations
   autoTransform();
 
-  window.addEventListener('scroll', function () {
-    const scrollPosition = window.scrollY;
-
-    // Check if at the top of the viewport
-    isAtTop = scrollPosition === 0;
-  });
-
   function getRandomValue(min, max) {
     return Math.random() * (max - min) + min;
   }
@@ -1119,12 +1112,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.addEventListener('scroll', function () {
     const scrollPosition = window.scrollY;
-
+    isAtTop = scrollPosition === 0;
     // Generate random values for rotation, skew, and scale
-    const rotation = Math.sin(scrollPosition / randomValue) * 90; // Rotates between -45 and 45 degrees
+    const rotation = Math.sin(scrollPosition / randomValue) * 70; // Rotates between -80 and 80 degrees
     const skewX = Math.cos(scrollPosition / randomValue) * 20; // Skews between -20 and 20 degrees
-    const skewY = Math.sin(scrollPosition / randomValue) * 20; // Skews between -20 and 20 degrees
-    const scale = 1 + Math.sin(scrollPosition / randomValue) * 0.5; // Scales between 0.8 and 1.2
+    const skewY = Math.sin(scrollPosition / randomValue) * 15; // Skews between -20 and 20 degrees
+    const scale = 1 + Math.sin(scrollPosition / randomValue) * 0.5; // Scales between 0.7 and 1.3
     
     // Apply the rotation, skew, and scale to the .dot element
     dot.style.transform = `rotate(${rotation}deg) skew(${skewX}deg, ${skewY}deg) scale(${scale})`;

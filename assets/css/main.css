@@ -103,8 +103,8 @@
     position:fixed;
     width: 100vw;
     height:115vh;
-    backdrop-filter: blur(70px); 
-    -webkit-backdrop-filter: blur(70px);
+    backdrop-filter: blur(80px); 
+    -webkit-backdrop-filter: blur(80px);
     z-index: 1;
   }
 
@@ -130,11 +130,11 @@
     display: flex;
     background-color: rgb(248, 248, 250);
     width: 100vw;
-    height: inherit;
+    height: 115vh;
     position: fixed;
     justify-content: center;
     align-items: center;
-    margin-top: 8vh;
+    margin-top: 7vh;
     z-index: 0;
 }
 
@@ -156,7 +156,7 @@
     height: 100vh;
     z-index: 4;
     position:relative;
-    padding-top: 24vh;
+    padding-top: 22vh;
     opacity: .9;
     cursor: default;
 }
@@ -178,12 +178,12 @@
 }
 
 .hero-note, .hero-icon {
-    margin-left: 4rem;
-    margin-right: 4rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 
 .hero-note {
-    padding-right: 10%;
+    padding-right: 5%;
 }
 
 .wave-container {  
@@ -1582,6 +1582,9 @@ body {
 }
 
 @media (max-width: 575px) {
+    .hero-bottom{
+        bottom: 2rem;
+    }
     #highlight .container {
         padding-left: 0;
         padding-right: 0;
