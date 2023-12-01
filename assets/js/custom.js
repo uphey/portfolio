@@ -500,40 +500,81 @@ const portfolioContent = document.querySelector(".portfolio-title"); // Assuming
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const filterValue = button.getAttribute("data-filter");
+    // Check if the button is already active
+    if (!button.classList.contains("active")) {
+      const filterValue = button.getAttribute("data-filter");
 
-    // Remove "active" class from all filter buttons
-    filterButtons.forEach((btn) => btn.classList.remove("active"));
-    // Add "active" class to the clicked button
-    button.classList.add("active");
+      // Remove "active" class from all filter buttons
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      // Add "active" class to the clicked button
+      button.classList.add("active");
 
-    // Apply transition effect to items
-    items.forEach((item) => {
-      if (filterValue === "all" || item.classList.contains(filterValue)) {
-        item.classList.remove("hide");
-      } else {
-        item.classList.add("hide");
-      }
-    });
+      // Apply transition effect to items
+      items.forEach((item) => {
+        if (filterValue === "all" || item.classList.contains(filterValue)) {
+          item.classList.add("hide");
+          setTimeout(() => {
+            item.classList.remove("hide");
+          }, 200);
+        } else {
+          item.classList.add("hide");
+        }
+      });
 
-    tagWrapper.forEach((tag) => {
-      if (filterValue === "all" || tag.classList.contains(filterValue)) {
-        tag.classList.remove("hide");
-      } else {
-        tag.classList.add("hide");
-      }
-    });
+      tagWrapper.forEach((tag) => {
+        if (filterValue === "all" || tag.classList.contains(filterValue)) {
+          tag.classList.add("hide");
+          setTimeout(() => {
+            tag.classList.remove("hide");
+          }, 200);
+        } else {
+          tag.classList.add("hide");
+        }
+      });
 
-    workImg.forEach((img) => {
-      if (filterValue === "all" || img.classList.contains(filterValue)) {
-        img.classList.remove("hide");
-      } else {
-        img.classList.add("hide");
-      }
-    });
-
+      workImg.forEach((img) => {
+        if (filterValue === "all" || img.classList.contains(filterValue)) {
+          img.classList.add("hide");
+          setTimeout(() => {
+            img.classList.remove("hide");
+          }, 200);
+        } else {
+          img.classList.add("hide");
+        }
+      });
+    }
     // Scroll to the top of the portfolio content
     portfolioContent.scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+
+
+//=======Change Larger Item size when filtered
+document.addEventListener('DOMContentLoaded', function () {
+  const filterButtons = document.querySelectorAll('.filter-button');
+  const largerItems = document.querySelectorAll('.larger-item');
+  const itemsContainer = document.querySelector('.items');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      const filterValue = this.getAttribute('data-filter');
+      // Toggle the class to change flex-wrap
+      itemsContainer.classList.add('justify-content-center');
+
+        setTimeout(() => {
+          itemsContainer.classList.remove('justify-content-center');
+        }, 300);
+      largerItems.forEach(item => {
+        if (filterValue === 'all') {
+          item.classList.remove('col-lg-4');
+          item.classList.add('col-lg-8');
+        } else {
+          item.classList.remove('col-lg-8');
+          item.classList.add('col-lg-4');
+        }
+      });
+    });
   });
 });
 

@@ -437,6 +437,10 @@
     pointer-events: none;
 }
 
+.portfolio-content {
+    min-height: 90vh;
+}
+
 .filist {
     padding: .5rem 1rem;
     margin-left: auto;
@@ -492,6 +496,11 @@
     display: flex;
     flex-wrap: wrap;
     transition: all 0.3s;
+    margin-bottom: 2rem;
+}
+
+.nowrap {
+    flex-wrap: nowrap;
 }
 
 .item {
@@ -500,17 +509,17 @@
     padding: 1rem;
     height: initial;
     transform: scale(1);
-    transition: min-width .3s, opacity .8s, transform .5s;
+    transition: min-width .3s, opacity .6s, transform .4s, width .4s;
 }
 
 .item.hide {
     min-width: 0;
+    width: 0;
     opacity: 0;
     padding: 0rem;
     height: 0;
     transform: scale(0);
     flex: 0;
-
 }
 
 .select-box:hover {
@@ -552,7 +561,7 @@
 }
 
 .inside-img {
-    max-height: 150%;
+    max-height: 180%;
     max-width: 180%;
     -webkit-user-drag: none;
     user-select: none;
@@ -1583,7 +1592,7 @@ body {
 
 @media (max-width: 575px) {
     .hero-bottom{
-        bottom: 2rem;
+        bottom: 4rem;
     }
     #highlight .container {
         padding-left: 0;
