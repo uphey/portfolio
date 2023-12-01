@@ -134,7 +134,7 @@
     position: fixed;
     justify-content: center;
     align-items: center;
-    margin-top: 7vh;
+    margin-top: 6vh;
     z-index: 0;
 }
 
@@ -156,7 +156,7 @@
     height: 100vh;
     z-index: 4;
     position:relative;
-    padding-top: 22vh;
+    padding-top: 21vh;
     opacity: .9;
     cursor: default;
 }
