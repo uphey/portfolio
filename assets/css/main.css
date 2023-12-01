@@ -191,7 +191,7 @@
 }
 
 .hero-note:hover {
-    transform: scale(1.2) translateX(1rem);
+    transform: scale(1.15) translateX(1.2rem);
 }
 
 .wave-container {  

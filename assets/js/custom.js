@@ -224,8 +224,6 @@ window.onload = function () {
 };
 
 
-
-
 //===============Load video when modal show
 document.addEventListener('DOMContentLoaded', function () {
     // Function to load media elements within a modal
@@ -374,26 +372,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Function to update the navbar style based on scroll position
   function updateNavbarStyle() {
-      const scrollPosition = window.scrollY;
+    const scrollPosition = window.scrollY;
+    const isTop = scrollPosition <= 20;
 
-      if (scrollPosition <= 20) {
-          // At the top of the viewport
-          navbar.style.backgroundColor = 'rgba(251, 251, 253, 0)';
-          navbar.style.borderColor = '#3b3b3b00';
-          navbar.style.backdropFilter = 'none';
-          navbar.style.webkitBackdropFilter = 'none';
-          navbar.style.transform = 'scale(1.03)';
-          navbar.style.paddingTop = '1.3rem';
-      } else {
-          // Not at the top of the viewport
-          // Set back to original styles or use classes for better management
-          navbar.style.backgroundColor = 'rgba(251, 251, 253, 0.8)';
-          navbar.style.borderColor = '#3b3b3b80'; 
-          navbar.style.backdropFilter = 'saturate(200%) blur(18px)';
-          navbar.style.webkitBackdropFilter = 'saturate(200%) blur(18px)';
-          navbar.style.transform = 'scale(1)';
-          navbar.style.paddingTop = '0.5rem';
-      }
+    navbar.style.backgroundColor = isTop ? 'rgba(251, 251, 253, 0)' : 'rgba(251, 251, 253, 0.8)';
+    navbar.style.borderColor = isTop ? '#3b3b3b00' : '#3b3b3b80';
+    navbar.style.backdropFilter = isTop ? 'none' : 'saturate(200%) blur(18px)';
+    navbar.style.webkitBackdropFilter = isTop ? 'none' : 'saturate(200%) blur(18px)';
+    navbar.style.transform = isTop ? 'scale(1.03)' : 'scale(1)';
+    navbar.style.paddingTop = isTop ? '1.3rem' : '0.5rem';
   }
 
   // Apply smooth transition to the navbar
@@ -402,16 +389,19 @@ document.addEventListener('DOMContentLoaded', function () {
   // Listen for scroll events
   window.addEventListener('scroll', updateNavbarStyle);
 
+  // Function to handle click events on the navbar-toggler
+  function handleNavbarTogglerClick() {
+    updateNavbarStyle();
+    navbar.style.backgroundColor = 'rgba(251, 251, 253, 0.8)';
+    navbar.style.borderColor = '#3b3b3b80';
+    navbar.style.backdropFilter = 'saturate(200%) blur(18px)';
+    navbar.style.webkitBackdropFilter = 'saturate(200%) blur(18px)';
+    navbar.style.transform = 'scale(1)';
+    navbar.style.paddingTop = '0.5rem';
+  }
+
   // Listen for click events on the navbar-toggler
-  navbarToggler.addEventListener('click', function () {
-      // Change the style here when the navbar-toggler is clicked
-      navbar.style.backgroundColor = 'rgba(251, 251, 253, 0.8)';
-      navbar.style.borderColor = '#3b3b3b80'; 
-      navbar.style.backdropFilter = 'saturate(200%) blur(18px)';
-      navbar.style.webkitBackdropFilter = 'saturate(200%) blur(18px)';
-      navbar.style.transform = 'scale(1)';
-      navbar.style.paddingTop = '0.5rem';
-  });
+  navbarToggler.addEventListener('click', handleNavbarTogglerClick);
 });
 
 
@@ -497,6 +487,14 @@ const items = document.querySelectorAll(".item");
 const tagWrapper = document.querySelectorAll(".tag-wrapper");
 const workImg = document.querySelectorAll(".inside-img");
 const portfolioContent = document.querySelector(".portfolio-title"); // Assuming you have a single portfolio content element
+const itemsContainer = document.querySelector('.items');
+
+function applyTransition(element) {
+  element.classList.add("hide");
+  setTimeout(() => {
+    element.classList.remove("hide");
+  }, 200);
+}
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -509,37 +507,34 @@ filterButtons.forEach((button) => {
       // Add "active" class to the clicked button
       button.classList.add("active");
 
-      // Apply transition effect to items
+      itemsContainer.classList.add('justify-content-center');
+
+      setTimeout(() => {
+        itemsContainer.classList.remove('justify-content-center');
+      }, 300);
+
+      // Apply transition effect to items, tagWrapper, and workImg
       items.forEach((item) => {
-        if (filterValue === "all" || item.classList.contains(filterValue)) {
-          item.classList.add("hide");
-          setTimeout(() => {
-            item.classList.remove("hide");
-          }, 200);
-        } else {
-          item.classList.add("hide");
+        const shouldShow = filterValue === "all" || item.classList.contains(filterValue);
+        item.classList.toggle("hide", !shouldShow);
+        if (shouldShow) {
+          applyTransition(item);
         }
       });
 
       tagWrapper.forEach((tag) => {
-        if (filterValue === "all" || tag.classList.contains(filterValue)) {
-          tag.classList.add("hide");
-          setTimeout(() => {
-            tag.classList.remove("hide");
-          }, 200);
-        } else {
-          tag.classList.add("hide");
+        const shouldShow = filterValue === "all" || tag.classList.contains(filterValue);
+        tag.classList.toggle("hide", !shouldShow);
+        if (shouldShow) {
+          applyTransition(tag);
         }
       });
 
       workImg.forEach((img) => {
-        if (filterValue === "all" || img.classList.contains(filterValue)) {
-          img.classList.add("hide");
-          setTimeout(() => {
-            img.classList.remove("hide");
-          }, 200);
-        } else {
-          img.classList.add("hide");
+        const shouldShow = filterValue === "all" || img.classList.contains(filterValue);
+        img.classList.toggle("hide", !shouldShow);
+        if (shouldShow) {
+          applyTransition(img);
         }
       });
     }
@@ -548,38 +543,24 @@ filterButtons.forEach((button) => {
   });
 });
 
-
-
 //=======Change Larger Item size when filtered
 document.addEventListener('DOMContentLoaded', function () {
-  const filterButtons = document.querySelectorAll('.filter-button');
   const largerItems = document.querySelectorAll('.larger-item');
-  const itemsContainer = document.querySelector('.items');
 
   filterButtons.forEach(button => {
     button.addEventListener('click', function () {
       const filterValue = this.getAttribute('data-filter');
-      // Toggle the class to change flex-wrap
-      itemsContainer.classList.add('justify-content-center');
+      const isAllFilter = filterValue === 'all';
 
-        setTimeout(() => {
-          itemsContainer.classList.remove('justify-content-center');
-        }, 300);
       largerItems.forEach(item => {
-        if (filterValue === 'all') {
-          item.classList.remove('col-lg-4');
-          item.classList.add('col-lg-8');
-        } else {
-          item.classList.remove('col-lg-8');
-          item.classList.add('col-lg-4');
-        }
+        item.classList.toggle('col-lg-8', isAllFilter);
+        item.classList.toggle('col-lg-4', !isAllFilter);
       });
     });
   });
 });
 
-//============Filist Show and Hide
-
+//======Filist Show and Hide
 function isOverlap(element1, element2) {
   const rect1 = element1.getBoundingClientRect();
   const rect2 = element2.getBoundingClientRect();
@@ -606,20 +587,12 @@ function handleFilistOpacity() {
     });
 
     if (isOverlapping && !filist.classList.contains('hovered')) {
-      if (isWideScreen) {
-        filist.style.opacity = '0.3';
-        filist.style.transform = 'scale(0.9)';
-        filterButtons.forEach(button => {
-          button.style.color = '#fff0';
-        });
-      } else {
-        filist.style.visibility = 'hidden';
-        filist.style.opacity = '0';
-        filist.style.transform = 'scale(0.9)';
-        filterButtons.forEach(button => {
-          button.style.color = '#fff0';
-        });
-      }
+      const opacityValue = isWideScreen ? '0.3' : '0';
+      filist.style.opacity = opacityValue;
+      filist.style.transform = 'scale(0.9)';
+      filterButtons.forEach(button => {
+        button.style.color = '#fff0';
+      });
     } else {
       filist.style.opacity = '1';
       filist.style.transform = 'scale(1)';
@@ -640,12 +613,14 @@ window.addEventListener('scroll', function () {
   if (scrollDirection === 'down') {
     handleFilistOpacity();
   } else {
-    document.querySelectorAll('.filist').forEach(filist => {
+    const filists = document.querySelectorAll('.filist');
+    const filterButtons = document.querySelectorAll('.filter-button');
+    filists.forEach(filist => {
       filist.style.visibility = 'visible';
       filist.style.opacity = '1';
       filist.style.transform = 'scale(1)';
     });
-    document.querySelectorAll('.filter-button').forEach(button => {
+    filterButtons.forEach(button => {
       button.style.color = '';
     });
   }
@@ -659,7 +634,8 @@ document.querySelectorAll('.filist').forEach(filist => {
       this.classList.add('hovered');
       this.style.opacity = '1';
       this.style.transform = 'scale(1)';
-      document.querySelectorAll('.filter-button').forEach(button => {
+      const filterButtons = document.querySelectorAll('.filter-button');
+      filterButtons.forEach(button => {
         button.style.color = '';
       });
     });
