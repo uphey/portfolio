@@ -507,11 +507,27 @@ filterButtons.forEach((button) => {
       // Add "active" class to the clicked button
       button.classList.add("active");
 
-      itemsContainer.classList.add('justify-content-center');
-
-      setTimeout(() => {
-        itemsContainer.classList.remove('justify-content-center');
-      }, 300);
+      if (window.innerWidth >= 992 && filterValue !== 'all') {
+        // Change the display style of .items to flex when the data-filter is not 'all'
+        itemsContainer.style.display = 'flex';
+        
+        // Change the width of .item.col-lg-4 to an empty string
+        items.forEach(item => {
+          if (item.classList.contains('col-lg-4')) {
+            item.style.width = '33.33333333%';
+          }
+        });
+      } else {
+        // Change the display style of .items to grid for other cases
+        itemsContainer.style.display = 'grid';
+        // Change the width of .item.col-lg-4 back to its original value (if needed)
+        items.forEach(item => {
+          if (item.classList.contains('col-lg-4')) {
+            // You can set the original width value here, for example '25%'
+            item.style.width = 'auto';
+          }
+        });
+      }
 
       // Apply transition effect to items, tagWrapper, and workImg
       items.forEach((item) => {
@@ -538,27 +554,12 @@ filterButtons.forEach((button) => {
         }
       });
     }
+
     // Scroll to the top of the portfolio content
     portfolioContent.scrollIntoView({ behavior: "smooth" });
   });
 });
 
-//=======Change Larger Item size when filtered
-document.addEventListener('DOMContentLoaded', function () {
-  const largerItems = document.querySelectorAll('.larger-item');
-
-  filterButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      const filterValue = this.getAttribute('data-filter');
-      const isAllFilter = filterValue === 'all';
-
-      largerItems.forEach(item => {
-        item.classList.toggle('col-lg-8', isAllFilter);
-        item.classList.toggle('col-lg-4', !isAllFilter);
-      });
-    });
-  });
-});
 
 //======Filist Show and Hide
 function isOverlap(element1, element2) {
