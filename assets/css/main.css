@@ -186,6 +186,14 @@
     padding-right: 5%;
 }
 
+.hero-note {
+    transition: .7s;
+}
+
+.hero-note:hover {
+    transform: scale(1.2) translateX(1rem);
+}
+
 .wave-container {  
     height: 40vh;
     background-color: #f3f8fe;
