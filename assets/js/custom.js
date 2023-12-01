@@ -1097,7 +1097,7 @@ document.addEventListener('DOMContentLoaded', function () {
       
       dot.style.transform = `rotate(${rotation}deg) skew(${skewX}deg, ${skewY}deg) scale(${scale})`;
     } 
-    dot.style.transition = `transform ${transitionTime}s ease`; // Adjusted transition time
+    dot.style.transition = `transform ${transitionTime}s linear`; // Adjusted transition time
     requestAnimationFrame(autoTransform);
   }
 
