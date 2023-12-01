@@ -456,30 +456,37 @@ button.addEventListener("mouseout", () => {
   
 
 //======Copy Email
-const copyButton = document.getElementById("copyButton");
-        const copyButtonText = document.getElementById("copyButtonText");
-        const text = "chiushtommy@gmail.com"; 
+// Assuming you have multiple copy buttons with class "copyButton"
+const copyButtons = document.querySelectorAll(".copyButton");
+const text = "chiushtommy@gmail.com";
 
-        const copyContent = async () => {
-            try {
-                await navigator.clipboard.writeText(text);
-                console.log("Content copied to clipboard");
+const copyContent = async (button) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    console.log("Content copied to clipboard");
 
-                // Change the button text to "Copied!" on successful copy
-                copyButtonText.textContent = "Copied!👏";
+    // Change the button text to "Copied!" on successful copy
+    button.querySelector(".copyButtonText").textContent = "Copied!👏";
 
-                // Add a CSS class for the bounce animation
-                copyButton.classList.add("bounce1");
+    // Add a CSS class for the bounce animation
+    button.classList.add("bounce1");
 
-                // Remove the bounce class and reset the text after a short delay (2 seconds in this example)
-                setTimeout(() => {
-                    copyButton.classList.remove("bounce1");
-                    copyButtonText.textContent = "Copy Email";
-                }, 2000);
-            } catch (err) {
-                console.error("Failed to copy: ", err);
-            }
-        };
+    // Remove the bounce class and reset the text after a short delay (2 seconds in this example)
+    setTimeout(() => {
+      button.classList.remove("bounce1");
+      button.querySelector(".copyButtonText").textContent = "Copy Email";
+    }, 2000);
+  } catch (err) {
+    
+  }
+};
+
+copyButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    copyContent(button);
+  });
+});
+
 
 //========FilterButton
 const filterButtons = document.querySelectorAll(".filter-button");
