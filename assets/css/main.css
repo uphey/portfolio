@@ -141,7 +141,7 @@
 .dot {
     height: 60%;
     aspect-ratio: 1 / 1;
-    background: linear-gradient(0deg, rgb(155, 239, 203) 0%, rgb(241, 197, 104) 70%);
+    background: linear-gradient(0deg, rgb(151, 231, 196) 0%, rgb(233, 193, 105) 65%);
     border-radius: 50%;
     /* animation: rotate 8s linear infinite; */
   }
@@ -196,7 +196,7 @@
 }
 
 .hero-note:hover {
-    transform: scale(1.15) translateX(1.2rem);
+    transform: scale(1.15) translateX(1.2rem) translateY(-1rem);
 }
 
 .wave-container {  
