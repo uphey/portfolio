@@ -456,17 +456,23 @@ button.addEventListener("mouseout", () => {
   
 
 //======Copy Email
-// Assuming you have multiple copy buttons with class "copyButton"
 const copyButtons = document.querySelectorAll(".copyButton");
 const text = "chiushtommy@gmail.com";
 
 const copyContent = async (button) => {
   try {
+    const copyButtonText = button.querySelector(".copyButtonText");
+
+    if (!copyButtonText) {
+      console.error("Invalid copyButtonText element");
+      return;
+    }
+
     await navigator.clipboard.writeText(text);
     console.log("Content copied to clipboard");
 
     // Change the button text to "Copied!" on successful copy
-    button.querySelector(".copyButtonText").textContent = "Copied!👏";
+    copyButtonText.textContent = "Copied!👏";
 
     // Add a CSS class for the bounce animation
     button.classList.add("bounce1");
@@ -474,10 +480,10 @@ const copyContent = async (button) => {
     // Remove the bounce class and reset the text after a short delay (2 seconds in this example)
     setTimeout(() => {
       button.classList.remove("bounce1");
-      button.querySelector(".copyButtonText").textContent = "Copy Email";
+      copyButtonText.textContent = "Copy Email";
     }, 2000);
   } catch (err) {
-    
+    console.error("Failed to copy: ", err);
   }
 };
 
@@ -1039,68 +1045,54 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     // Add event listeners for modal show events
     document.querySelectorAll('.modal').forEach(function (modal) {
-        modal.addEventListener('show.bs.modal', function () {
-            hideSectionsAndBackground();
-        });
-
-        // Add event listener for modal hide events
-        modal.addEventListener('hide.bs.modal', function () {
-            showAllSectionsAndBackground();
-        });
+        modal.addEventListener('show.bs.modal', hideSectionsAndBackground);
+        modal.addEventListener('hide.bs.modal', showAllSectionsAndBackground);
     });
 });
+
+function fadeOut(element, callback) {
+    let opacity = 1;
+    const fadeOutInterval = setInterval(() => {
+        element.style.opacity = opacity;
+        opacity -= 0.1;
+
+        if (opacity <= 0) {
+            element.style.visibility = 'hidden';
+            clearInterval(fadeOutInterval);
+            if (callback) callback();
+        }
+    }, 60);
+}
+
+function fadeIn(element) {
+    let opacity = 0;
+    const fadeInInterval = setInterval(() => {
+        element.style.opacity = opacity;
+        opacity += 0.1;
+
+        if (opacity >= 1) {
+            clearInterval(fadeInInterval);
+        }
+    }, 60);
+}
 
 function hideSectionsAndBackground() {
     const sectionsToHide = document.querySelectorAll('#about, .img1, .about-img, .offcanvas, .accordion, #footer');
     sectionsToHide.forEach(section => {
-        // Gradually reduce opacity before hiding
-        let opacity = 1;
-        const fadeOutInterval = setInterval(() => {
-            section.style.opacity = opacity;
-            opacity -= 0.1;
-
-            if (opacity <= 0) {
-                // Set display to 'none' after fading out
-                section.style.visibility = 'hidden';
-                clearInterval(fadeOutInterval);
-            }
-        }, 60);
+        fadeOut(section);
     });
 
-    const heroImage = document.getElementById('heroImage');
-    if (heroImage) {
-        // Gradually reduce opacity of the background image
-        let opacity = 1;
-        const fadeOutInterval = setInterval(() => {
-            heroImage.style.opacity = opacity;
-            opacity -= 0.1;
-
-            if (opacity <= 0) {
-                // Set background image to 'none' after fading out
-                heroImage.style.backgroundImage = 'none';
-                clearInterval(fadeOutInterval);
-            }
-        }, 50);
-    }
 }
 
-// Function to show all sections and reset background
 function showAllSectionsAndBackground() {
     const allSections = document.querySelectorAll('#about, .img1, .about-img, .offcanvas, .accordion, #footer');
     allSections.forEach(section => {
-        // Reset opacity before showing
-        section.style.opacity = 1;
+        fadeIn(section);
         section.style.visibility = 'visible';
     });
 
-    const heroImage = document.getElementById('heroImage');
-    if (heroImage) {
-        // Reset opacity of the background image
-        heroImage.style.opacity = 1;
-        // Reset to your default background image
-        heroImage.style.backgroundImage = 'url("../../assets/img/background.webp")';
-    }
-};
+}
+
 
 
 //========Dot Transform

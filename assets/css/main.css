@@ -152,6 +152,11 @@
     100% {transform:rotate(360deg) scale(1) skewX(0deg)}
   } */
 
+
+.initial-transition {
+    transition: all .5s!important;
+}
+
 .hero-text {
     height: 100vh;
     z-index: 4;
