@@ -1105,24 +1105,35 @@ function showAllSectionsAndBackground() {
 
 //========Dot Transform
 document.addEventListener('DOMContentLoaded', function () {
-  const dot = document.querySelector('.dot');
-  let isAtTop = true;
+  const dots = document.querySelectorAll('.dot');
+  const dotTransformData = {};
 
-  // Function to apply continuous transformations to the dot
+  // Initialize dot transformation data for each dot
+  dots.forEach(dot => {
+    dotTransformData[dot] = {
+      isAtTop: true,
+      randomValue: getRandomValue(100, 200),
+    };
+  });
+
+  // Function to apply continuous transformations to each dot
   function autoTransform() {
-    const scrollPosition = window.scrollY;
-    const transitionTime = Math.max(0, 0.5 - (scrollPosition / 200) * 0.5); // Gradually decrease transition time from 0.5s to 0
+    dots.forEach(dot => {
+      const scrollPosition = window.scrollY;
+      const { isAtTop } = dotTransformData[dot];
+      const transitionTime = Math.max(0, 0.5 - (scrollPosition / 200) * 0.5); // Gradually decrease transition time from 0.5s to 0
 
-    if (isAtTop) {
-      const rotation = Math.sin(Date.now() / 8000) * 360; 
-      const skewX = Math.cos(Date.now() / 8000) * 20; 
-      const skewY = Math.sin(Date.now() / 8000) * 10; 
-      const scale = 1.2 + Math.sin(Date.now() / 8000) * 0.3; 
+      if (isAtTop) {
+        const rotation = Math.sin(Date.now() / 8000) * 360;
+        const skewX = Math.cos(Date.now() / 8000) * 20;
+        const skewY = Math.sin(Date.now() / 8000) * 10;
+        const scale = 1.2 + Math.sin(Date.now() / 8000) * 0.3;
 
-      
-      dot.style.transform = `rotate(${rotation}deg) skew(${skewX}deg, ${skewY}deg) scale(${scale})`;
-    } 
-    dot.style.transition = `transform ${transitionTime}s linear`; // Adjusted transition time
+        dot.style.transform = `rotate(${rotation}deg) skew(${skewX}deg, ${skewY}deg) scale(${scale})`;
+      }
+      dot.style.transition = `transform ${transitionTime}s linear`; // Adjusted transition time
+    });
+
     requestAnimationFrame(autoTransform);
   }
 
@@ -1133,18 +1144,18 @@ document.addEventListener('DOMContentLoaded', function () {
     return Math.random() * (max - min) + min;
   }
 
-  let randomValue = getRandomValue(100, 200)
-
   window.addEventListener('scroll', function () {
-    const scrollPosition = window.scrollY;
-    isAtTop = scrollPosition === 0;
-    // Generate random values for rotation, skew, and scale
-    const rotation = Math.sin(scrollPosition / randomValue) * 70; // Rotates between -80 and 80 degrees
-    const skewX = Math.cos(scrollPosition / randomValue) * 20; // Skews between -20 and 20 degrees
-    const skewY = Math.sin(scrollPosition / randomValue) * 15; // Skews between -20 and 20 degrees
-    const scale = 1 + Math.sin(scrollPosition / randomValue) * 0.5; // Scales between 0.7 and 1.3
-    
-    // Apply the rotation, skew, and scale to the .dot element
-    dot.style.transform = `rotate(${rotation}deg) skew(${skewX}deg, ${skewY}deg) scale(${scale})`;
+    dots.forEach(dot => {
+      const scrollPosition = window.scrollY;
+      const { isAtTop, randomValue } = dotTransformData[dot];
+      dotTransformData[dot].isAtTop = scrollPosition === 0;
+
+      const rotation = Math.sin(scrollPosition / randomValue) * 70;
+      const skewX = Math.cos(scrollPosition / randomValue) * 20;
+      const skewY = Math.sin(scrollPosition / randomValue) * 15;
+      const scale = 1 + Math.sin(scrollPosition / randomValue) * 0.5;
+
+      dot.style.transform = `rotate(${rotation}deg) skew(${skewX}deg, ${skewY}deg) scale(${scale})`;
+    });
   });
 });
