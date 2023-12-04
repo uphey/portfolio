@@ -1729,8 +1729,8 @@ body {
 
 @media (max-width: 464px) {
     .filist {
-        padding-left: 4rem;
-        padding-right: 4rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
         border-radius: 2rem;
         margin-left: .5rem;
         margin-right: .5rem;
