@@ -702,25 +702,29 @@ triggerElements.forEach((triggerElement, index) => {
 });
 
 //========Show on Hover
-
 const hoveredElements = document.querySelectorAll(".hoveredElement");
-const hiddenElement = document.getElementById("hiddenElement");
+const hiddenElements = document.querySelectorAll(".hiddenElement");
 
-// Function to show the hidden element
-function showHiddenElement() {
-  hiddenElement.style.opacity = 1;
+// Function to show the hidden elements
+function showHiddenElements() {
+  hiddenElements.forEach((element) => {
+    element.style.opacity = 1;
+  });
 }
 
-// Function to hide the hidden element
-function hideHiddenElement() {
-  hiddenElement.style.opacity = 0;
+// Function to hide the hidden elements
+function hideHiddenElements() {
+  hiddenElements.forEach((element) => {
+    element.style.opacity = 0;
+  });
 }
 
-// Add event listeners to both hovered elements
+// Add event listeners to all hovered elements
 hoveredElements.forEach((element) => {
-  element.addEventListener("mouseover", showHiddenElement);
-  element.addEventListener("mouseout", hideHiddenElement);
+  element.addEventListener("mouseover", showHiddenElements);
+  element.addEventListener("mouseout", hideHiddenElements);
 });
+
 
 
 //======== Back to Top Button
