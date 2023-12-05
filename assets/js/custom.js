@@ -931,7 +931,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
   
-  
 //=============Change the active state of a navbar item
 // Get all the nav-links
 const navLinks = document.querySelectorAll(".nav-link");
