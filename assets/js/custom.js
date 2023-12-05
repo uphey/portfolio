@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const navbar = document.querySelector('.navbar');
   const navbarToggler = document.querySelector('.navbar-toggler');
-
+  updateNavbarStyle();
   // Function to update the navbar style based on scroll position
   function updateNavbarStyle() {
     const scrollPosition = window.scrollY;
@@ -506,7 +506,7 @@ function applyTransition(element) {
   element.classList.add("hide");
   setTimeout(() => {
     element.classList.remove("hide");
-  }, 200);
+  }, 250);
 }
 
 filterButtons.forEach((button) => {
@@ -532,7 +532,10 @@ filterButtons.forEach((button) => {
         });
       } else {
         // Change the display style of .items to grid for other cases
-        itemsContainer.style.display = 'grid';
+        
+        setTimeout(() => {
+          itemsContainer.style.display = 'grid';
+        }, 250);
         // Change the width of .item.col-lg-4 back to its original value (if needed)
         items.forEach(item => {
           if (item.classList.contains('col-lg-4')) {
@@ -679,7 +682,7 @@ function isElementInView(el) {
 function hideElement(index) {
   const elementToHide = elementsToHide[index];
   elementToHide.style.opacity = "0";
-  elementToHide.style.maxHeight = "0px";
+  elementToHide.style.transform = "scale(.7, 0)";
   isHiddenArray[index] = true;
 }
 
@@ -687,7 +690,7 @@ function showElement(index) {
   const elementToHide = elementsToHide[index];
   elementToHide.style.display = "flex";
   elementToHide.style.opacity = "1";
-  elementToHide.style.maxHeight = "180px"; 
+  elementToHide.style.transform = "scale(1)"; 
   isHiddenArray[index] = false;
 }
 

@@ -236,22 +236,34 @@
                                 <img data-src="assets/img/highlights/podcast.webp" width="640" height="360" class="img1"
                                     alt="Logo and Cover Art of Podcast Channel">
                                 <div class="carousel-caption">
-                                    <h2 class="fw-bold">Video & Audio Editing</h2>
-                                    <p>Create outstanding video and audio content for a podcast channel with over
+                                    <h2 class="fw-bold" data-swiper-parallax="-200" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0">
+                                        Video & Audio Editing</h2>
+                                    <p data-swiper-parallax="-300" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0">Create
+                                        outstanding video and audio content for a
+                                        podcast channel with over
                                         220,000 total plays.</p>
-                                    <a data-href="#projects" class="btn btn-sm btn-dark py-2 px-3 gap-3 rounded-pill"
-                                        role="button">View
+                                    <a data-swiper-parallax="-350" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0" data-href="#projects"
+                                        class="btn btn-sm btn-dark py-2 px-3 gap-3 rounded-pill" role="button">View
                                         more</a>
                                 </div>
                             </div>
                             <div class="swiper-slide"><img data-src="assets/img/highlights/graphic.webp" width="640"
                                     height="360" class="img1" alt="Some graphic design">
                                 <div class="carousel-caption">
-                                    <h2 class="fw-bold">Graphic Design</h2>
-                                    <p class="carousel-p">Dedicate skills and creativity to craft beautiful and
+                                    <h2 class="fw-bold" data-swiper-parallax="-200" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0">
+                                        Graphic Design</h2>
+                                    <p data-swiper-parallax="-300" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0" class="carousel-p">Dedicate skills and
+                                        creativity to
+                                        craft beautiful and
                                         inspiring graphics.</p>
-                                    <a data-href="#projects" class="btn btn-sm btn-dark py-2 px-3 gap-3 rounded-pill"
-                                        role="button">View
+                                    <a data-swiper-parallax="-350" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0" data-href="#projects"
+                                        class="btn btn-sm btn-dark py-2 px-3 gap-3 rounded-pill" role="button">View
                                         more</a>
                                 </div>
                             </div>
@@ -259,11 +271,17 @@
                                 <img data-src="assets/img/highlights/website.webp" width="640" height="360" class="img1"
                                     alt="Website Screenshots of CLTDC">
                                 <div class="carousel-caption">
-                                    <h2 class="fw-bold">Web Design & Development</h2>
-                                    <p>Create fantastic and cutting-edge front-end websites using the power of HTML5,
+                                    <h2 class="fw-bold" data-swiper-parallax="-200" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0">
+                                        Web Design & Development</h2>
+                                    <p data-swiper-parallax="-300" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0">Create fantastic
+                                        and cutting-edge front-end websites
+                                        using the power of HTML5,
                                         CSS3, and JavaScript.</p>
-                                    <a data-href="#projects" class="btn btn-sm btn-dark py-2 px-3 gap-3 rounded-pill"
-                                        role="button">View
+                                    <a data-swiper-parallax="-350" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0" data-href="#projects"
+                                        class="btn btn-sm btn-dark py-2 px-3 gap-3 rounded-pill" role="button">View
                                         more</a>
                                 </div>
                             </div>
@@ -271,10 +289,17 @@
                                 <img data-src="assets/img/highlights/photography.webp" width="640" height="360"
                                     class="img1" alt="Three photos">
                                 <div class="carousel-caption">
-                                    <h2 class="fw-bold">Photography</h2>
-                                    <p>Capture stunning and breathtaking moments through the lens of photography.</p>
-                                    <a data-href="#projects" class="btn btn-sm btn-dark py-2 px-3 gap-3 rounded-pill"
-                                        role="button">View
+                                    <h2 class="fw-bold" data-swiper-parallax="-200" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0">
+                                        Photography</h2>
+                                    <p data-swiper-parallax="-300" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0" data-swiper-parallax="-200">Capture stunning
+                                        and breathtaking moments through
+                                        the
+                                        lens of photography.</p>
+                                    <a data-swiper-parallax="-350" data-swiper-parallax-duration="600"
+                                        data-swiper-parallax-opacity="0" data-href="#projects"
+                                        class="btn btn-sm btn-dark py-2 px-3 gap-3 rounded-pill" role="button">View
                                         more</a>
                                 </div>
                             </div>
@@ -2150,7 +2175,8 @@
         const progressCircle = document.querySelector(".autoplay-progress svg");
         const progressContent = document.querySelector(".autoplay-progress span");
         var swiper = new Swiper(".mySwiper", {
-            spaceBetween: '0.01px',
+            speed: 800,
+            spaceBetween: '0.001px',
             centeredSlides: true,
             autoplay: {
                 delay: 10000,
@@ -2164,6 +2190,8 @@
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev"
             },
+            parallax: true,
+            loop: true,
             on: {
                 autoplayTimeLeft(s, time, progress) {
                     progressCircle.style.setProperty("--progress", 1 - progress);
